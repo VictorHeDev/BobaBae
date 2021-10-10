@@ -1,4 +1,6 @@
 /*
+  Maybe move collision detection to our Game file
+
   In this, we will check for a few types of collisions
 
   Player vs. Stage/Canvas width, height
@@ -14,6 +16,8 @@
   Increment score points
   Decrement number of lives
   Power ups
+
+  - Check if rectangles intersect with each other
 
 
 

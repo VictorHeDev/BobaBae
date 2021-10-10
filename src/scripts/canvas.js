@@ -4,6 +4,7 @@
 // Might want to edit this later so we have this class do more things such as creating the canvas and hiding it
 // or even rendering another canvas in order to display a menu for starting the game, pausing, or game over
 
+// naming convention -> may change later
 export default class Canvas {
   constructor() {
     this.canvas = document.getElementById("my-canvas");

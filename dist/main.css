@@ -12,7 +12,7 @@ body {
 #my-canvas {
   border: 5px solid black;
   /* background-color: lightpink; */
-  /* background: url(../src/images/cyberpunk-bg.png) no-repeat center center; */
+  background: url(../src/images/cyberpunk-bg.png) no-repeat center center;
   background-size: cover;
   /* height: 100%;
   width: 100%; */
