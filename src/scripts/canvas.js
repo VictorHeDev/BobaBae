@@ -1,6 +1,9 @@
 
 // Maybe I should make canvas width and height constants
 // In this file all we want to do is retrieve the attributes of the canvas and clear it upon each call to our game loop (in another file)
+// Might want to edit this later so we have this class do more things such as creating the canvas and hiding it
+// or even rendering another canvas in order to display a menu for starting the game, pausing, or game over
+
 export default class Canvas {
   constructor() {
     this.canvas = document.getElementById("my-canvas");
@@ -10,6 +13,7 @@ export default class Canvas {
   }
 
   clearCanvas() {
+
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 

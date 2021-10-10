@@ -18,10 +18,10 @@ Main goals:
 ### Day 1 - Conceptualization
 Research canvas, gather assets such as background image, sprites for characters, think about menus. Create the wireframe. On a high level, I want the game to have:
 Basics:
-- Main character who can move around using "WASD" or arrow keys
-- Timer that counts down from 1 minute for a single round
+- Main character who can move around using "WASD" or arrow keys (maybe minus the down keys because ... I can't think of a good use for that)
+- Timer that counts down from 1 minute for a single round (using built in Datetime obj)
 - Score that increments when Kevin collects an item
-- Life/Hearts
+- Life/Hearts/BobaBar
 
 Extra Features:
 - Power-ups: such as freezing the timer, invincibility mode, super speed/super hops
@@ -38,7 +38,7 @@ Other features being considered:
 - Rendering and animations for Kevin and Vivian
 
 ### Day 2 - Research
-Day 2 will be devoted to research about how to set up canvas and how to render a playable screen with the correct dimensions on the webpage. I will need to configure Webpack and initialize my files on either Day 2 or Day 2. Find/create a CSS reset file and create a template for my HTML file. Research how to animate the character sprites, collectable items, timer, and background image. How can I link events to DOM input/output?
+Day 2 will be devoted to research about how to set up canvas and how to render a playable screen with the correct dimensions on the webpage. I will need to configure Webpack and initialize my files on either Day 2 or Day 3. Find/create a CSS reset file and create a template for my HTML file. Research how to animate the character sprites, collectable items, timer, and background image. How can I link events to DOM input/output? By using keyup/down events.
 
 Main goals:
 - Canvas API
@@ -50,16 +50,19 @@ Create classes for the character, items, background, timer, and score. How can I
 
 Main goals:
 - Render canvas
-- Render background (moving image)
+- Render background (static vs. moving image)
 - Render character
   - Character movement associated with "WASD" keys (bind movement to key up and down events)
-- Create initial methods for objects
+  - No collision detection yet
+  - Jumping is a plus
+- Create initial methods for objects (items)
 
 
 ### Day 4, 5 - Main bulk of coding and handling logic
 The goal for the next two days is to handle most of the actual gameplay and logic. That means creating the gravity logic for the items, Kevin's jumping animation, decrementing lives/hearts/Boba-bar, and collision logic. We have to make sure that Kevin can only stay within the contents of the screen and he can either stay at a baseline position or jump. We might want to create additional ledges for him to jump on top of for a more dynamic gaming experience.
 
 Main goals:
+- Movement logic
 - Gravity logic
 - Collision logic
 
@@ -74,6 +77,7 @@ Main goals:
 
 ### Day 7 - Polish up
 Main goals:
+- CSS reset file
 - Think about the viability of the extra features and see if I am able to implement them
 - Finish up styling and deploy the website
 - Meme

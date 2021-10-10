@@ -5,12 +5,12 @@
   use window.addEventListener("keyup", e)
 
   key down logic:
-  case 37: left key, change player direction to left
-
   case 38: up key, start jumping animation
 
+  case 37: left key, change player direction to left
+    player.yVelocity += 0.5 (see game loop function below for friction as well. Same thing, different places.)
   case 39: right key, change player direction to right
-
+    player.xVelocity -= 0.5
   check if the event.type === "keydown" and confirm true or false
 
 
