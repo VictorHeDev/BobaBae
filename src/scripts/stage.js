@@ -12,6 +12,8 @@ export default class Stage {
         this.itemTimerReset = 0;
         this.itemTypes = ['boba', 'bee']
         this.deltaTime = 1
+
+        this.movementController();
     }
 
     loadCurrentStage() {
@@ -22,7 +24,7 @@ export default class Stage {
         // this.renderBackground()
         this.renderScore()
 
-        this.loadEventListeners()
+        // this.loadEventListeners()
     }
 
     loadPlayer() {
@@ -31,9 +33,10 @@ export default class Stage {
         // debugger
     }
 
-    loadEventListeners() {
-        this.currentPlayer.eventListener();
-    }
+    // for new keypress version
+    // loadEventListeners() {
+    //     this.currentPlayer.eventListener();
+    // }
 
     updateEntities() {
         this.renderEntities()
@@ -88,8 +91,25 @@ export default class Stage {
     addNewItem() {
         // let randomItem = this.itemTypes[(Math.floor(Math.random() * this.itemTypes.length))];
         // this.items.push(randomItem);
-        // this.items.push(new Boba(this));
-        // this.items.push(new Bee(this));
+        this.items.push(new Boba(this));
+        this.items.push(new Bee(this));
         // console.log(this.items)
     }
+
+
+
+    movementController() {
+        window.addEventListener("keydown", this.inputKeyDown.bind(this));
+        window.addEventListener("keyup", this.inputKeyUp.bind(this));
+    }
+
+    inputKeyDown(e) {
+        this.currentPlayer.onKeyDown(e);
+    }
+
+    inputKeyUp(e) {
+        this.currentPlayer.onKeyUp(e);
+    }
+
+
 }

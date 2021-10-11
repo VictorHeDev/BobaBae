@@ -1,5 +1,16 @@
 // Maybe have this class inherit from a Sprite (shared with Items) or Game class to accept canvas.width/height
 // Let's have a rectangle render first
+
+// window.addEventListener("keydown", function(e) {
+//   keys[e.keyCode] = true;
+//   player.moving = true;
+// });
+
+// window.addEventListener("keyup", function(e) {
+//   delete keys[e.keyCode];
+//   player.moving = false;
+// });
+
 export default class Player {
   constructor(ctx) {
     this.ctx = ctx;
@@ -15,20 +26,23 @@ export default class Player {
     this.frameX = 0;
     this.frameY = 0;
     // movement
-    this.speed = 9
+    this.speed = 5
+    this.xVel = 0;
+    this.yVel = 0;
+    this.friction = 0.6;
+    this.gravity = 0.9;
+    this.maxVel = 15;
+
     this.moving = false;
+    this.jumping = false;
+    this.keys = [];
 
     this.playerSprite = new Image();
     this.playerSprite.src = "src/images/idle32.png";
-    this.eventListener = this.eventListener.bind(this);
 
-    // this.frameX = 0;
-    // this.frameY = 0;
-    // this.xVel = 0;
-    // this.yVel = 0;
-    // this.friction = 0.6;
-    // this.gravity = 0.9;
-    // this.maxVel = 10;
+    // not totally necessary
+    // this.eventListener = this.eventListener.bind(this);
+
     // this.jumping = false;
   }
 
@@ -46,6 +60,7 @@ export default class Player {
     this.drawSprite(this.playerSprite, this.spriteWidth * this.frameX, this.spriteHeight * this.frameY, this.spriteWidth, this.spriteHeight, this.x, this.y, this.spriteWidth + 20, this.spriteHeight + 20);
   }
 
+  // tester rectangle
   // draw() {
   //   this.ctx.beginPath();
   //   this.ctx.rect(20, 20, 150, 100)
@@ -56,41 +71,79 @@ export default class Player {
   // bounds/outofbounds
 
   // may have to change this later because of choppy movement
-  eventListener() {
-    window.addEventListener("keydown", function(event) {
-      // muy importante for React
-      if (event.defaultPrevented) {
-        return; // Do nothing if event already handled
-      }
-      switch(event.code) {
-        case "KeyS":
-        case "ArrowDown":
-          // Handle "back"
-          this.y += this.speed;
-          break;
-        case "KeyW":
-        case "ArrowUp":
-          // Handle "forward"
-          this.y -= this.speed;
-          this.frameY = 0;
-          break;
-        case "KeyA":
-        case "ArrowLeft":
-          // Handle "turn left"
-          this.x -= this.speed;
-          this.frameY = 0
-          break;
-        case "KeyD":
-        case "ArrowRight":
-          // Handle "turn right"
-          this.x += this.speed;
-          this.frameY = 0;
-          break;
-        }
+  // eventListener() {
+  //   window.addEventListener("keydown", function(event) {
+  //     // muy importante for React
+  //     if (event.defaultPrevented) {
+  //       return; // Do nothing if event already handled
+  //     }
+  //     switch(event.code) {
+  //       // should take out arrow down later
+  //       case "KeyS":
+  //       case "ArrowDown":
+  //         // Handle "back"
+  //         this.y += this.speed;
+  //         this.frameY = 0;
+  //         break;
+  //       case "KeyW":
+  //       case "ArrowUp":
+  //         // Handle "forward"
+  //         this.y -= this.speed;
+  //         this.frameY = 0;
+  //         break;
+  //       case "KeyA":
+  //       case "ArrowLeft":
+  //         // Handle "turn left"
+  //         this.x -= this.speed;
+  //         this.frameY = 0
+  //         break;
+  //       case "KeyD":
+  //       case "ArrowRight":
+  //         // Handle "turn right"
+  //         this.x += this.speed;
+  //         this.frameY = 0;
+  //         break;
+  //       }
 
-      event.preventDefault();
-    }.bind(this), true);
-  }
+
+  //     event.preventDefault();
+  //   }.bind(this), true);
+  // }
+
+
+  // window.addEventListener("keydown", function(e) {
+  //   keys[e.keyCode] = true;
+  //   player.moving = true;
+  // });
+
+  // window.addEventListener("keyup", function(e) {
+  //   delete keys[e.keyCode];
+  //   player.moving = false;
+  // });
+
+  // movePlayer() {
+  //   // up arrow, write jump function later
+  //   if (keys[38] && player.y > 100) {
+  //     player.y -= player.speed;
+  //     // check sprite directions
+  //     player.frameY = 0;
+  //   }
+
+  //   if (keys[37] && player.x > 0) {
+  //     player.x -= player.speed;
+  //     player.frameY = 0;
+  //   }
+
+  //   if (keys[40]) {
+  //     player.y += player.speed;
+  //     player.frameY = 0;
+  //   }
+
+  //   if (keys[39]) {
+  //     player.x += player.speed;
+  //     player.frameY = 0;
+  //   }
+  // }
 
   // mess with later in order to get the framecount just right
   updatePlayerFrame() {
@@ -101,6 +154,43 @@ export default class Player {
     }
   }
 
+  onKeyDown(e) {
+    this.keys[e.key] = true;
+    this.moving = true;
+  }
+
+  onKeyUp(e) {
+    delete this.keys[e.key];
+    this.moving = false;
+  }
+
+  move() {
+    if (this.keys["a"] && this.x > 0) {
+      // sprite frameCount stuff
+
+      this.x -= this.speed;
+      this.moving = true;
+      this.jumping = false;
+    }
+
+    if (this.keys["d"] && this.x < 800) {
+      // more frameCount stuff
+      this.x += this.speed;
+      this.moving = true;
+      this.jumping = false;
+    }
+
+    if ((this.keys["w"] || this.keys[" "]) && (!this.jumping)) {
+      this.y -= this.maxVel; // jump height
+      this.jumping = true;
+      this.moving = true;
+      delete this.keys[" "];
+    }
+
+    if (!this.keys[" "] && this.y < (520 + 15)) {
+      this.y *= this.gravity // 3
+    }
+  }
 }
 
 
