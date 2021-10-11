@@ -7,15 +7,18 @@
 // naming convention -> may change later
 export default class Canvas {
   constructor() {
-    this.canvas = document.getElementById("my-canvas");
+    this.canvas = document.getElementById("game-canvas");
     this.canvas.width = 800;
     this.canvas.height = 600;
     this.ctx = this.canvas.getContext("2d");
   }
 
   clearCanvas() {
-
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  }
+
+  removeCanvas() {
+    document.getElementsByClassName("game-container").removeChild(this.canvas);
   }
 
   // // maybe move this later

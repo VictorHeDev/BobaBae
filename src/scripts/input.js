@@ -33,39 +33,51 @@ player.xVelocity *=0.9
 - player.yVelocity *=0.9 <- WORLD GRAVITY (global function?)!
   - influenced by player.yVelocity
 
-
-
-
-
 */
 
-let upKey;
-let rightKey;
-let downKey;
-let leftKey;
+// let upKey;
+// let rightKey;
+// let downKey;
+// let leftKey;
 
-function setupInput() {
-  document.addEventListener("keydown", function() {
-    if (event.key === "w" || event.key === "ArrowUp") {
-      upKey = true;
-    } else if (event.key === "a" || event.key === "ArrowLeft") {
-      leftKey = true;
-    } else if (event.key === "s" || event.key === "ArrowDown") {
-      downKey = true;
-    } else if (event.key === "d" || event.key === "ArrowRight") {
-      rightKey = true;
-    }
-  });
+// function setupInput() {
+//   document.addEventListener("keydown", function() {
+//     if (event.key === "w" || event.key === "ArrowUp") {
+//       upKey = true;
+//     } else if (event.key === "a" || event.key === "ArrowLeft") {
+//       leftKey = true;
+//     } else if (event.key === "s" || event.key === "ArrowDown") {
+//       downKey = true;
+//     } else if (event.key === "d" || event.key === "ArrowRight") {
+//       rightKey = true;
+//     }
+//   });
 
-  document.addEventListener("keyup", function() {
-    if (event.key === "w" || event.key === "ArrowUp") {
-      upKey = false;
-    } else if (event.key === "a" || event.key === "ArrowLeft") {
-      leftKey = false;
-    } else if (event.key === "s" || event.key === "ArrowDown") {
-      downKey = false;
-    } else if (event.key === "d" || event.key === "ArrowRight") {
-      rightKey = false;
-    }
-  });
-}
+//   document.addEventListener("keyup", function() {
+//     if (event.key === "w" || event.key === "ArrowUp") {
+//       upKey = false;
+//     } else if (event.key === "a" || event.key === "ArrowLeft") {
+//       leftKey = false;
+//     } else if (event.key === "s" || event.key === "ArrowDown") {
+//       downKey = false;
+//     } else if (event.key === "d" || event.key === "ArrowRight") {
+//       rightKey = false;
+//     }
+//   });
+// }
+
+// function trackKeys(keys) {
+//   let down = Object.create(null);
+//   function track(event) {
+//     if (keys.includes(event.key)) {
+//       down[event.key] = event.type == "keydown";
+//       event.preventDefault();
+//     }
+//   }
+//   window.addEventListener("keydown", track);
+//   window.addEventListener("keyup", track);
+//   return down;
+// }
+
+// const arrowKeys =
+//   trackKeys(["ArrowLeft", "ArrowRight", "ArrowUp"]);

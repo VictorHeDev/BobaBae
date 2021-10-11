@@ -1,30 +1,108 @@
 // Maybe have this class inherit from a Sprite (shared with Items) or Game class to accept canvas.width/height
 // Let's have a rectangle render first
 export default class Player {
-  // DELETE CTX
   constructor(ctx) {
     this.ctx = ctx;
-    // can change canvas dimensions later for more dynamic practices
-    this.canvasWidth = 800;
-    this.canvasHeight = 600;
-
     // player variables
     // position player to the middle of the street
     this.x = 400;
-    this.y = 600;
-    this.width = 32;
-    this.height = 32;
+    this.y = 520;
+    // this.width = 32;
+    // this.height = 32;
 
-    this.xVel = 0;
-    this.yVel = 0;
-    this.friction = 0.6;
+    this.spriteWidth = 32;
+    this.spriteHeight = 32;
+    this.frameX = 0;
+    this.frameY = 0;
+    // movement
+    this.speed = 9
+    this.moving = false;
+
+    this.playerSprite = new Image();
+    this.playerSprite.src = "src/images/idle32.png";
+    this.eventListener = this.eventListener.bind(this);
+
+    // this.frameX = 0;
+    // this.frameY = 0;
+    // this.xVel = 0;
+    // this.yVel = 0;
+    // this.friction = 0.6;
     // this.gravity = 0.9;
-    this.maxVel = 10;
-    this.jumping = false;
-
-    this.image = new Image();
-    this.image.src = "../images/idle32.png";
+    // this.maxVel = 10;
+    // this.jumping = false;
   }
+
+  update() {
+    // write helper functions to calculate current pos
+    // check if they are off screen or not
+
+  }
+
+  drawSprite(img, sX, sY, sW, sH, dX, dY, dW, dH) {
+    this.ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH);
+  }
+
+  draw() {
+    this.drawSprite(this.playerSprite, this.spriteWidth * this.frameX, this.spriteHeight * this.frameY, this.spriteWidth, this.spriteHeight, this.x, this.y, this.spriteWidth + 20, this.spriteHeight + 20);
+  }
+
+  // draw() {
+  //   this.ctx.beginPath();
+  //   this.ctx.rect(20, 20, 150, 100)
+  //   this.ctx.stroke();
+  //   // debugger
+  // }
+
+  // bounds/outofbounds
+
+  // may have to change this later because of choppy movement
+  eventListener() {
+    window.addEventListener("keydown", function(event) {
+      // muy importante for React
+      if (event.defaultPrevented) {
+        return; // Do nothing if event already handled
+      }
+      switch(event.code) {
+        case "KeyS":
+        case "ArrowDown":
+          // Handle "back"
+          this.y += this.speed;
+          break;
+        case "KeyW":
+        case "ArrowUp":
+          // Handle "forward"
+          this.y -= this.speed;
+          this.frameY = 0;
+          break;
+        case "KeyA":
+        case "ArrowLeft":
+          // Handle "turn left"
+          this.x -= this.speed;
+          this.frameY = 0
+          break;
+        case "KeyD":
+        case "ArrowRight":
+          // Handle "turn right"
+          this.x += this.speed;
+          this.frameY = 0;
+          break;
+        }
+
+      event.preventDefault();
+    }.bind(this), true);
+  }
+
+  // mess with later in order to get the framecount just right
+  updatePlayerFrame() {
+    if (this.frameX < 3) {
+      this.frameX++;
+    } else {
+      this.frameX = 0;
+    }
+  }
+
+}
+
 
   // make sure to Math.floor decimal values
   // step(ctx) {
@@ -70,13 +148,6 @@ export default class Player {
 
   // }
 
-  draw(ctx) {
-    ctx.fillStyle = "green";
-    ctx.fillRect(this.x, this.y, this.width, this.height)
-  }
-
-
-}
 
 /* check for:
   height
