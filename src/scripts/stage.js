@@ -7,13 +7,14 @@ export default class Stage {
     constructor(ctx) {
         this.ctx = ctx;
         this.canvas = this.ctx.canvas;
+        this.score = 0;
         this.items = [];
         this.createItemTimer = 300;
         this.itemTimerReset = 0;
         this.itemTypes = ['boba', 'bee']
         this.deltaTime = 1
 
-        this.movementController();
+        this.movementController(); //bind this?
     }
 
     loadCurrentStage() {
@@ -40,8 +41,8 @@ export default class Stage {
 
     updateEntities() {
         this.renderEntities()
-        this.update()
-        this.draw()
+        this.updateItems()
+        this.drawItems()
 
         // this.currentPlayer.updatePlayerFrame()
         this.currentPlayer.draw()
@@ -58,16 +59,15 @@ export default class Stage {
     }
 
     renderScore() {
-        let score = 0;
         this.ctx.fillStyle = 'black';
-        this.ctx.fillText('Score: ' + score, 50, 75);
+        this.ctx.fillText(`Score: ${this.score}`, 50, 75);
         this.ctx.fillStyle = 'red';
-        this.ctx.fillText('Score: ' + score, 55, 80);
+        this.ctx.fillText(`Score: ${this.score}`, 55, 80);
     }
 
-    update() {
+    updateItems() {
         // Remove item from the array if it is off screen
-        this.items = this.items.filter(item => !item.offScreen)
+        this.items = this.items.filter((item) => !item.offScreen && !item.playerCollision) // check the method below
         // console.log(this.items);
         if (this.itemTimerReset > this.createItemTimer) {
             this.addNewItem();
@@ -81,7 +81,7 @@ export default class Stage {
         })
     }
 
-    draw() {
+    drawItems() {
         // ctx.drawImage(backgroundImg, 0, 0);
         this.items.forEach((object) => {
             object.draw(this.ctx);
@@ -111,5 +111,29 @@ export default class Stage {
         this.currentPlayer.onKeyUp(e);
     }
 
+
+    playerItemCollisionDetection() {
+        // iterate through the items array
+        this.items.forEach((item) => {
+            // for each obj, check their x and y coordinates
+            // compare them to the player's x and y coordinates
+            // if they intersect then collision detected
+            if (this.currentPlayer.x > item.x + item.width ||
+                this.currentPlayer.x + this.currentPlayer.width < item.x ||
+                this.currentPlayer.y > item.y + item.height ||
+                this.currentPlayer.y + this.currentPlayer.height < item.y) {
+                    // no collision
+                    // do nothing
+                } else {
+                    // collision detected
+                    item.playerCollision = true;
+                    this.incrementScore(item);
+                }
+        })
+    }
+
+    incrementScore(item) {
+        this.score += item.value;
+    }
 
 }

@@ -4,6 +4,8 @@ export default class Item {
   constructor(game) {
     this.game = game;
     this.offScreen = false;
+    this.playerCollision = false;
+    this.value = 10;
   }
   update() {
     // this.y++;

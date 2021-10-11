@@ -3,14 +3,12 @@ import Stage from "./stage.js"
 
 export default class Game {
   constructor() {
-    // kickOff game
     this.kickOff = this.kickOff.bind(this);
-    // this.running = false;
+    this.running = false; // true when constructed?
     // this.animating = false;
   }
 
-  //  call for window.requestAnimationFrame which takes it a callback to itself for recursive loop
-  // animate / kickOff
+  // call for window.requestAnimationFrame which takes it a callback to itself for recursive loop
   // calculate deltaTime
   kickOff() {
     this.animating = true;
@@ -27,6 +25,20 @@ export default class Game {
     // calls recursively and passes in timeStamp variable
     window.requestAnimationFrame(this.animation)
   }
+
+  pause() {
+    // when escape key is hit, we want to effectively stop the animation loop
+    this.running = false;
+
+  }
+
+  gameOver() {
+    // stop the game
+    // display thank you message
+    // display play again button
+
+  }
+
 }
 
 

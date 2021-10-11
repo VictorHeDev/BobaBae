@@ -1,16 +1,6 @@
 // Maybe have this class inherit from a Sprite (shared with Items) or Game class to accept canvas.width/height
 // Let's have a rectangle render first
 
-// window.addEventListener("keydown", function(e) {
-//   keys[e.keyCode] = true;
-//   player.moving = true;
-// });
-
-// window.addEventListener("keyup", function(e) {
-//   delete keys[e.keyCode];
-//   player.moving = false;
-// });
-
 export default class Player {
   constructor(ctx) {
     this.ctx = ctx;
@@ -42,14 +32,13 @@ export default class Player {
 
     // not totally necessary
     // this.eventListener = this.eventListener.bind(this);
-
-    // this.jumping = false;
   }
 
-  update() {
-    // write helper functions to calculate current pos
-    // check if they are off screen or not
-
+  outOfBounds() {
+    if (this.x < 0 || this.x > 800) {
+      return true;
+    }
+    return false;
   }
 
   drawSprite(img, sX, sY, sW, sH, dX, dY, dW, dH) {
@@ -67,8 +56,6 @@ export default class Player {
   //   this.ctx.stroke();
   //   // debugger
   // }
-
-  // bounds/outofbounds
 
   // may have to change this later because of choppy movement
   // eventListener() {
@@ -155,12 +142,12 @@ export default class Player {
   }
 
   onKeyDown(e) {
-    this.keys[e.key] = true;
+    this.keys[e.code] = true;
     this.moving = true;
   }
 
   onKeyUp(e) {
-    delete this.keys[e.key];
+    delete this.keys[e.code];
     this.moving = false;
   }
 
@@ -234,11 +221,6 @@ export default class Player {
 
   // }
 
-  // update() {
-
-  // }
-
-
 /* check for:
   height
   width
@@ -247,10 +229,6 @@ export default class Player {
   - velocity: x and y starting at 0
     - controls movement left and right
   - jumping: boolean we set to false first, because we don't want to enable double jumping ... or do we?
-
-export out update and draw functions within player class
-
-
 
   updatePlayer function
 

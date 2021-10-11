@@ -18,18 +18,9 @@ export default class Canvas {
   }
 
   removeCanvas() {
-    document.getElementsByClassName("game-container").removeChild(this.canvas);
+    let gameContainer = document.getElementsByClassName("game-container")
+    gameContainer.removeChild(this.canvas);
   }
 
-  // // maybe move this later
-  // loadCurrentStage() {
-  //   this.background = new Image();
-  //   this.background.src = "src/images/cyberpunk-bg.png";
-  //   this.renderBackground();
-  //   // render score
-  // }
 
-  // renderBackground() {
-  //   this.ctx.drawImage(this.background, 0, 0, this.canvas.width, this.canvas.height);
-  // }
 }

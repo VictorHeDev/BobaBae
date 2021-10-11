@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="./src/styles/reset.css" />
   <link rel="stylesheet" href="./dist/main.css" />
   <script src="./dist/main.js"></script>
   <title>Welcome to Boba Bae!</title>
@@ -12,12 +13,31 @@
 
 <body>
   <h1>Boba Bae!</h1>
-  <nav></nav>
+  <nav class="personal-links">
+    <ul>
+      <li><a href="#">Personal Website</a></li>
+      <li><a href="#">GitHub Profile</a></li>
+      <li><a href="#">LinkedIn Profile</a></li>
+    </ul>
+  </nav>
 
   <div class="game-container">
-    <canvas id="game-canvas" width="800" height="600"></canvas>
+    <div class="instructions">
+      <canvas id="game-canvas" width="800" height="600"></canvas>
+      <ul>
+        <li>Welcome to Boba Bae!</li>
+        <li>Press Enter to play as Kevin Nguyen. Use the "WAD" or Arrow keys to collect different items to appease your hangry girlfriend, Vivian Tran! Check out what each item is worth below. Avoid the bad items and try to obtain the highest score with your lives intact! </li>
+      </ul>
+    </div>
+
   </div>
 
+  <footer>
+    <div class="footer-contents">
+      <p>Game logic built with Vanilla JavaScript and HTML5/Canvas</p>
+      <p>The game assets are all open source and the links will be provided on the GitHub repository</p>
+    </div>
+  </footer>
 </body>
 
 </html>
