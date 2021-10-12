@@ -6,6 +6,16 @@
 
 // naming convention -> may change later
 export default class Canvas {
+  // constructor(width, height, id) {
+  //   this.canvas = document.createElement("canvas");
+  //   this.canvas.width = width;
+  //   this.canvas.height = height;
+  //   this.canvas.id = id;
+  //   this.ctx = this.canvas.getContext("2d");
+  //   this.bindCanvasToDOM();
+  //   document.getElementsByClassName("game-container").appendChild(this.canvas);
+  // }
+
   constructor() {
     this.canvas = document.getElementById("game-canvas");
     this.canvas.width = 800;

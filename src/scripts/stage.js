@@ -13,8 +13,6 @@ export default class Stage {
         this.itemTimerReset = 0;
         this.itemTypes = ['boba', 'bee']
         this.deltaTime = 1
-
-        this.movementController(); //bind this?
     }
 
     loadCurrentStage() {
@@ -25,19 +23,18 @@ export default class Stage {
         // this.renderBackground()
         this.renderScore()
 
-        // this.loadEventListeners()
+        this.loadEventListeners()
     }
 
     loadPlayer() {
         this.currentPlayer = new Player(this.ctx)
         this.currentPlayer.draw()
-        // debugger
     }
 
     // for new keypress version
-    // loadEventListeners() {
-    //     this.currentPlayer.eventListener();
-    // }
+    loadEventListeners() {
+        this.currentPlayer.eventListener();
+    }
 
     updateEntities() {
         this.renderEntities()
@@ -46,7 +43,6 @@ export default class Stage {
 
         // this.currentPlayer.updatePlayerFrame()
         this.currentPlayer.draw()
-        // debugger
     }
 
     renderEntities() {
@@ -96,20 +92,6 @@ export default class Stage {
         // console.log(this.items)
     }
 
-
-
-    movementController() {
-        window.addEventListener("keydown", this.inputKeyDown.bind(this));
-        window.addEventListener("keyup", this.inputKeyUp.bind(this));
-    }
-
-    inputKeyDown(e) {
-        this.currentPlayer.onKeyDown(e);
-    }
-
-    inputKeyUp(e) {
-        this.currentPlayer.onKeyUp(e);
-    }
 
 
     playerItemCollisionDetection() {
