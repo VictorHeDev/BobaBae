@@ -1,9 +1,8 @@
 import Item from "./item.js"
 
 export default class Bee extends Item {
-  constructor(game) {
-    super(game);
-    // check sprite dimensions
+  constructor(stage) {
+    super(stage);
     this.spriteWidth = 363;
     this.spriteHeight = 389;
     // modifier must be the same

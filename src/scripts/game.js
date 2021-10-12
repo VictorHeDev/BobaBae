@@ -44,14 +44,4 @@ export default class Game {
 
 
 
-  // // register events
-  // // handle keyup/down events
-
-  // // restart() {
-  // //   this.running = false;
-  // //   this.score = 0;
-
-  // // }
-
-
 

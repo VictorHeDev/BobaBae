@@ -19,6 +19,4 @@
 
   - Check if rectangles intersect with each other
 
-
-
 */

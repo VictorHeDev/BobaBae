@@ -13,16 +13,15 @@ export default class Stage {
         this.itemTimerReset = 0;
         this.itemTypes = ['boba', 'bee']
         this.deltaTime = 1
+        this.background = new Image();
+        this.background.src = "src/images/cyberpunk-bg.png";
     }
 
     loadCurrentStage() {
-        this.background = new Image();
-        this.background.src = "src/images/cyberpunk-bg.png";
         this.loadPlayer()
 
-        // this.renderBackground()
+        this.renderBackground()
         this.renderScore()
-
         this.loadEventListeners()
     }
 
@@ -40,8 +39,6 @@ export default class Stage {
         this.renderEntities()
         this.updateItems()
         this.drawItems()
-
-        // this.currentPlayer.updatePlayerFrame()
         this.currentPlayer.draw()
     }
 
@@ -72,15 +69,15 @@ export default class Stage {
             this.itemTimerReset += this.deltaTime
         }
 
-        this.items.forEach((object) => {
-            object.update(this.deltaTime);
+        this.items.forEach((item) => {
+            item.update(this.deltaTime);
         })
     }
 
     drawItems() {
         // ctx.drawImage(backgroundImg, 0, 0);
-        this.items.forEach((object) => {
-            object.draw(this.ctx);
+        this.items.forEach((item) => {
+            item.draw(this.ctx);
         })
     }
 

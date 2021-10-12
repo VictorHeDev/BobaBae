@@ -16,10 +16,10 @@ Main goals:
 ![First draft of wireframe](Boba-Bae%20v1.drawio.png?raw=true "Boba Bae wireframe")
 
 ### Day 1 - Conceptualization
-Research canvas, gather assets such as background image, sprites for characters, think about menus. Create the wireframe. On a high level, I want the game to have:
+Research HTML canvas, gather assets such as background image, sprites for characters, and think about how to create menus for the loading screen. On a high level, I want the game to have:
 Basics:
 - Main character who can move around using "WASD" or arrow keys (maybe minus the down keys because ... I can't think of a good use for that)
-- Timer that counts down from 1 minute for a single round (using built in Datetime obj)
+- Timer that counts down from 1 minute for a single round (using built in JS Datetime obj)
 - Score that increments when Kevin collects an item
 - Life/Hearts/BobaBar
 
@@ -33,12 +33,12 @@ Extra Features:
   - User is able to choose the music that they want to play
 
 Other features being considered:
-- Enemies in the game vs. "bad items"
+- Enemies in the game or "bad items"
 - Hearts/Life vs. Boba-bar to end the game before the timer runs out
 - Rendering and animations for Kevin and Vivian
 
 ### Day 2 - Research
-Day 2 will be devoted to research about how to set up canvas and how to render a playable screen with the correct dimensions on the webpage. I will need to configure Webpack and initialize my files on either Day 2 or Day 3. Find/create a CSS reset file and create a template for my HTML file. Research how to animate the character sprites, collectable items, timer, and background image. How can I link events to DOM input/output? By using keyup/down events.
+Day 2 will be devoted to research on how to set up canvas and how to render a playable screen with the correct dimensions on the webpage. I will need to configure Webpack and initialize my files on either Day 2 or Day 3. Find/create a CSS reset file and create a template for my HTML file. Research how to animate the character sprites, collectable items, timer, and background image. How can I link events to DOM input/output? By using keyup/down events.
 
 Main goals:
 - Canvas API

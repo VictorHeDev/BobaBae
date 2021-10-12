@@ -1,8 +1,8 @@
 
 export default class Item {
   // here we can make our code more dynamic by passing in the game, which already has the canvas' width and height variables
-  constructor(game) {
-    this.game = game;
+  constructor(stage) {
+    this.stage = stage;
     this.offScreen = false;
     this.playerCollision = false;
     this.value = 10;
@@ -20,5 +20,7 @@ export default class Item {
     // ctx.fillRect(this.x, this.y, this.width, this.height)
     ctx.drawImage(this.image, 0, 0, this.spriteHeight, this.spriteHeight, this.x, this.y, this.width, this.height);
   }
+
+  // dummy hitbhox method
 
 }
