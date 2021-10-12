@@ -7,7 +7,7 @@ export default class Player {
     // player variables
     // position player to the middle of the street
     this.x = 400;
-    this.y = 300; // regular is 520
+    this.y = 520;
     // this.width = 32;
     // this.height = 32;
 
@@ -21,14 +21,14 @@ export default class Player {
     this.yVel = 0;
     this.speed = 5;
     this.friction = 0.9;
-    this.gravity = 1.5; // changed gravity from 0.9
+    this.gravity = 0.9;
     this.maxVel = 15;
     this.maxJumpPower = 20;
     this.baseline = 520; // floor or ground that anchors player
 
     // needed for friction and gravity implementation
     this.moving = false;
-    this.jumping = false; // change this later in order to double jump
+    this.jumping = false;
     this.keys = {}; // might use later for multi-keypresses
 
     this.playerSprite = new Image();
@@ -42,21 +42,6 @@ export default class Player {
 
   drawSprite(img, sX, sY, sW, sH, dX, dY, dW, dH) {
     this.ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH);
-  }
-
-  // is update even necessary?
-  update() {
-      // maybe move this outside or within animation loop
-    // or throw within player update function
-    this.yVel += this.gravity;
-    this.x += this.xVel;
-    this.y += this.yVel;
-
-    // this.xVel *= this.friction;
-    // this.yVel *= this.friction;
-    this.xVel * this.friction;
-    this.yVel * this.friction;
-    this.outOfBounds();
   }
 
   draw() {
@@ -76,16 +61,19 @@ export default class Player {
   eventListener() {
     window.addEventListener("keydown", function(event) {
       // muy importante for React
-      // if (event.defaultPrevented) {
-      //   return; // Do nothing if event already handled
-      // }
+      if (event.defaultPrevented) {
+        return; // Do nothing if event already handled
+      }
 
       // maybe refactor with in statements within this method
       this.upKey(event);
       this.leftKey(event);
       this.rightKey(event);
 
-      // event.preventDefault();
+      // this.xVel *= this.friction;
+      // this.yVel *= this.gravity;
+
+      event.preventDefault();
     }.bind(this), true);
 
     window.addEventListener("keyup", function(event) {
@@ -96,37 +84,35 @@ export default class Player {
 
   upKey(event) {
     if ((event.code === "KeyW" || event.code === "ArrowUp") &&
-        this.yVel < 10) {
+        !this.jumping) {
           this.jump();
-          console.log("up");
-          // changed from measuring jumping as a boolean to double jumping based on falling frames
     }
   }
 
   leftKey(event) {
-    if ((event.code === "KeyA" || event.code === "ArrowLeft")) {
+    if ((event.code === "KeyA" || event.code === "ArrowLeft") &&
+        !this.outOfBounds()) {
           this.moveLeft();
-          console.log("left");
     }
   }
 
   rightKey(event) {
-    if ((event.code === "KeyD" || event.code === "ArrowRight")) {
+    if ((event.code === "KeyD" || event.code === "ArrowRight") &&
+        !this.outOfBounds()) {
           this.moveRight();
-          console.log("right");
     }
   }
 
   jump() {
     // add gravity
     // change to yVel
-    this.yVel -= this.maxJumpPower;
-    // this.y -= this.maxJumpPower;
+
+    this.y -= this.maxJumpPower;
     // this.yVel = -this.speed * 2;
-    // this.jumping = true; // need to be true for no double jump
+    this.jumping = true; // need to be true for no double jump
     this.moving = true;
 
-    // simulateGravity();
+    simulateGravity();
   }
 
   simulateGravity() {
@@ -141,12 +127,25 @@ export default class Player {
   }
 
   moveLeft() {
-    this.xVel -= 0.5;
-
+    if (this.xVel < this.maxVel) {
+      this.xVel -= 0.5;
+      // this.xVel *= this.friction;
+    }
+    this.x += this.xVel;
+    this.moving = true;
+    // this.jumping = false;
   }
 
   moveRight() {
-    this.xVel += 0.5;
+    if (this.xVel < 0) this.xVel = 0;
+
+    if (this.xVel > (-1) * this.maxVel) {
+      this.yVel += 0.5; // could be ++;
+      // this.xVel *= this.friction;
+    }
+    this.x += this.yVel;
+    this.moving = true;
+    // this.jumping = false;
   }
 
   // Low level movement and position methods
@@ -154,23 +153,10 @@ export default class Player {
     // check within this
     // maybe refactor to change player's position instead of boolean later
     // see if the player is falling through the ground
-    // if (this.x < 0 || this.x > 800 || this.y > 520 || this.y < 0) {
-    //   return true;
-    // }
-    // return false;
-    if (this.x < 0) {
-      this.x = 0;
-      this.xVel = 0;
-    } else if (this.x > 800 - this.spriteWidth) {
-      this.x = 800 - this.spriteWidth;
-      this.xVel = 0;
+    if (this.x < 0 || this.x > 800 || this.y > 520 || this.y < 0) {
+      return true;
     }
-
-    if (this.y > 520) {
-      this.y = 520;
-      this.yVel = 0;
-    }
-
+    return false;
   }
 
   notMoving() {

@@ -18,7 +18,6 @@ window.addEventListener('DOMContentLoaded', function() {
       gameCanvas.classList("hidden");
     }
 
-
   })
 });
 

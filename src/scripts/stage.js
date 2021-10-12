@@ -1,7 +1,8 @@
 import Boba from "./boba.js"
 import Bee from "./bee.js"
 import Player from "./player.js"
-
+import RedEnvelope from "./redEnvelope.js";
+import Lexus from "./tesla.js";
 
 export default class Stage {
     constructor(ctx) {
@@ -11,7 +12,7 @@ export default class Stage {
         this.items = [];
         this.createItemTimer = 300;
         this.itemTimerReset = 0;
-        this.itemTypes = ['boba', 'bee']
+        this.itemTypes = ['boba', 'bee', 'redEnvelope', 'lexus']
         this.deltaTime = 1
         this.background = new Image();
         this.background.src = "src/images/cyberpunk-bg.png";
@@ -39,6 +40,7 @@ export default class Stage {
         this.renderEntities()
         this.updateItems()
         this.drawItems()
+        this.currentPlayer.update();
         this.currentPlayer.draw()
     }
 
@@ -86,6 +88,8 @@ export default class Stage {
         // this.items.push(randomItem);
         this.items.push(new Boba(this));
         this.items.push(new Bee(this));
+        this.items.push(new RedEnvelope(this));
+        this.items.push(new Lexus(this));
         // console.log(this.items)
     }
 

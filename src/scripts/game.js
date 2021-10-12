@@ -7,6 +7,8 @@ export default class Game {
     this.animating = true;
     // this.music = new Audio()
 
+    this.canvas = new Canvas();
+    this.stage = new Stage(this.canvas.ctx);
   }
 
   // call for window.requestAnimationFrame which takes it a callback to itself for recursive loop
@@ -15,6 +17,8 @@ export default class Game {
     this.canvas = new Canvas(); // grabs the "game-canvas" id
     this.stage = new Stage(this.canvas.ctx)
     this.stage.loadCurrentStage();
+
+    // use this.animation to calculate dt
     this.animation = () => {
       this.canvas.clearCanvas();
       if (this.animating) {
@@ -25,6 +29,27 @@ export default class Game {
     // calls recursively and passes in timeStamp variable
     window.requestAnimationFrame(this.animation)
   }
+
+  // gameLoop(timestamp) {
+  //   if (this.animated) {
+  //     let deltaTime = timestamp - lastTime;
+  //     lastTime = timestamp;
+
+  //     this.canvas.clearCanvas();
+  //     this.stage.updateEntities(deltaTime);
+  //     // handle the updating and drawing functions
+  //   }
+  //   this.interval = window.requestAnimationFrame(gameLoop);
+  // }
+
+  // kickOff(timestamp) {
+  //   if (this.animating) {
+  //     let deltaTime = timestamp - lastTime
+  //     lastTime = timestamp;
+  //   }
+
+
+  // }
 
   pause() {
     // when escape key is hit, we want to effectively stop the animation loop
