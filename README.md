@@ -55,29 +55,33 @@ Main goals:
   - Character movement associated with "WASD" keys (bind movement to key up and down events)
   - No collision detection yet
   - Jumping is a plus
-- Create initial methods for objects (items)
+- Create initial methods for items
 
 
 ### Day 4, 5 - Main bulk of coding and handling logic
-The goal for the next two days is to handle most of the actual gameplay and logic. That means creating the gravity logic for the items, Kevin's jumping animation, decrementing lives/hearts/Boba-bar, and collision logic. We have to make sure that Kevin can only stay within the contents of the screen and he can either stay at a baseline position or jump. We might want to create additional ledges for him to jump on top of for a more dynamic gaming experience.
+The goal for the next two days is to handle most of the actual gameplay and logic. That means creating the gravity & friction logic for the items, Kevin's jumping animation, decrementing lives/hearts/Boba-bar, and collision logic. We have to make sure that Kevin can only stay within the contents of the screen and he can either stay at a baseline position or jump. We might want to create additional ledges for him to jump on top of for a more dynamic gaming experience.
 
 Main goals:
 - Movement logic
 - Gravity logic
 - Collision logic
 
-### Day 6 - Implementing bonus features
+### Day 6 - Implementing MVP features
 Main goals:
-- Sound assets and toggle on/off
-- Power-up display on upper-left of the screen
-  - Power-up animations
-- Additional rounds
-- Adding high score and name to Firebase database
-- Styling using CSS, menu options, instructions, personal links
+- CSS reset file
+- Menu descriptions & general HTML skeleton
+- Click or key events to start/end the game
+- Add personal links with Favicon
+- Add sound effects
+- Have an option to toggle on/off sound effects
 
 ### Day 7 - Polish up
 Main goals:
-- CSS reset file
 - Think about the viability of the extra features and see if I am able to implement them
+  - Clear local storage
+  - Power-up display on upper-left of the screen
+  - Power-up animations
+  - Additional rounds
+- Adding high score and name to Firebase database
 - Finish up styling and deploy the website
 - Meme
