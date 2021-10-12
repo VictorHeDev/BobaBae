@@ -105,6 +105,7 @@ export default class Stage {
                     // do nothing
                 } else {
                     // collision detected
+                    console.log("Collision detected");
                     item.playerCollision = true;
                     this.incrementScore(item);
                 }

@@ -15,16 +15,18 @@ export default class Player {
     this.spriteHeight = 32;
     this.frameX = 0;
     this.frameY = 0;
+
     // movement
-    this.speed = 5;
     this.xVel = 0;
     this.yVel = 0;
-    this.friction = 0.6;
+    this.speed = 5;
+    this.friction = 0.9;
     this.gravity = 0.9;
     this.maxVel = 15;
     this.maxJump = 550;
-    this.baseline = 520;
+    this.baseline = 520; // floor or ground that anchors player
 
+    // needed for friction and gravity implementation
     this.moving = false;
     this.jumping = false;
     this.keys = {}; // might use later for multi-keypresses
@@ -63,6 +65,7 @@ export default class Player {
         return; // Do nothing if event already handled
       }
 
+      // maybe refactor with in statements within this method
       this.upKey(event);
       this.leftKey(event);
       this.rightKey(event);
@@ -98,7 +101,7 @@ export default class Player {
   jump() {
     // add gravity
     this.y -= this.maxVel;
-    this.yVel = -this.speed * 2;
+    // this.yVel = -this.speed * 2;
     this.jumping = true; // need to be true for no double jump
     this.moving = true;
 
@@ -115,6 +118,8 @@ export default class Player {
   }
 
   moveRight() {
+    if (this.xVel < 0) this.xVel = 0;
+
     if (this.xVel > (-1) * this.maxVel) {
       this.yVel += 0.5; // could be ++;
       // this.xVel *= this.friction;
@@ -126,13 +131,21 @@ export default class Player {
 
   // Low level movement and position methods
   outOfBounds() {
+    // check within this
+    // maybe refactor to change player's position instead of boolean later
     if (this.x < 0 || this.x > 800 || this.y > 520 || this.y < 0) {
       return true;
     }
     return false;
   }
 
-
+  notMoving() {
+    if ((xVel === 0 && yVel === 0)) {
+      this.moving = false;
+      this.jumping = false;
+      // idle sprite animation
+    }
+  }
 
   // make sure to Math.floor decimal values
   step() {
