@@ -106,7 +106,6 @@ export default class Player {
   jump() {
     // add gravity
     // change to yVel
-
     this.y -= this.maxJumpPower;
     // this.yVel = -this.speed * 2;
     this.jumping = true; // need to be true for no double jump

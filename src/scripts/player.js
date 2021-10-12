@@ -29,7 +29,9 @@ export default class Player {
     // needed for friction and gravity implementation
     this.moving = false;
     this.jumping = false; // change this later in order to double jump
-    this.keys = {}; // might use later for multi-keypresses
+    this.numTimesJumped = 0;
+    this.numMaxJumps = 2;
+    this.keys = []; // might use later for multi-keypresses
 
     this.playerSprite = new Image();
     this.playerSprite.src = "src/images/idle32.png";
@@ -46,16 +48,17 @@ export default class Player {
 
   // is update even necessary?
   update() {
+    this.movePlayer(this.keys)
       // maybe move this outside or within animation loop
     // or throw within player update function
     this.yVel += this.gravity;
     this.x += this.xVel;
     this.y += this.yVel;
 
-    // this.xVel *= this.friction;
-    // this.yVel *= this.friction;
-    this.xVel * this.friction;
-    this.yVel * this.friction;
+    this.xVel *= this.friction;
+    this.yVel *= this.friction;
+    // this.xVel * this.friction;
+    // this.yVel * this.friction;
     this.outOfBounds();
   }
 
@@ -72,18 +75,41 @@ export default class Player {
     }
   }
 
+  movePlayer(keys) {
+    if ((keys["KeyW"] || keys["ArrowUp"]) && (this.numTimesJumped < this.numMaxJumps)) {
+      this.jump();
+      console.log("up");
+      // changed from measuring jumping as a boolean to double jumping based on falling frames
+      this.numTimesJumped++;
+    } else {
+      this.numTimesJumped = 0; // this code doesn't work ... fix later
+    }
+
+    if ((keys["KeyA"] || keys["ArrowLeft"])) {
+      this.moveLeft();
+      console.log("left");
+    }
+
+    if ((keys["KeyD"] || keys["ArrowRight"])) {
+      this.moveRight();
+      console.log("right");
+    }
+
+  }
 
   eventListener() {
     window.addEventListener("keydown", function(event) {
+      this.keys[event.code] = true;
+      console.log('keydown')
       // muy importante for React
       // if (event.defaultPrevented) {
       //   return; // Do nothing if event already handled
       // }
 
       // maybe refactor with in statements within this method
-      this.upKey(event);
-      this.leftKey(event);
-      this.rightKey(event);
+      // this.upKey(event);
+      // this.leftKey(event);
+      // this.rightKey(event);
 
       // event.preventDefault();
     }.bind(this), true);
@@ -91,31 +117,12 @@ export default class Player {
     window.addEventListener("keyup", function(event) {
       // check to see if wad or arrow keys are up
       // then add friction and gravity
+      console.log('keyup')
+      delete this.keys[event.code];
+      this.moving = false;
     }.bind(this), true);
   }
 
-  upKey(event) {
-    if ((event.code === "KeyW" || event.code === "ArrowUp") &&
-        this.yVel < 10) {
-          this.jump();
-          console.log("up");
-          // changed from measuring jumping as a boolean to double jumping based on falling frames
-    }
-  }
-
-  leftKey(event) {
-    if ((event.code === "KeyA" || event.code === "ArrowLeft")) {
-          this.moveLeft();
-          console.log("left");
-    }
-  }
-
-  rightKey(event) {
-    if ((event.code === "KeyD" || event.code === "ArrowRight")) {
-          this.moveRight();
-          console.log("right");
-    }
-  }
 
   jump() {
     // add gravity
@@ -141,12 +148,12 @@ export default class Player {
   }
 
   moveLeft() {
-    this.xVel -= 0.5;
+    if (this.xVel > -this.maxVel) this.xVel -= 0.5;
 
   }
 
   moveRight() {
-    this.xVel += 0.5;
+    if (this.xVel < this.maxVel) this.xVel += 0.5;
   }
 
   // Low level movement and position methods
