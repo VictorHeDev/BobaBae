@@ -7,7 +7,7 @@ export default class Player {
     // player variables
     // position player to the middle of the street
     this.x = 400;
-    this.y = 300; // regular is 520
+    this.y = 300; // regular is 520 but I might keep this because I want the player to start with falling from the sky because it's funny
     // this.width = 32;
     // this.height = 32;
 
@@ -19,19 +19,18 @@ export default class Player {
     // movement
     this.xVel = 0;
     this.yVel = 0;
-    this.speed = 5;
     this.friction = 0.9;
-    this.gravity = 1.5; // changed gravity from 0.9
-    this.maxVel = 15;
-    this.maxJumpPower = 20;
+    this.gravity = 1.1; // changed gravity from 0.9
+    this.maxVel = 20;
+    this.maxJumpPower = 25;
     this.baseline = 520; // floor or ground that anchors player
 
     // needed for friction and gravity implementation
     this.moving = false;
     this.jumping = false; // change this later in order to double jump
-    this.numTimesJumped = 0;
-    this.numMaxJumps = 2;
-    this.keys = []; // might use later for multi-keypresses
+    // this.numTimesJumped = 0;
+    // this.numMaxJumps = 2;
+    this.keys = []; // using to keep track of number of keypresses and allow for two directions to be recognized at the same time
 
     this.playerSprite = new Image();
     this.playerSprite.src = "src/images/idle32.png";
@@ -42,28 +41,29 @@ export default class Player {
 
   // draw and render methods
 
-  drawSprite(img, sX, sY, sW, sH, dX, dY, dW, dH) {
-    this.ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH);
-  }
 
-  // is update even necessary?
   update() {
+    // need to figure out the order of operations for this thing
     this.movePlayer(this.keys)
-      // maybe move this outside or within animation loop
+    // maybe move this outside or within animation loop
     // or throw within player update function
-    this.yVel += this.gravity;
     this.x += this.xVel;
-    this.y += this.yVel;
-
     this.xVel *= this.friction;
-    this.yVel *= this.friction;
-    // this.xVel * this.friction;
-    // this.yVel * this.friction;
+
+    this.y += this.yVel;
+    this.yVel += this.gravity;
+
     this.outOfBounds();
   }
 
   draw() {
     this.drawSprite(this.playerSprite, this.spriteWidth * this.frameX, this.spriteHeight * this.frameY, this.spriteWidth, this.spriteHeight, this.x, this.y, this.spriteWidth + 20, this.spriteHeight + 20);
+
+    this.drawHitbox();
+  }
+
+  drawSprite(img, sX, sY, sW, sH, dX, dY, dW, dH) {
+    this.ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH);
   }
 
   // mess with later in order to get the framecount just right
@@ -76,13 +76,10 @@ export default class Player {
   }
 
   movePlayer(keys) {
-    if ((keys["KeyW"] || keys["ArrowUp"]) && (this.numTimesJumped < this.numMaxJumps)) {
+    if ((keys["KeyW"] || keys["ArrowUp"])) {
       this.jump();
       console.log("up");
       // changed from measuring jumping as a boolean to double jumping based on falling frames
-      this.numTimesJumped++;
-    } else {
-      this.numTimesJumped = 0; // this code doesn't work ... fix later
     }
 
     if ((keys["KeyA"] || keys["ArrowLeft"])) {
@@ -100,56 +97,35 @@ export default class Player {
   eventListener() {
     window.addEventListener("keydown", function(event) {
       this.keys[event.code] = true;
-      console.log('keydown')
-      // muy importante for React
-      // if (event.defaultPrevented) {
-      //   return; // Do nothing if event already handled
-      // }
+      // console.log('keydown')
+      if (event.defaultPrevented) {
+        return; // Do nothing if event already handled
+      }
 
-      // maybe refactor with in statements within this method
-      // this.upKey(event);
-      // this.leftKey(event);
-      // this.rightKey(event);
-
-      // event.preventDefault();
+      event.preventDefault();
     }.bind(this), true);
 
     window.addEventListener("keyup", function(event) {
       // check to see if wad or arrow keys are up
       // then add friction and gravity
-      console.log('keyup')
+      event.preventDefault();
+      // console.log('keyup')
       delete this.keys[event.code];
-      this.moving = false;
+      this.moving = false; // hmm. ...
     }.bind(this), true);
   }
 
 
   jump() {
-    // add gravity
-    // change to yVel
-    this.yVel -= this.maxJumpPower;
-    // this.y -= this.maxJumpPower;
-    // this.yVel = -this.speed * 2;
-    // this.jumping = true; // need to be true for no double jump
-    this.moving = true;
-
-    // simulateGravity();
-  }
-
-  simulateGravity() {
-    if (this.y < this.baseline) {
-      this.yVel * this.gravity;
+    if (!this.jumping) {
+      this.yVel -= this.maxJumpPower;
+      this.jumping = true; // need to be true for no double jump
     }
-    if (this.yVel < 0.2) {
-      this.yVel = 0;
-      this.jumping = false;
-    }
-    this.y += this.yVel;
+    // this.moving = true;
   }
 
   moveLeft() {
     if (this.xVel > -this.maxVel) this.xVel -= 0.5;
-
   }
 
   moveRight() {
@@ -158,28 +134,22 @@ export default class Player {
 
   // Low level movement and position methods
   outOfBounds() {
-    // check within this
-    // maybe refactor to change player's position instead of boolean later
-    // see if the player is falling through the ground
-    // if (this.x < 0 || this.x > 800 || this.y > 520 || this.y < 0) {
-    //   return true;
-    // }
-    // return false;
     if (this.x < 0) {
+      // check for left offscreen
       this.x = 0;
       this.xVel = 0;
     } else if (this.x > 800 - this.spriteWidth) {
+      // check for right offscreen
       this.x = 800 - this.spriteWidth;
       this.xVel = 0;
+    } else if (this.y > this.baseline) {
+      // check if on ground
+      this.y = this.baseline;
+      this.jumping = false;
     }
-
-    if (this.y > 520) {
-      this.y = 520;
-      this.yVel = 0;
-    }
-
   }
 
+  // we might want this function later to handle sprite frame counts for idle animation
   notMoving() {
     if ((xVel === 0 && yVel === 0)) {
       this.moving = false;
@@ -188,59 +158,23 @@ export default class Player {
     }
   }
 
-  // updatePlayer()
-  // update() {
-  //   this.x =
-  //   this. y =
-  // }
-
-  // make sure to Math.floor decimal values
-  step() {
-    // Movement
-    if (this.active) {
-      // Hori movement
-      if (!leftKey && !rightKey || leftKey && rightKey) {
-        // Slow down
-        this.xVel *= this.friction;
-      } else if (rightKey) {
-        // move right
-        this.xVel++;
-      } else if (leftKey) {
-        // move left
-        this.xVel--;
-      }
-      // vertical movement
-      if (upKey) {
-        // check if on ground
-        this.yVel -= 15;
-      }
-      // applies gravity
-      this.yVel += 5;
-      // correct speed
-      if (this.xVel > this.maxVel) {
-        this.xVel = this.maxVel;
-      } else if (this.xVel < -this.maxVel) {
-        this.xVel = -this.maxVel;
-      }
-      if (this.yVel > this.maxVel) {
-        this.yVel = this.maxVel;
-      } else if (this.yVel < -this.maxVel) {
-        this.yVel = -this.maxVel;
-      }
-
-      this.x += this.xVel;
-      this.y += this.yVel;
-    }
-  }
-
   // dummy hitbox method
-
+  //   tester rectangle
+  // okay hitbox example that I'm semi happy with
+  drawHitbox() {
+    this.ctx.beginPath();
+    this.ctx.rect(this.x + this.spriteWidth / 2, this.y + this.spriteHeight / 2, this.spriteWidth / 2, this.spriteHeight);
+    this.ctx.strokeStyle = 'red';
+    this.ctx.stroke();
+  }
 }
-  // }
 
-  // tester rectangle
-  // draw() {
-  //   this.ctx.beginPath();
-  //   this.ctx.rect(20, 20, 150, 100)
-  //   this.ctx.stroke();
+
+
+    // controlNumJumps() {
+  //   if (this.y > 520) {
+  //     this.y = 520;
+  //     this.yVel = 0;
+  //     this.numTimesJumped = 0;
+  //   }
   // }
