@@ -12,7 +12,7 @@ export default class Stage {
         this.canvas = this.ctx.canvas;
         this.score = 0;
         this.items = [];
-        this.createItemTimer = 300;
+        this.createItemTimer = 500; // delays the items falling from the sky ... maybe create a ready set go
         this.itemTimerReset = 0;
         this.itemTypes = ['boba', 'bee', 'redEnvelope', 'lexus', 'ring', 'jersey']
         this.deltaTime = 1
@@ -128,7 +128,9 @@ export default class Stage {
                     // no collision
                 } else {
                     // collision detected
-                    console.log('collision!')
+                    this.incrementScore(item);
+                    item.playerCollision = true;
+                    // console.log('collision!')
                 }
 
             // if (this.currentPlayer.x > item.x + item.width ||
