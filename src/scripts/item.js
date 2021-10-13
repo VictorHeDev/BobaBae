@@ -6,21 +6,46 @@ export default class Item {
     this.offScreen = false;
     this.playerCollision = false;
     this.value = 10;
+
+    this.drawHitbox.bind(this.ctx);
   }
   update() {
     // this.y++;
     // make deltaTime a global variable? * deltaTime
     this.y += this.velY;
-    if ((this.y - this.height ) > 600) {
+    if (this.y - this.height > 600) {
       this.offScreen = true;
     }
   }
 
   draw(ctx) {
     // ctx.fillRect(this.x, this.y, this.width, this.height)
-    ctx.drawImage(this.image, 0, 0, this.spriteHeight, this.spriteHeight, this.x, this.y, this.width, this.height);
+    ctx.drawImage(
+      this.image,
+      0,
+      0,
+      this.spriteHeight,
+      this.spriteHeight,
+      this.x,
+      this.y,
+      this.width,
+      this.height
+    );
+
+    this.drawHitbox(ctx);
+  }
+
+  drawHitbox(ctx) {
+    ctx.beginPath();
+    ctx.rect(
+      this.x,
+      this.y,
+      this.width,
+      this.height
+    );
+    ctx.strokeStyle = "white";
+    ctx.stroke();
   }
 
   // dummy hitbhox method
-
 }

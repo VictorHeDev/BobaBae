@@ -32,6 +32,11 @@ export default class Player {
     // this.numMaxJumps = 2;
     this.keys = []; // using to keep track of number of keypresses and allow for two directions to be recognized at the same time
 
+    this.hbx = (this.x + this.spriteWidth / 2);
+    this.hby = (this.y + this.spriteHeight / 2);
+    this.hbWidth = 32 / 2;
+    this.hbHeight = 32 / 2;
+
     this.playerSprite = new Image();
     this.playerSprite.src = "src/images/idle32.png";
 
@@ -41,10 +46,9 @@ export default class Player {
 
   // draw and render methods
 
-
   update() {
     // need to figure out the order of operations for this thing
-    this.movePlayer(this.keys)
+    this.movePlayer(this.keys);
     // maybe move this outside or within animation loop
     // or throw within player update function
     this.x += this.xVel;
@@ -57,7 +61,17 @@ export default class Player {
   }
 
   draw() {
-    this.drawSprite(this.playerSprite, this.spriteWidth * this.frameX, this.spriteHeight * this.frameY, this.spriteWidth, this.spriteHeight, this.x, this.y, this.spriteWidth + 20, this.spriteHeight + 20);
+    this.drawSprite(
+      this.playerSprite,
+      this.spriteWidth * this.frameX,
+      this.spriteHeight * this.frameY,
+      this.spriteWidth,
+      this.spriteHeight,
+      this.x,
+      this.y,
+      this.spriteWidth + 20,
+      this.spriteHeight + 20
+    );
 
     this.drawHitbox();
   }
@@ -76,45 +90,51 @@ export default class Player {
   }
 
   movePlayer(keys) {
-    if ((keys["KeyW"] || keys["ArrowUp"])) {
+    if (keys["KeyW"] || keys["ArrowUp"]) {
       this.jump();
       console.log("up");
       // changed from measuring jumping as a boolean to double jumping based on falling frames
     }
 
-    if ((keys["KeyA"] || keys["ArrowLeft"])) {
+    if (keys["KeyA"] || keys["ArrowLeft"]) {
       this.moveLeft();
       console.log("left");
     }
 
-    if ((keys["KeyD"] || keys["ArrowRight"])) {
+    if (keys["KeyD"] || keys["ArrowRight"]) {
       this.moveRight();
       console.log("right");
     }
-
   }
 
   eventListener() {
-    window.addEventListener("keydown", function(event) {
-      this.keys[event.code] = true;
-      // console.log('keydown')
-      if (event.defaultPrevented) {
-        return; // Do nothing if event already handled
-      }
+    window.addEventListener(
+      "keydown",
+      function (event) {
+        this.keys[event.code] = true;
+        // console.log('keydown')
+        if (event.defaultPrevented) {
+          return; // Do nothing if event already handled
+        }
 
-      event.preventDefault();
-    }.bind(this), true);
+        event.preventDefault();
+      }.bind(this),
+      true
+    );
 
-    window.addEventListener("keyup", function(event) {
-      // check to see if wad or arrow keys are up
-      // then add friction and gravity
-      event.preventDefault();
-      // console.log('keyup')
-      delete this.keys[event.code];
-      this.moving = false; // hmm. ...
-    }.bind(this), true);
+    window.addEventListener(
+      "keyup",
+      function (event) {
+        // check to see if wad or arrow keys are up
+        // then add friction and gravity
+        event.preventDefault();
+        // console.log('keyup')
+        delete this.keys[event.code];
+        this.moving = false; // hmm. ...
+      }.bind(this),
+      true
+    );
   }
-
 
   jump() {
     if (!this.jumping) {
@@ -151,7 +171,7 @@ export default class Player {
 
   // we might want this function later to handle sprite frame counts for idle animation
   notMoving() {
-    if ((xVel === 0 && yVel === 0)) {
+    if (xVel === 0 && yVel === 0) {
       this.moving = false;
       this.jumping = false;
       // idle sprite animation
@@ -163,18 +183,21 @@ export default class Player {
   // okay hitbox example that I'm semi happy with
   drawHitbox() {
     this.ctx.beginPath();
-    this.ctx.rect(this.x + this.spriteWidth / 2, this.y + this.spriteHeight / 2, this.spriteWidth / 2, this.spriteHeight);
-    this.ctx.strokeStyle = 'red';
+    this.ctx.rect(
+      this.x + this.spriteWidth / 2,
+      this.y + this.spriteHeight / 2,
+      this.spriteWidth / 2,
+      this.spriteHeight
+    );
+    this.ctx.strokeStyle = "red";
     this.ctx.stroke();
   }
 }
 
-
-
-    // controlNumJumps() {
-  //   if (this.y > 520) {
-  //     this.y = 520;
-  //     this.yVel = 0;
-  //     this.numTimesJumped = 0;
-  //   }
-  // }
+// controlNumJumps() {
+//   if (this.y > 520) {
+//     this.y = 520;
+//     this.yVel = 0;
+//     this.numTimesJumped = 0;
+//   }
+// }

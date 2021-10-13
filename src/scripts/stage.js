@@ -101,6 +101,17 @@ export default class Stage {
             // for each obj, check their x and y coordinates
             // compare them to the player's x and y coordinates
             // if they intersect then collision detected
+
+            let playerHBX = (this.currentPlayer.x + this.currentPlayer.spriteWidth / 2);
+            let playerHBY = (this.currentPlayer.y + this.currentPlayer.spriteHeight / 2);
+            let playerHBXWidth = (this.currentPlayer.spriteWidth / 2)
+            let playerHBYHeight = (this.currentPlayer.spriteHeight);
+
+            let itemHBX;
+            let itemHBY;
+            let itemHBXWidth;
+            let itemHBYHeight;
+
             if (this.currentPlayer.x > item.x + item.width ||
                 this.currentPlayer.x + this.currentPlayer.width < item.x ||
                 this.currentPlayer.y > item.y + item.height ||

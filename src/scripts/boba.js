@@ -3,8 +3,8 @@ import Item from "./item.js"
 export default class Boba extends Item {
   constructor(stage) {
     super(stage);
-    this.spriteWidth = 349;
-    this.spriteHeight = 641;
+    this.spriteWidth = 401;
+    this.spriteHeight = 691;
     // modifier must be the same
     this.width = 60;
     this.height = 60;
