@@ -2,7 +2,7 @@ import Boba from "./boba.js"
 import Bee from "./bee.js"
 import Player from "./player.js"
 import RedEnvelope from "./redEnvelope.js";
-import Lexus from "./tesla.js";
+import Tesla from "./tesla.js";
 
 export default class Stage {
     constructor(ctx) {
@@ -91,7 +91,7 @@ export default class Stage {
         this.items.push(new Boba(this));
         this.items.push(new Bee(this));
         this.items.push(new RedEnvelope(this));
-        this.items.push(new Lexus(this));
+        this.items.push(new Tesla(this));
         // console.log(this.items)
     }
 
