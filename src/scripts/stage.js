@@ -3,6 +3,8 @@ import Bee from "./bee.js"
 import Player from "./player.js"
 import RedEnvelope from "./redEnvelope.js";
 import Tesla from "./tesla.js";
+import Ring from "./ring.js";
+import Jersey from "./jersey.js";
 
 export default class Stage {
     constructor(ctx) {
@@ -12,7 +14,7 @@ export default class Stage {
         this.items = [];
         this.createItemTimer = 300;
         this.itemTimerReset = 0;
-        this.itemTypes = ['boba', 'bee', 'redEnvelope', 'lexus']
+        this.itemTypes = ['boba', 'bee', 'redEnvelope', 'lexus', 'ring', 'jersey']
         this.deltaTime = 1
         this.background = new Image();
         this.background.src = "src/images/cyberpunk-bg.png";
@@ -27,6 +29,7 @@ export default class Stage {
     }
 
     loadPlayer() {
+        // throw in the constructor
         this.currentPlayer = new Player(this.ctx)
         this.currentPlayer.draw()
     }
@@ -56,7 +59,7 @@ export default class Stage {
     }
 
     renderScore() {
-        this.ctx.fillStyle = 'black';
+        this.ctx.fillStyle = 'white';
         this.ctx.fillText(`Score: ${this.score}`, 50, 75);
         this.ctx.fillStyle = 'red';
         this.ctx.fillText(`Score: ${this.score}`, 55, 80);
@@ -92,6 +95,9 @@ export default class Stage {
         this.items.push(new Bee(this));
         this.items.push(new RedEnvelope(this));
         this.items.push(new Tesla(this));
+        this.items.push(new Ring(this));
+        this.items.push(new Jersey(this));
+
         // console.log(this.items)
     }
 

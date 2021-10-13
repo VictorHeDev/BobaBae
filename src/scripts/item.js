@@ -5,7 +5,7 @@ export default class Item {
     this.stage = stage;
     this.offScreen = false;
     this.playerCollision = false;
-    this.value = 10;
+    this.value = 10; // we'll have this here for now but we will likely give each item a different score value later
   }
   update() {
     // this.y++;
