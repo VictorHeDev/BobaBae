@@ -37,6 +37,8 @@ export default class Stage {
     }
 
     updateEntities() {
+        this.playerItemCollisionDetection();
+
         this.renderEntities()
         this.updateItems()
         this.drawItems()
@@ -102,28 +104,39 @@ export default class Stage {
             // compare them to the player's x and y coordinates
             // if they intersect then collision detected
 
-            let playerHBX = (this.currentPlayer.x + this.currentPlayer.spriteWidth / 2);
-            let playerHBY = (this.currentPlayer.y + this.currentPlayer.spriteHeight / 2);
-            let playerHBXWidth = (this.currentPlayer.spriteWidth / 2)
-            let playerHBYHeight = (this.currentPlayer.spriteHeight);
+            let playerHBX = (this.currentPlayer.x + this.currentPlayer.width / 4);
+            let playerHBY = (this.currentPlayer.y);
+            let playerHBXWidth = (this.currentPlayer.width / 2);
+            let playerHBYHeight = (this.currentPlayer.height);
 
-            let itemHBX;
-            let itemHBY;
-            let itemHBXWidth;
-            let itemHBYHeight;
+            let itemHBX = (item.x);
+            let itemHBY = (item.y);
+            let itemHBXWidth = (item.width);
+            let itemHBYHeight = (item.height);
 
-            if (this.currentPlayer.x > item.x + item.width ||
-                this.currentPlayer.x + this.currentPlayer.width < item.x ||
-                this.currentPlayer.y > item.y + item.height ||
-                this.currentPlayer.y + this.currentPlayer.height < item.y) {
+
+            if (playerHBX > itemHBX + itemHBXWidth ||
+                playerHBX + playerHBXWidth < itemHBX ||
+                playerHBY > itemHBY + itemHBYHeight ||
+                playerHBY + playerHBYHeight < itemHBY) {
                     // no collision
-                    // do nothing
                 } else {
                     // collision detected
-                    console.log("Collision detected");
-                    item.playerCollision = true;
-                    this.incrementScore(item);
+                    console.log('collision!')
                 }
+
+            // if (this.currentPlayer.x > item.x + item.width ||
+            //     this.currentPlayer.x + this.currentPlayer.width < item.x ||
+            //     this.currentPlayer.y > item.y + item.height ||
+            //     this.currentPlayer.y + this.currentPlayer.height < item.y) {
+            //         // no collision
+            //         // do nothing
+            //     } else {
+            //         // collision detected
+            //         console.log("Collision detected");
+            //         item.playerCollision = true;
+            //         this.incrementScore(item);
+            //     }
         })
     }
 

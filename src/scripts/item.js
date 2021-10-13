@@ -6,8 +6,6 @@ export default class Item {
     this.offScreen = false;
     this.playerCollision = false;
     this.value = 10;
-
-    this.drawHitbox.bind(this.ctx);
   }
   update() {
     // this.y++;

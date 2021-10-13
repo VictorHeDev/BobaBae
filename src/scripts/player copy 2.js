@@ -8,8 +8,8 @@ export default class Player {
     // position player to the middle of the street
     this.x = 400;
     this.y = 300; // regular is 520 but I might keep this because I want the player to start with falling from the sky because it's funny
-    this.width = 100;
-    this.height = 100;
+    this.width = 32;
+    this.height = 32;
 
     this.spriteWidth = 1200;
     this.spriteHeight = 1200;
@@ -23,7 +23,7 @@ export default class Player {
     this.gravity = 1.1; // changed gravity from 0.9
     this.maxVel = 20;
     this.maxJumpPower = 40;
-    this.baseline = 480; // floor or ground that anchors player
+    this.baseline = 520; // floor or ground that anchors player
 
     // needed for friction and gravity implementation
     this.moving = false;
@@ -32,10 +32,10 @@ export default class Player {
     // this.numMaxJumps = 2;
     this.keys = []; // using to keep track of number of keypresses and allow for two directions to be recognized at the same time
 
-    this.hbx = (this.x + this.width / 2);
-    this.hby = (this.y + this.height / 2);
-    this.hbWidth = 80 / 2; // change this to this.width
-    this.hbHeight = 80 / 2; // change this to this.height
+    this.hbx = (this.x + this.spriteWidth / 2);
+    this.hby = (this.y + this.spriteHeight / 2);
+    this.hbWidth = 32 / 2;
+    this.hbHeight = 32 / 2;
 
     this.playerSprite = new Image();
     this.playerSprite.src = "src/images/static-kevin.png"
@@ -71,8 +71,8 @@ export default class Player {
       this.spriteHeight,
       this.x,
       this.y,
-      this.width,
-      this.height,
+      this.spriteWidth + 20,
+      this.spriteHeight + 20
     );
 
     this.drawHitbox();
@@ -94,18 +94,18 @@ export default class Player {
   movePlayer(keys) {
     if (keys["KeyW"] || keys["ArrowUp"]) {
       this.jump();
-      // console.log("up");
+      console.log("up");
       // changed from measuring jumping as a boolean to double jumping based on falling frames
     }
 
     if (keys["KeyA"] || keys["ArrowLeft"]) {
       this.moveLeft();
-      // console.log("left");
+      console.log("left");
     }
 
     if (keys["KeyD"] || keys["ArrowRight"]) {
       this.moveRight();
-      // console.log("right");
+      console.log("right");
     }
   }
 
@@ -162,12 +162,10 @@ export default class Player {
     if (this.x < 0) {
       // check for left offscreen
       this.x = 0;
-      this.y = this.baseline; // TODO yea that's a tmr problem
       this.xVel = 0;
-    } else if (this.x > 800 - this.width) {
+    } else if (this.x > 800 - this.spriteWidth) {
       // check for right offscreen
-      this.x = 800 - this.width;
-      this.y = this.baseline; // TODO char goes straight down at edge :(
+      this.x = 800 - this.spriteWidth;
       this.xVel = 0;
     } else if (this.y > this.baseline) {
       // check if on ground
@@ -191,10 +189,10 @@ export default class Player {
   drawHitbox() {
     this.ctx.beginPath();
     this.ctx.rect(
-      this.x + this.width / 4,
-      this.y,
-      this.width / 2,
-      this.height
+      this.x + this.spriteWidth / 2,
+      this.y + this.spriteHeight / 2,
+      this.spriteWidth / 2,
+      this.spriteHeight
     );
     this.ctx.strokeStyle = "red";
     this.ctx.stroke();
