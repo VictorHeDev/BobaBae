@@ -14,5 +14,6 @@ export default class Bee extends Item {
     this.image = new Image();
     this.image.src = "src/images/bobabee.png";
     this.velY = (Math.random() * 0.1 + 1.5);
+    this.value = 10;
   }
 }

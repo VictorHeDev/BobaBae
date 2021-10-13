@@ -1,6 +1,117 @@
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
+
+  /* GENERAL STYLES */
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+  }
+
 body {
-  background-color: lightgrey;
+  background-image: url("../src/images/tea-leaves.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-position: center center; */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* align-items: center; */
+}
+
+
+h1 {
+  color: white;
+  font-size: 68px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  padding: 15px;
+  /* background-color: #FE5F5E; */
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+h1, li {
+  color: white;
+}
+
+/* HEADER  */
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #FE5F5E;
+}
+
+.personal-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.personal-links > li {
+  text-transform: uppercase;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  padding: 30px;
+}
+
+/* NAVIGATION  */
+nav {
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px
+}
+
+.game-info {
+  display: flex;
+}
+
+.game-info > li {
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.purpose {
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* MAIN CONTENT  */
+.game-container {
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+
+  /* might want to throw the background img into the game container instead */
+  /* background-image: url("../src/images/tea-leaves.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover; */
+}
+
+#game-canvas {
+  border: 7px solid lightgrey;
+}
+
+/* FOOTER  */
+footer {
+  margin-top: auto;
+  padding: 10px;
+  background-color: #FE5F5E;
+}
+
+.footer-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-contents > li {
+  font-family: Arial, Helvetica, sans-serif;
 }

@@ -129,7 +129,6 @@ export default class Stage {
                 } else {
                     // collision detected
                     this.incrementScore(item);
-                    item.playerCollision = true;
                     // console.log('collision!')
                 }
 
@@ -150,6 +149,7 @@ export default class Stage {
 
     incrementScore(item) {
         this.score += item.value;
+        item.playerCollision = true;
     }
 
 }

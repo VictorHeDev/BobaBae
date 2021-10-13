@@ -14,5 +14,6 @@ export default class Tesla extends Item {
     this.image = new Image();
     this.image.src = "src/images/tesla.png";
     this.velY = (Math.random() * 0.1 + 1);
+    this.value = 15;
   }
 }
