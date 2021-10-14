@@ -32,15 +32,3 @@ function hideGameOverMessage() {
   let hideMessage = document.getElementById("game-end");
   hideMessage.classList.add("hidden");
 }
-
-
-
-// window.addEventListener("keydown", function(e) {
-//   keys[e.keyCode] = true;
-//   player.moving = true;
-// });
-
-// window.addEventListener("keyup", function(e) {
-//   delete keys[e.keyCode];
-//   player.moving = false;
-// });

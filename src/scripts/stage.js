@@ -59,6 +59,7 @@ export default class Stage {
     }
 
     renderScore() {
+        this.ctx.font = "30px Arial";
         this.ctx.fillStyle = 'red';
         this.ctx.fillText(`Score: ${this.score}`, 50, 75);
         this.ctx.fillStyle = 'white';
