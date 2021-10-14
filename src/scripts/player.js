@@ -99,18 +99,18 @@ export default class Player {
   movePlayer(keys) {
     if (keys["KeyW"] || keys["ArrowUp"]) {
       this.jump();
-      console.log("up");
+      // console.log("up");
       // changed from measuring jumping as a boolean to double jumping based on falling frames
     }
 
     if (keys["KeyA"] || keys["ArrowLeft"]) {
       this.moveLeft();
-      console.log("left");
+      // console.log("left");
     }
 
     if (keys["KeyD"] || keys["ArrowRight"]) {
       this.moveRight();
-      console.log("right");
+      // console.log("right");
     }
   }
 
@@ -150,7 +150,6 @@ export default class Player {
       this.jumping = true; // need to be true for no double jump
       this.moving = true;
     }
-    // this.moving = true;
   }
 
   moveLeft() {
@@ -168,12 +167,12 @@ export default class Player {
     if (this.x < 0) {
       // check for left offscreen
       this.x = 0;
-      this.y = this.baseline; // TODO yea that's a tmr problem
+      this.y += this.gravity; // TODO yea that's a tmr problem
       this.xVel = 0;
     } else if (this.x > 800 - this.width) {
       // check for right offscreen
       this.x = 800 - (this.width);
-      this.y = this.baseline; // TODO char goes straight down at edge :(
+      this.y += this.gravity; // TODO char goes straight down at edge :(
       this.xVel = 0;
     } else if (this.y > this.baseline) {
       // check if on ground

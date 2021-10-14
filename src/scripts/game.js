@@ -34,7 +34,7 @@ export default class Game {
       if (this.animating) {
         this.gameOver(); // hacky but fix this
         this.stage.updateEntities();
-        this.handleMusicOptions();
+        // this.handleMusicOptions(); // take out of animation loop
         this.interval = window.requestAnimationFrame(this.animation);
       }
     }
