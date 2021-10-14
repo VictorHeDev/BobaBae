@@ -9,6 +9,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   window.addEventListener("keydown", (e) => {
     if (e.code === "Enter") {
+      removeMenu();
       this.game = new Game();
       this.game.kickOff();
     }
@@ -20,6 +21,11 @@ window.addEventListener('DOMContentLoaded', function() {
 
   })
 });
+
+function removeMenu() {
+  let menu = document.getElementById("start-menu");
+  menu.classList.add("hidden");
+}
 
 
 // window.addEventListener("keydown", function(e) {

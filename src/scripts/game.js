@@ -22,6 +22,7 @@ export default class Game {
     this.animation = () => {
       this.canvas.clearCanvas();
       if (this.animating) {
+        this.gameOver(); // hacky but fix this
         this.stage.updateEntities();
         this.interval = window.requestAnimationFrame(this.animation);
       }
@@ -29,6 +30,7 @@ export default class Game {
     // calls recursively and passes in timeStamp variable
     window.requestAnimationFrame(this.animation)
   }
+
 
   // gameLoop(timestamp) {
   //   if (this.animated) {
@@ -58,7 +60,7 @@ export default class Game {
   }
 
   gameOver() {
-    this.animating = false;
+    if (this.stage.score > 1000) this.animating = false;
     // stop the game
     // display thank you message
     // display play again button

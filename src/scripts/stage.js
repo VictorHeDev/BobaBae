@@ -59,10 +59,10 @@ export default class Stage {
     }
 
     renderScore() {
-        this.ctx.fillStyle = 'white';
-        this.ctx.fillText(`Score: ${this.score}`, 50, 75);
         this.ctx.fillStyle = 'red';
-        this.ctx.fillText(`Score: ${this.score}`, 55, 80);
+        this.ctx.fillText(`Score: ${this.score}`, 50, 75);
+        this.ctx.fillStyle = 'white';
+        this.ctx.fillText(`Score: ${this.score}`, 52, 77);
     }
 
     updateItems() {
@@ -129,6 +129,7 @@ export default class Stage {
                 } else {
                     // collision detected
                     this.incrementScore(item);
+
                     // console.log('collision!')
                 }
 
@@ -151,5 +152,6 @@ export default class Stage {
         this.score += item.value;
         item.playerCollision = true;
     }
+
 
 }

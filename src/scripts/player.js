@@ -94,18 +94,18 @@ export default class Player {
   movePlayer(keys) {
     if (keys["KeyW"] || keys["ArrowUp"]) {
       this.jump();
-      // console.log("up");
+      console.log("up");
       // changed from measuring jumping as a boolean to double jumping based on falling frames
     }
 
     if (keys["KeyA"] || keys["ArrowLeft"]) {
       this.moveLeft();
-      // console.log("left");
+      console.log("left");
     }
 
     if (keys["KeyD"] || keys["ArrowRight"]) {
       this.moveRight();
-      // console.log("right");
+      console.log("right");
     }
   }
 

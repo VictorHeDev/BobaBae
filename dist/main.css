@@ -1,13 +1,10 @@
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
-
-  /* GENERAL STYLES */
-
 * {
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
-  }
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
 
 body {
   background-image: url("../src/images/tea-leaves.jpeg");
@@ -19,7 +16,6 @@ body {
   min-height: 100vh;
   /* align-items: center; */
 }
-
 
 h1 {
   color: white;
@@ -65,7 +61,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px
+  padding: 10px;
 }
 
 .game-info {
@@ -87,8 +83,7 @@ nav {
   padding: 30px;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
-
+  align-items: center;
   /* might want to throw the background img into the game container instead */
   /* background-image: url("../src/images/tea-leaves.jpeg");
   background-repeat: no-repeat;
@@ -97,6 +92,35 @@ nav {
 
 #game-canvas {
   border: 7px solid lightgrey;
+  z-index: 0;
+}
+
+#start-menu {
+  background-color: black;
+  position: fixed;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* border: 2px solid red; */
+
+  z-index: 2;
+  height: 600px;
+  width: 800px;
+}
+
+h2 {
+  font-size: 48px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 48px;
+  text-align: center;
+}
+
+#start-menu > p {
+  font-size: 36px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 20px;
+  text-align: center;
 }
 
 /* FOOTER  */
@@ -114,4 +138,9 @@ footer {
 
 .footer-contents > li {
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* FUNCTIONAL */
+.hidden {
+  display: none;
 }
