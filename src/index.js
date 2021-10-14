@@ -14,10 +14,10 @@ window.addEventListener('DOMContentLoaded', function() {
       this.game.kickOff();
     }
 
-    if (e.code === "Escape") {
-      let gameCanvas = document.getElementById("game-canvas");
-      gameCanvas.classList("hidden");
-    }
+    // if (e.code === "Escape") {
+    //   let gameCanvas = document.getElementById("game-canvas");
+    //   gameCanvas.classList("hidden");
+    // }
 
   })
 });
@@ -26,6 +26,7 @@ function removeMenu() {
   let menu = document.getElementById("start-menu");
   menu.classList.add("hidden");
 }
+
 
 
 // window.addEventListener("keydown", function(e) {

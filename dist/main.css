@@ -96,8 +96,11 @@ nav {
 }
 
 #start-menu {
-  background-color: black;
+  /* background-color: black; */
   position: fixed;
+  /* background-color: #FEA99A; */
+  border-radius: 10px;
+  border: 20px solid #FE5F5E;
   /* display: flex; */
   /* flex-direction: column; */
   /* justify-content: center; */
@@ -112,15 +115,27 @@ nav {
 h2 {
   font-size: 48px;
   font-family: Arial, Helvetica, sans-serif;
-  padding: 48px;
+  background-color: #FE5F5E;
+  padding: 40px;
   text-align: center;
 }
 
-#start-menu > p {
-  font-size: 36px;
+.menu-instructions {
+  font-size: 30px;
   font-family: Arial, Helvetica, sans-serif;
-  padding: 20px;
+  border: 14px solid #FEA99A;
+  /* border-radius: 10px; */
+  background-color: #FEA99A;
   text-align: center;
+}
+
+.menu-instructions > li {
+  padding: 26px;
+}
+
+.menu-instructions > li:last-child {
+  background-color: #FE5F5E;
+  border-radius: 10px;
 }
 
 /* FOOTER  */
@@ -138,6 +153,7 @@ footer {
 
 .footer-contents > li {
   font-family: Arial, Helvetica, sans-serif;
+  /* padding: 5px; */
 }
 
 /* FUNCTIONAL */
