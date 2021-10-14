@@ -6,8 +6,8 @@ export default class Bee extends Item {
     this.spriteWidth = 363;
     this.spriteHeight = 389;
     // modifier must be the same
-    this.width = 60;
-    this.height = 60;
+    this.width = 50;
+    this.height = 50;
     this.x = (Math.random() * 760);
     this.y = 10;
     // can also do this with id or query selector

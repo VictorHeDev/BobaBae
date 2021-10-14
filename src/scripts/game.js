@@ -10,7 +10,14 @@ export default class Game {
     this.canvas = new Canvas();
     this.stage = new Stage(this.canvas.ctx);
 
-    this.playMusic();
+    // should i make a music class?
+    // perhaps move this into playMusic method
+    this.music = new Audio();
+    this.music.src = "src/sounds/champloo2.mp3";
+    this.music.loop = true;
+
+    this.handleMusicOptions = this.handleMusicOptions.bind(this);
+    // this.music.play();
   }
 
   // call for window.requestAnimationFrame which takes it a callback to itself for recursive loop
@@ -23,6 +30,7 @@ export default class Game {
     // use this.animation to calculate dt
     this.animation = () => {
       this.canvas.clearCanvas();
+
       if (this.animating) {
         this.gameOver(); // hacky but fix this
         this.stage.updateEntities();
@@ -41,34 +49,46 @@ export default class Game {
   }
 
   gameOver() {
-    if (this.stage.score > 50) {
+    if (this.stage.score > 500) {
       this.animating = false;
       let gameOverMessages = document.getElementById("game-end");
       gameOverMessages.classList.remove("hidden");
     }
-    // stop the game
-    // display thank you message
-    // display play again button
   }
 
-  playMusic() {
-    // should i make a music class?
-    this.music = new Audio();
-    this.music.src = "src/sounds/champloo2.mp3";
-    this.music.loop = true;
-    this.music.play();
-    this.musicPlaying = true;
+  // maybe move music functions to index so user can toggle the music without init Game first
+  playPauseMusic() {
+    let playPauseBtn = document.getElementById('play-pause');
+    playPauseBtn.addEventListener("click", playPause => {
+      playPause.preventDefault();
+      if (this.music.paused) {
+        this.music.play();
+        playPauseBtn.innerHTML = "Pause";
+      } else {
+        this.music.pause();
+        playPauseBtn.innerHTML = "Play";
+      }
+    })
   }
 
-  pauseMusic() {
-    document.getElementById("play").addEventListener("click", function() {
-      console.log('pause!')
-      this.music.pause();
+  // needs fixing
+  muteMusic() {
+    let muteBtn = document.getElementById('mute-unmute');
+    muteBtn.addEventListener("click", mute => {
+      mute.preventDefault();
+      if (this.music.muted) {
+        this.music.muted = false;
+        muteBtn.innerHTML = "Mute";
+      } else {
+        this.music.muted = true;
+        muteBtn.innerHTML = "Unmute";
+      }
     })
   }
 
   handleMusicOptions() {
-    this.pauseMusic();
+    this.playPauseMusic();
+    this.muteMusic();
   }
 
 }

@@ -11,6 +11,8 @@ window.addEventListener('DOMContentLoaded', function() {
       this.game = new Game();
       this.game.kickOff();
     }
+
+    this.game.handleMusicOptions();
     // if (e.code === "Escape") {
     //   let gameCanvas = document.getElementById("game-canvas");
     //   gameCanvas.classList("hidden");
