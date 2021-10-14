@@ -8,11 +8,11 @@ window.addEventListener('DOMContentLoaded', function() {
       hideGameOverMessage();
       removeMenu();
 
-      this.game = new Game();
-      this.game.kickOff();
+      let game = new Game();
+      game.kickOff();
     }
 
-    this.game.handleMusicOptions();
+    // this.game.handleMusicOptions();
     // if (e.code === "Escape") {
     //   let gameCanvas = document.getElementById("game-canvas");
     //   gameCanvas.classList("hidden");
@@ -30,3 +30,4 @@ function hideGameOverMessage() {
   let hideMessage = document.getElementById("game-end");
   hideMessage.classList.add("hidden");
 }
+

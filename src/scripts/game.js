@@ -14,9 +14,12 @@ export default class Game {
     // perhaps move this into playMusic method
     this.music = new Audio();
     this.music.src = "src/sounds/champloo2.mp3";
+    this.music.volume = 0.3;
     this.music.loop = true;
 
-    this.handleMusicOptions = this.handleMusicOptions.bind(this);
+    this.handleMusicOptions();
+
+    // this.handleMusicOptions = this.handleMusicOptions.bind(this);
     // this.music.play();
   }
 
@@ -49,7 +52,7 @@ export default class Game {
   }
 
   gameOver() {
-    if (this.stage.score > 500) {
+    if (this.stage.score > 250) {
       this.animating = false;
       let gameOverMessages = document.getElementById("game-end");
       gameOverMessages.classList.remove("hidden");
@@ -60,12 +63,16 @@ export default class Game {
   playPauseMusic() {
     let playPauseBtn = document.getElementById('play-pause');
     playPauseBtn.addEventListener("click", playPause => {
+
       playPause.preventDefault();
+      console.log(this.music)
       if (this.music.paused) {
+        console.log("play?")
         this.music.play();
         playPauseBtn.innerHTML = "Pause";
       } else {
         this.music.pause();
+        console.log("paused?")
         playPauseBtn.innerHTML = "Play";
       }
     })

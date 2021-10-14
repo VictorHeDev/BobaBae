@@ -167,12 +167,12 @@ export default class Player {
     if (this.x < 0) {
       // check for left offscreen
       this.x = 0;
-      this.y += this.gravity; // TODO yea that's a tmr problem
       this.xVel = 0;
+      this.y = this.baseline; // TODO yea that's a tmr problem
     } else if (this.x > 800 - this.width) {
       // check for right offscreen
       this.x = 800 - (this.width);
-      this.y += this.gravity; // TODO char goes straight down at edge :(
+      this.y = this.baseline; // TODO char goes straight down at edge :(
       this.xVel = 0;
     } else if (this.y > this.baseline) {
       // check if on ground
