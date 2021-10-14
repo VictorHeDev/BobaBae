@@ -30,7 +30,7 @@ export default class Item {
       this.height
     );
 
-    this.drawHitbox(ctx);
+    // this.drawHitbox(ctx); // comment out when deploying
   }
 
   drawHitbox(ctx) {
