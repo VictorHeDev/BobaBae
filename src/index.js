@@ -2,23 +2,29 @@ import Canvas from "./scripts/canvas.js"
 import Game from "./scripts/game.js"
 
 window.addEventListener('DOMContentLoaded', function() {
-  // start animation loop
-  window.addEventListener("keydown", (e) => {
-    if (e.code === "Enter") {
-      hideGameOverMessage();
-      removeMenu();
+  const startGame = document.querySelector("#start-btn");
+  startGame.addEventListener("click", (e) => {
+    e.preventDefault();
+    hideGameOverMessage();
+    removeMenu();
 
-      let game = new Game();
-      game.kickOff();
-    }
-
-    // this.game.handleMusicOptions();
-    // if (e.code === "Escape") {
-    //   let gameCanvas = document.getElementById("game-canvas");
-    //   gameCanvas.classList("hidden");
-    // }
-
+    let game = new Game();
+    game.kickOff();
   })
+
+  const restartGame = document.querySelector("#restart-btn");
+  restartGame.addEventListener("click", (e) => {
+    e.preventDefault();
+    hideGameOverMessage();
+    removeMenu();
+
+    let game = new Game();
+    game.kickOff();
+  })
+
+
+
+
 });
 
 function removeMenu() {

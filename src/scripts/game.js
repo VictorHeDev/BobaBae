@@ -52,7 +52,7 @@ export default class Game {
   }
 
   gameOver() {
-    if (this.stage.score > 250) {
+    if (this.stage.score > 80) {
       this.animating = false;
       let gameOverMessages = document.getElementById("game-end");
       gameOverMessages.classList.remove("hidden");

@@ -119,6 +119,15 @@ nav {
   width: 800px;
 }
 
+button {
+  padding: 15px;
+  margin: 10px;
+  background-color: lightblue;
+  border-radius: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
 h2 {
   font-size: 48px;
   font-family: Arial, Helvetica, sans-serif;
@@ -137,7 +146,7 @@ h2 {
 }
 
 .menu-instructions > li {
-  padding: 26px;
+  padding: 28px;
 }
 
 .menu-instructions > li:last-child {
