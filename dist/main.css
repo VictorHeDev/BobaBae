@@ -164,7 +164,6 @@ h2 {
 }
 
 .music-container {
-  border: 1px solid red;
   width: 30%;
   display: flex;
   justify-content: space-between;
