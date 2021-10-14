@@ -76,11 +76,19 @@ nav {
 }
 
 /* MAIN CONTENT  */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .game-container {
   padding: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
+
   /* might want to throw the background img into the game container instead */
   /* background-image: url("../src/images/tea-leaves.jpeg");
   background-repeat: no-repeat;
@@ -89,6 +97,7 @@ nav {
 
 #game-canvas {
   border: 7px solid lightgrey;
+  background-color: #EEEEEF;
   z-index: 0;
 }
 
@@ -151,6 +160,21 @@ h2 {
 
 .game-over-messages > li {
   padding: 20px;
+}
+
+.music-container {
+  border: 1px solid red;
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.music-control {
+  background-color: #FE5F5E;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 /* FOOTER  */

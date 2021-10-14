@@ -172,7 +172,7 @@ export default class Player {
       this.xVel = 0;
     } else if (this.x > 800 - this.width) {
       // check for right offscreen
-      this.x = 800 - this.width;
+      this.x = 800 - (this.width / 2);
       this.y = this.baseline; // TODO char goes straight down at edge :(
       this.xVel = 0;
     } else if (this.y > this.baseline) {

@@ -8,7 +8,7 @@ export default class Tesla extends Item {
     // modifier must be the same
     this.width = 60;
     this.height = 60;
-    this.x = (Math.random() * 800); // canvas width is 800
+    this.x = (Math.random() * 760); // canvas width is 800
     this.y = 10;
     // can also do this with id or query selector
     this.image = new Image();

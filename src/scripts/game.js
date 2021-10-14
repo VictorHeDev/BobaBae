@@ -10,10 +10,7 @@ export default class Game {
     this.canvas = new Canvas();
     this.stage = new Stage(this.canvas.ctx);
 
-    this.music = new Audio();
-    this.music.src = "src/sounds/champloo2.mp3";
-    this.music.play();
-    console.log(this.music);
+    this.playMusic();
   }
 
   // call for window.requestAnimationFrame which takes it a callback to itself for recursive loop
@@ -29,6 +26,7 @@ export default class Game {
       if (this.animating) {
         this.gameOver(); // hacky but fix this
         this.stage.updateEntities();
+        this.handleMusicOptions();
         this.interval = window.requestAnimationFrame(this.animation);
       }
     }
@@ -53,28 +51,27 @@ export default class Game {
     // display play again button
   }
 
+  playMusic() {
+    // should i make a music class?
+    this.music = new Audio();
+    this.music.src = "src/sounds/champloo2.mp3";
+    this.music.loop = true;
+    this.music.play();
+    this.musicPlaying = true;
+  }
+
+  pauseMusic() {
+    document.getElementById("play").addEventListener("click", function() {
+      console.log('pause!')
+      this.music.pause();
+    })
+  }
+
+  handleMusicOptions() {
+    this.pauseMusic();
+  }
+
 }
-
-  // gameLoop(timestamp) {
-  //   if (this.animated) {
-  //     let deltaTime = timestamp - lastTime;
-  //     lastTime = timestamp;
-
-  //     this.canvas.clearCanvas();
-  //     this.stage.updateEntities(deltaTime);
-  //     // handle the updating and drawing functions
-  //   }
-  //   this.interval = window.requestAnimationFrame(gameLoop);
-  // }
-
-  // kickOff(timestamp) {
-  //   if (this.animating) {
-  //     let deltaTime = timestamp - lastTime
-  //     lastTime = timestamp;
-  //   }
-
-
-  // }
 
 
 

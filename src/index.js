@@ -3,10 +3,6 @@ import Game from "./scripts/game.js"
 
 window.addEventListener('DOMContentLoaded', function() {
   // start animation loop
-  // console.log(canvas);
-  // this.game = new Game();
-  // this.game.kickOff();
-
   window.addEventListener("keydown", (e) => {
     if (e.code === "Enter") {
       hideGameOverMessage();
