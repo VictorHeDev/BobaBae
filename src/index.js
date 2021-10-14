@@ -9,11 +9,12 @@ window.addEventListener('DOMContentLoaded', function() {
 
   window.addEventListener("keydown", (e) => {
     if (e.code === "Enter") {
+      hideGameOverMessage();
       removeMenu();
+
       this.game = new Game();
       this.game.kickOff();
     }
-
     // if (e.code === "Escape") {
     //   let gameCanvas = document.getElementById("game-canvas");
     //   gameCanvas.classList("hidden");
@@ -25,6 +26,11 @@ window.addEventListener('DOMContentLoaded', function() {
 function removeMenu() {
   let menu = document.getElementById("start-menu");
   menu.classList.add("hidden");
+}
+
+function hideGameOverMessage() {
+  let hideMessage = document.getElementById("game-end");
+  hideMessage.classList.add("hidden");
 }
 
 

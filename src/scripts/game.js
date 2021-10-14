@@ -31,6 +31,24 @@ export default class Game {
     window.requestAnimationFrame(this.animation)
   }
 
+  pause() {
+    // when escape key is hit, we want to effectively stop the animation loop
+    this.animating = false;
+
+  }
+
+  gameOver() {
+    if (this.stage.score > 50) {
+      this.animating = false;
+      let gameOverMessages = document.getElementById("game-end");
+      gameOverMessages.classList.remove("hidden");
+    }
+    // stop the game
+    // display thank you message
+    // display play again button
+  }
+
+}
 
   // gameLoop(timestamp) {
   //   if (this.animated) {
@@ -53,23 +71,6 @@ export default class Game {
 
   // }
 
-  pause() {
-    // when escape key is hit, we want to effectively stop the animation loop
-    this.animating = false;
-
-  }
-
-  gameOver() {
-    if (this.stage.score > 1000) this.animating = false;
-    let gameOverMessages = document.getElementById("game-end");
-    gameOverMessages.classList.remove("hidden");
-    // stop the game
-    // display thank you message
-    // display play again button
-
-  }
-
-}
 
 
 
