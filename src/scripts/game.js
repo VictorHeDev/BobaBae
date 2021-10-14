@@ -10,10 +10,10 @@ export default class Game {
     this.canvas = new Canvas();
     this.stage = new Stage(this.canvas.ctx);
 
-    // this.music = new Audio();
-    // this.music.src = "../sounds/champloo1.wav"
-    // this.music.play();
-    // console.log(this.music);
+    this.music = new Audio();
+    this.music.src = "src/sounds/champloo2.mp3";
+    this.music.play();
+    console.log(this.music);
   }
 
   // call for window.requestAnimationFrame which takes it a callback to itself for recursive loop

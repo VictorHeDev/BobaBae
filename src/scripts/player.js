@@ -40,6 +40,10 @@ export default class Player {
     this.playerSprite = new Image();
     this.playerSprite.src = "src/images/static-kevin.png"
 
+    this.jumpSound = new Audio()
+    this.jumpSound.src = "src/sounds/jump.flac";
+
+
     // not totally necessary
     // this.eventListener = this.eventListener.bind(this);
   }
@@ -48,6 +52,7 @@ export default class Player {
 
   update() {
     // need to figure out the order of operations for this thing
+    // place this.frameX or this.frameY++ in here later to control animations
     this.movePlayer(this.keys);
     this.yVel += this.gravity;
     // maybe move this outside or within animation loop
@@ -141,6 +146,7 @@ export default class Player {
   jump() {
     if (!this.jumping) {
       this.yVel -= this.maxJumpPower;
+      this.jumpSound.play();
       this.jumping = true; // need to be true for no double jump
       this.moving = true;
     }

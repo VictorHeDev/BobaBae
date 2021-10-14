@@ -1,7 +1,7 @@
 * {
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
-  }
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
 
 body {
   background-image: url("../src/images/tea-leaves.jpeg");
@@ -13,7 +13,6 @@ body {
   min-height: 100vh;
   /* align-items: center; */
 }
-
 
 h1 {
   color: white;
@@ -59,7 +58,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px
+  padding: 10px;
 }
 
 .game-info {
@@ -81,8 +80,7 @@ nav {
   padding: 30px;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
-
+  align-items: center;
   /* might want to throw the background img into the game container instead */
   /* background-image: url("../src/images/tea-leaves.jpeg");
   background-repeat: no-repeat;
@@ -94,10 +92,65 @@ nav {
   z-index: 0;
 }
 
-.start-menu {
+#start-menu {
+  /* background-color: black; */
   position: fixed;
-  border: 2px solid red;
-  z-index: 1;
+  /* background-color: #FEA99A; */
+  border-radius: 10px;
+  border: 20px solid #FE5F5E;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* border: 2px solid red; */
+
+  z-index: 2;
+  height: 600px;
+  width: 800px;
+}
+
+h2 {
+  font-size: 48px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #FE5F5E;
+  padding: 40px;
+  text-align: center;
+}
+
+.menu-instructions {
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  border: 14px solid #FEA99A;
+  /* border-radius: 10px; */
+  background-color: #FEA99A;
+  text-align: center;
+}
+
+.menu-instructions > li {
+  padding: 26px;
+}
+
+.menu-instructions > li:last-child {
+  background-color: #FE5F5E;
+  border-radius: 10px;
+}
+
+#game-end {
+  position: fixed;
+  border-radius: 10px;
+  border: 20px solid #FE5F5E;
+}
+
+.game-over-messages {
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  border: 14 px solid #FEA99A;
+  background-color: #FEA99A;
+  text-align: center;
+}
+
+.game-over-messages > li {
+  padding: 20px;
 }
 
 /* FOOTER  */
@@ -115,4 +168,10 @@ footer {
 
 .footer-contents > li {
   font-family: Arial, Helvetica, sans-serif;
+  /* padding: 5px; */
+}
+
+/* FUNCTIONAL */
+.hidden {
+  display: none;
 }
