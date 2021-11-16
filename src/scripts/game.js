@@ -5,7 +5,6 @@ export default class Game {
   constructor() {
     this.kickOff = this.kickOff.bind(this);
     this.animating = true;
-    // this.music = new Audio()
 
     this.canvas = new Canvas();
     this.stage = new Stage(this.canvas.ctx);
@@ -13,7 +12,7 @@ export default class Game {
     // should i make a music class?
     // perhaps move this into playMusic method
     this.music = new Audio();
-    this.music.src = "src/sounds/champloo2.mp3";
+    this.music.src = "src/sounds/champloo2.wav";
     this.music.volume = 0.3;
     this.music.loop = true;
 

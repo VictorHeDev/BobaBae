@@ -7,6 +7,7 @@ export default class Item {
     this.playerCollision = false;
     this.value = 10; // we'll have this here for now but we will likely give each item a different score value later
   }
+
   update() {
     // this.y++;
     // make deltaTime a global variable? * deltaTime
@@ -33,6 +34,7 @@ export default class Item {
     // this.drawHitbox(ctx); // comment out when deploying
   }
 
+  // dummy hitbhox method
   drawHitbox(ctx) {
     ctx.beginPath();
     ctx.rect(
@@ -45,5 +47,4 @@ export default class Item {
     ctx.stroke();
   }
 
-  // dummy hitbhox method
 }
