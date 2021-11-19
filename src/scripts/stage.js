@@ -78,7 +78,7 @@ export default class Stage {
     // Remove item from the array if it is off screen
     this.items = this.items.filter(
       (item) => !item.offScreen && !item.playerCollision
-    ); 
+    );
 
     if (this.itemTimerReset > this.createItemTimer) {
       this.addNewItem();
@@ -88,7 +88,7 @@ export default class Stage {
     }
 
     this.items.forEach((item) => {
-      item.update(this.deltaTime);
+      item.update(deltaTime);
     });
   }
 

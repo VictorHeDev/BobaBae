@@ -7,13 +7,13 @@ export default class Item {
     this.value = 10; // we'll have this here for now but we will likely give each item a different score value later
   }
 
-  update() {
+  update(deltaTime) {
     // this.y++;
     // make deltaTime a global variable? * deltaTime
-    this.y += this.velY;
+    this.y += this.velY * deltaTime;
     if (this.y - this.height > this.stage.height) {
       this.offScreen = true;
-      console.log('im off this');
+      console.log(deltaTime);
     }
   }
 

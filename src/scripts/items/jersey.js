@@ -1,4 +1,4 @@
-import Item from "./item.js";
+import Item from './item.js';
 
 export default class Jersey extends Item {
   constructor(stage) {
@@ -12,8 +12,8 @@ export default class Jersey extends Item {
     this.y = 10;
     // can also do this with id or query selector
     this.image = new Image();
-    this.image.src = "src/images/jersey.png";
-    this.velY = Math.random() * 0.1 + 1;
+    this.image.src = 'src/images/jersey.png';
+    this.velY = Math.random() * 0.1 + 0.1;
     this.value = 50;
   }
 }

@@ -1,4 +1,4 @@
-import Item from "./item.js"
+import Item from './item.js';
 
 export default class RedEnvelope extends Item {
   constructor(stage) {
@@ -8,12 +8,12 @@ export default class RedEnvelope extends Item {
     // modifier must be the same
     this.width = 60;
     this.height = 60;
-    this.x = (Math.random() * 760); // canvas width is 800
+    this.x = Math.random() * 760; // canvas width is 800
     this.y = 10;
     // can also do this with id or query selector
     this.image = new Image();
-    this.image.src = "src/images/red-envelope.png";
-    this.velY = (Math.random() * 0.1 + 1.2);
+    this.image.src = 'src/images/red-envelope.png';
+    this.velY = Math.random() * 0.1 + 0.3;
     this.value = 5;
   }
 }
