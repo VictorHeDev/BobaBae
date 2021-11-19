@@ -14,10 +14,9 @@ export default class Stage {
     this.height = this.ctx.canvas.height;
     this.score = 0;
     this.items = [];
-    this.createItemTimer = 2500; // delays the items falling from the sky ... maybe create a ready set go
+    this.createItemTimer = 1500; // delays the items falling from the sky ... maybe create a ready set go
     this.itemTimerReset = 0;
-    this.itemTypes = ['boba', 'bee', 'redEnvelope', 'lexus', 'ring', 'jersey'];
-    // this.deltaTime = 1;
+    this.itemTypes = ['boba', 'bee', 'redEnvelope', 'tesla', 'ring', 'jersey'];
     this.background = new Image();
     this.background.src = 'src/images/cyberpunk-bg.png';
   }
@@ -100,15 +99,31 @@ export default class Stage {
   }
 
   addNewItem() {
-    // let randomItem = this.itemTypes[(Math.floor(Math.random() * this.itemTypes.length))];
-    // this.items.push(randomItem);
-    this.items.push(new Boba(this));
-    this.items.push(new Bee(this));
-    this.items.push(new RedEnvelope(this));
-    this.items.push(new Tesla(this));
-    this.items.push(new Ring(this));
-    this.items.push(new Jersey(this));
+    const randomItem =
+      this.itemTypes[Math.floor(Math.random() * this.itemTypes.length)];
 
+    switch (randomItem) {
+      case 'boba':
+        this.items.push(new Boba(this));
+        break;
+      case 'bee':
+        this.items.push(new Bee(this));
+        break;
+      case 'redEnvelope':
+        this.items.push(new RedEnvelope(this));
+        break;
+      case 'tesla':
+        this.items.push(new Tesla(this));
+        break;
+      case 'ring':
+        this.items.push(new Ring(this));
+        break;
+      case 'jersey':
+        this.items.push(new Jersey(this));
+        break;
+      default:
+        break;
+    }
     // console.log(this.items)
   }
 
