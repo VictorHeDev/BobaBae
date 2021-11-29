@@ -33,17 +33,18 @@ export default class Player {
     this.facingRight = true;
     this.currentFrame = 1;
 
+    this.playerSprite = new Image();
+    this.playerSprite.src = 'src/images/kevin-spritesheet.png';
+
+    this.jumpSound = new Audio();
+    this.jumpSound.volume = 0.2;
+    this.jumpSound.src = 'src/sounds/jump.flac';
+
     // ! character hitboxes - comment out methods later
     this.hbx = this.x + this.width / 2;
     this.hby = this.y + this.height / 2;
     this.hbWidth = 80 / 2; // change this to this.width
     this.hbHeight = 80 / 2; // change this to this.height
-
-    this.playerSprite = new Image();
-    this.playerSprite.src = 'src/images/kevin-spritesheet.png';
-
-    this.jumpSound = new Audio();
-    this.jumpSound.src = 'src/sounds/jump.flac';
   }
 
   // * draw and render methods
@@ -91,55 +92,52 @@ export default class Player {
 
   // * mess with later in order to get the framecount just right
   handlePlayerFrame() {
-    if (this.frameX < 3 && this.moving) {
-      this.frameX++;
-    } else {
-      this.frameX = 0;
-    }
+    this.frameX < 3 && this.moving ? this.frameX++ : (this.frameX = 0);
   }
 
   movePlayer(keys) {
-    if (keys['KeyW'] || keys['ArrowUp']) {
-      this.jump();
-    }
+    if (keys['KeyW'] || keys['ArrowUp']) this.jump();
 
-    if (keys['KeyA'] || keys['ArrowLeft']) {
-      this.moveLeft();
-    }
+    if (keys['KeyA'] || keys['ArrowLeft']) this.moveLeft();
 
-    if (keys['KeyD'] || keys['ArrowRight']) {
-      this.moveRight();
-    }
+    if (keys['KeyD'] || keys['ArrowRight']) this.moveRight();
   }
 
+  // eventListener() {
+  //   window.addEventListener(
+  //     'keydown',
+  //     function (event) {
+  //       this.keys[event.code] = true;
+  //       // console.log('keydown')
+  //       this.moving = true;
+  //       if (event.defaultPrevented) {
+  //         return; // Do nothing if event already handled
+  //       }
+
+  //       event.preventDefault();
+  //     }.bind(this),
+  //     true
+  //   );
+
   eventListener() {
-    window.addEventListener(
-      'keydown',
-      function (event) {
-        this.keys[event.code] = true;
-        // console.log('keydown')
-        this.moving = true;
-        if (event.defaultPrevented) {
-          return; // Do nothing if event already handled
-        }
+    window.addEventListener('keydown', (event) => {
+      this.keys[event.code] = true;
 
-        event.preventDefault();
-      }.bind(this),
-      true
-    );
+      this.moving = true;
+      if (event.defaultPrevented) {
+        return; // Do nothing if event already handled
+      }
 
-    window.addEventListener(
-      'keyup',
-      function (event) {
-        // check to see if wad or arrow keys are up
+      event.preventDefault();
+    });
 
-        event.preventDefault();
-        // console.log('keyup')
-        delete this.keys[event.code];
-        this.moving = false;
-      }.bind(this),
-      true
-    );
+    window.addEventListener('keyup', (event) => {
+      // check to see if wad or arrow keys are up
+
+      event.preventDefault();
+      delete this.keys[event.code];
+      this.moving = false;
+    });
   }
 
   jump() {
@@ -147,7 +145,6 @@ export default class Player {
       this.yVel -= this.maxJumpPower;
       this.jumpSound.play();
       this.jumping = true; // need to be true for no double jump
-      // this.moving = true;
 
       this.facingRight ? (this.frameY = 2) : (this.frameY = 5);
     }
@@ -157,7 +154,6 @@ export default class Player {
     if (this.xVel > -this.maxVel) this.xVel -= 0.4;
     this.moving = true;
     this.facingRight = false;
-
     this.frameY = 3;
   }
 
@@ -165,7 +161,6 @@ export default class Player {
     if (this.xVel < this.maxVel) this.xVel += 0.4;
     this.moving = true;
     this.facingRight = true;
-
     this.frameY = 0;
   }
 

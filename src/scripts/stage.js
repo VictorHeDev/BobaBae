@@ -5,6 +5,8 @@ import RedEnvelope from './items/redEnvelope.js';
 import Tesla from './items/tesla.js';
 import Ring from './items/ring.js';
 import Jersey from './items/jersey.js';
+import Jordan from './items/jordan.js';
+import Dj from './items/dj.js';
 
 export default class Stage {
   constructor(ctx) {
@@ -24,6 +26,7 @@ export default class Stage {
       'ring',
       'jersey',
       'jordan',
+      'dj',
     ];
     this.background = new Image();
     this.background.src = 'src/images/cyberpunk-bg.png';
@@ -78,9 +81,9 @@ export default class Stage {
   renderScore() {
     this.ctx.font = '30px Arial';
     this.ctx.fillStyle = 'red';
-    this.ctx.fillText(`Score: ${this.score}`, 50, 75);
+    this.ctx.fillText(`Score: ${this.score}`, 25, 50);
     this.ctx.fillStyle = 'white';
-    this.ctx.fillText(`Score: ${this.score}`, 52, 77);
+    this.ctx.fillText(`Score: ${this.score}`, 27, 52);
   }
 
   updateItems(deltaTime) {
@@ -133,6 +136,9 @@ export default class Stage {
         break;
       case 'jordan':
         this.items.push(new Jordan(this));
+        break;
+      case 'dj':
+        this.items.push(new Dj(this));
         break;
       default:
         break;

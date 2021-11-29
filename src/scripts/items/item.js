@@ -1,20 +1,17 @@
 export default class Item {
-  // here we can make our code more dynamic by passing in the stage, which already has the canvas' width and height variables
+  // * here we can make our code more dynamic by passing in the stage, which already has the canvas' width and height variables
   constructor(stage) {
     this.stage = stage;
     this.offScreen = false;
     this.playerCollision = false;
-    this.value = 10; // we'll have this here for now but we will likely give each item a different score value later
+    this.value = 10; // TODO: we will likely give each item a different score value later
   }
 
   update(deltaTime) {
-    // this.y++;
-    // make deltaTime a global variable? * deltaTime
     this.y += this.velY * deltaTime;
-    if (this.y - this.height > this.stage.height) {
-      this.offScreen = true;
-      // console.log(deltaTime);
-    }
+    this.y - this.height > this.stage.height
+      ? (this.offScreen = true)
+      : (this.offScreen = false);
   }
 
   draw(ctx) {
@@ -31,7 +28,7 @@ export default class Item {
       this.height
     );
 
-    // this.drawHitbox(ctx); // comment out when deploying
+    // this.drawHitbox(ctx); // ! comment out when deploying
   }
 
   // dummy hitbhox method

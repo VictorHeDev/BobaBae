@@ -11,12 +11,11 @@ export default class Bee extends Item {
     this.height = 50;
     // this.x = Math.random() * 760;
     this.x = Math.random() * this.stage.width;
-    // this.y = 10;
     this.y = 10;
     // can also do this with id or query selector
     this.image = new Image();
     this.image.src = 'src/images/bobabee.png';
-    this.velY = Math.random() * 0.1 + 0.1;
-    this.value = 10;
+    this.velY = Math.random() * 0.05 + 0.1;
+    this.value = 5;
   }
 }
