@@ -65,6 +65,7 @@ export default class Player {
     this.yVel *= this.friction;
 
     this.outOfBounds();
+    this.handlePlayerFrame();
   }
 
   draw() {
@@ -88,11 +89,11 @@ export default class Player {
   }
 
   // mess with later in order to get the framecount just right
-  updatePlayerFrame() {
-    if (this.frameX < 3) {
+  handlePlayerFrame() {
+    if (this.frameX < 3 && this.moving) {
       this.frameX++;
     } else {
-      this.frameX = 0;
+      this.frameX = 2;
     }
   }
 
@@ -120,6 +121,7 @@ export default class Player {
       function (event) {
         this.keys[event.code] = true;
         // console.log('keydown')
+        this.moving = true;
         if (event.defaultPrevented) {
           return; // Do nothing if event already handled
         }
@@ -148,7 +150,7 @@ export default class Player {
       this.yVel -= this.maxJumpPower;
       this.jumpSound.play();
       this.jumping = true; // need to be true for no double jump
-      this.moving = true;
+      // this.moving = true;
 
       this.frameY = 2;
     }
@@ -156,14 +158,14 @@ export default class Player {
 
   moveLeft() {
     if (this.xVel > -this.maxVel) this.xVel -= 0.4;
-    this.moving = true;
+    // this.moving = true;
 
     this.frameY = 3;
   }
 
   moveRight() {
     if (this.xVel < this.maxVel) this.xVel += 0.4;
-    this.moving = true;
+    // this.moving = true;
 
     this.frameY = 0;
   }
