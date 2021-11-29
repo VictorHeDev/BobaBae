@@ -5,6 +5,8 @@ import RedEnvelope from './items/redEnvelope.js';
 import Tesla from './items/tesla.js';
 import Ring from './items/ring.js';
 import Jersey from './items/jersey.js';
+import Jordan from './items/jordan.js';
+import Dj from './items/dj.js';
 
 export default class Stage {
   constructor(ctx) {
@@ -13,10 +15,22 @@ export default class Stage {
     this.width = this.ctx.canvas.width;
     this.height = this.ctx.canvas.height;
     this.score = 0;
+    this.currentCountDown = this.createCountDown(30);
+    // this.currentCountDown = this.createCountDown(60000);
+
     this.items = [];
     this.createItemTimer = 1500; // delays the items falling from the sky ... maybe create a ready set go
     this.itemTimerReset = 0;
-    this.itemTypes = ['boba', 'bee', 'redEnvelope', 'tesla', 'ring', 'jersey'];
+    this.itemTypes = [
+      'boba',
+      'bee',
+      'redEnvelope',
+      'tesla',
+      'ring',
+      'jersey',
+      'jordan',
+      'dj',
+    ];
     this.background = new Image();
     this.background.src = 'src/images/cyberpunk-bg.png';
   }
@@ -46,13 +60,16 @@ export default class Stage {
     this.renderEntities();
     this.updateItems(deltaTime);
     this.drawItems();
-    this.currentPlayer.update();
+
+    // pass in deltaTime to currentPlayer.update
+    this.currentPlayer.update(deltaTime);
     this.currentPlayer.draw();
   }
 
   renderEntities() {
     this.renderBackground();
     this.renderScore();
+    this.renderTimer();
   }
 
   renderBackground() {
@@ -68,9 +85,20 @@ export default class Stage {
   renderScore() {
     this.ctx.font = '30px Arial';
     this.ctx.fillStyle = 'red';
-    this.ctx.fillText(`Score: ${this.score}`, 50, 75);
+    this.ctx.fillText(`Score: ${this.score}`, 25, 50);
     this.ctx.fillStyle = 'white';
-    this.ctx.fillText(`Score: ${this.score}`, 52, 77);
+    this.ctx.fillText(`Score: ${this.score}`, 27, 52);
+  }
+
+  renderTimer() {
+    // let currTimerValue = this.currentCountDown().toString().slice(0, 2);
+    this.ctx.font = '30px Arial';
+    this.ctx.fillStyle = 'red';
+    this.ctx.fillText(`Timer: ${this.currentCountDown()}`, 325, 50);
+    this.ctx.fillStyle = 'white';
+    this.ctx.fillText(`Timer: ${this.currentCountDown()}`, 327, 52);
+
+    // if (parseInt(this.currentCountDown()) <= 0) console.log('banana!');
   }
 
   updateItems(deltaTime) {
@@ -92,7 +120,6 @@ export default class Stage {
   }
 
   drawItems() {
-    // ctx.drawImage(backgroundImg, 0, 0);
     this.items.forEach((item) => {
       item.draw(this.ctx);
     });
@@ -121,6 +148,12 @@ export default class Stage {
       case 'jersey':
         this.items.push(new Jersey(this));
         break;
+      case 'jordan':
+        this.items.push(new Jordan(this));
+        break;
+      case 'dj':
+        this.items.push(new Dj(this));
+        break;
       default:
         break;
     }
@@ -128,7 +161,6 @@ export default class Stage {
   }
 
   playerItemCollisionDetection() {
-    // iterate through the items array
     this.items.forEach((item) => {
       // for each obj, check their x and y coordinates
       // compare them to the player's x and y coordinates
@@ -154,27 +186,19 @@ export default class Stage {
       } else {
         // collision detected
         this.incrementScore(item);
-
         // console.log('collision!')
       }
-
-      // if (this.currentPlayer.x > item.x + item.width ||
-      //     this.currentPlayer.x + this.currentPlayer.width < item.x ||
-      //     this.currentPlayer.y > item.y + item.height ||
-      //     this.currentPlayer.y + this.currentPlayer.height < item.y) {
-      //         // no collision
-      //         // do nothing
-      //     } else {
-      //         // collision detected
-      //         console.log("Collision detected");
-      //         item.playerCollision = true;
-      //         this.incrementScore(item);
-      //     }
     });
   }
 
   incrementScore(item) {
     this.score += item.value;
     item.playerCollision = true;
+  }
+
+  createCountDown(timeRemaining) {
+    let startTime = Math.floor(Date.now() / 1000);
+
+    return () => timeRemaining - (Math.floor(Date.now() / 1000) - startTime);
   }
 }

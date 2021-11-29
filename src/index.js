@@ -1,8 +1,9 @@
 import Canvas from './scripts/canvas.js';
 import Game from './scripts/game.js';
 
-window.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('DOMContentLoaded', () => {
   const startGame = document.querySelector('#start-btn');
+  
   startGame.addEventListener('click', (e) => {
     e.preventDefault();
     hideGameOverMessage();

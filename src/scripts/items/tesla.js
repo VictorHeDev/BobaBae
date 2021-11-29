@@ -13,7 +13,7 @@ export default class Tesla extends Item {
     // can also do this with id or query selector
     this.image = new Image();
     this.image.src = 'src/images/tesla.png';
-    this.velY = Math.random() * 0.1 + 0.02;
-    this.value = 15;
+    this.velY = Math.random() * 0.05 + 0.02;
+    this.value = 20;
   }
 }
