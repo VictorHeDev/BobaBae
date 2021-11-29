@@ -52,7 +52,6 @@ export default class Player {
   // draw and render methods
   update() {
     // need to figure out the order of operations for this thing
-
     this.touchingGround();
 
     this.movePlayer(this.keys);
@@ -206,11 +205,9 @@ export default class Player {
       this.moving = false;
       this.jumping = false;
       // * idle sprite animation
-      this.idleDirection();
 
-      // console.log("I'm a piece of poo");
+      this.idleDirection();
     }
-    // console.log("I'm a piece of pee!");
   }
 
   idleDirection() {
@@ -218,7 +215,9 @@ export default class Player {
   }
 
   touchingGround() {
-    this.y === 520 ? console.log('touching ground') : console.log('no touchie');
+    Math.floor(this.y) === 480
+      ? console.log('touching ground')
+      : console.log('no touchie');
   }
 
   // dummy hitbox method
