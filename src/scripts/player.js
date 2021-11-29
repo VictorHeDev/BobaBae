@@ -8,11 +8,13 @@ export default class Player {
     // position player to the middle of the street
     this.x = 400;
     this.y = 300; // regular is 520 but I might keep this because I want the player to start with falling from the sky because it's funny
-    this.width = 100;
-    this.height = 100;
 
-    this.spriteWidth = 1200;
-    this.spriteHeight = 1200;
+    // change the width and height to scale player sprite
+    this.width = 52;
+    this.height = 70;
+
+    this.spriteWidth = 52;
+    this.spriteHeight = 70;
     this.frameX = 0;
     this.frameY = 0;
 
@@ -32,17 +34,16 @@ export default class Player {
     // this.numMaxJumps = 2;
     this.keys = []; // using to keep track of number of keypresses and allow for two directions to be recognized at the same time
 
-    this.hbx = (this.x + this.width / 2);
-    this.hby = (this.y + this.height / 2);
+    this.hbx = this.x + this.width / 2;
+    this.hby = this.y + this.height / 2;
     this.hbWidth = 80 / 2; // change this to this.width
     this.hbHeight = 80 / 2; // change this to this.height
 
     this.playerSprite = new Image();
-    this.playerSprite.src = "src/images/static-kevin.png"
+    this.playerSprite.src = 'src/images/kevin-spritesheet.png';
 
-    this.jumpSound = new Audio()
-    this.jumpSound.src = "src/sounds/jump.flac";
-
+    this.jumpSound = new Audio();
+    this.jumpSound.src = 'src/sounds/jump.flac';
 
     // not totally necessary
     // this.eventListener = this.eventListener.bind(this);
@@ -63,7 +64,6 @@ export default class Player {
     this.xVel *= this.friction;
     this.yVel *= this.friction;
 
-
     this.outOfBounds();
   }
 
@@ -77,7 +77,7 @@ export default class Player {
       this.x,
       this.y,
       this.width,
-      this.height,
+      this.height
     );
 
     // this.drawHitbox(); // comment this out to hide HB
@@ -97,18 +97,18 @@ export default class Player {
   }
 
   movePlayer(keys) {
-    if (keys["KeyW"] || keys["ArrowUp"]) {
+    if (keys['KeyW'] || keys['ArrowUp']) {
       this.jump();
       // console.log("up");
       // changed from measuring jumping as a boolean to double jumping based on falling frames
     }
 
-    if (keys["KeyA"] || keys["ArrowLeft"]) {
+    if (keys['KeyA'] || keys['ArrowLeft']) {
       this.moveLeft();
       // console.log("left");
     }
 
-    if (keys["KeyD"] || keys["ArrowRight"]) {
+    if (keys['KeyD'] || keys['ArrowRight']) {
       this.moveRight();
       // console.log("right");
     }
@@ -116,7 +116,7 @@ export default class Player {
 
   eventListener() {
     window.addEventListener(
-      "keydown",
+      'keydown',
       function (event) {
         this.keys[event.code] = true;
         // console.log('keydown')
@@ -130,7 +130,7 @@ export default class Player {
     );
 
     window.addEventListener(
-      "keyup",
+      'keyup',
       function (event) {
         // check to see if wad or arrow keys are up
         // then add friction and gravity
@@ -171,7 +171,7 @@ export default class Player {
       this.y = this.baseline; // TODO yea that's a tmr problem
     } else if (this.x > 800 - this.width) {
       // check for right offscreen
-      this.x = 800 - (this.width);
+      this.x = 800 - this.width;
       this.y = this.baseline; // TODO char goes straight down at edge :(
       this.xVel = 0;
     } else if (this.y > this.baseline) {
@@ -195,13 +195,8 @@ export default class Player {
   // okay hitbox example that I'm semi happy with
   drawHitbox() {
     this.ctx.beginPath();
-    this.ctx.rect(
-      this.x + this.width / 4,
-      this.y,
-      this.width / 2,
-      this.height
-    );
-    this.ctx.strokeStyle = "red";
+    this.ctx.rect(this.x + this.width / 4, this.y, this.width / 2, this.height);
+    this.ctx.strokeStyle = 'red';
     this.ctx.stroke();
   }
 }

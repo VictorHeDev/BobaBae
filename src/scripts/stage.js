@@ -46,6 +46,8 @@ export default class Stage {
     this.renderEntities();
     this.updateItems(deltaTime);
     this.drawItems();
+
+    // pass in deltaTime to currentPlayer.update
     this.currentPlayer.update();
     this.currentPlayer.draw();
   }
