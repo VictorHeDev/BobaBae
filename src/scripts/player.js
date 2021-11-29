@@ -1,6 +1,3 @@
-// Maybe have this class inherit from a Sprite (shared with Items) or Game class to accept canvas.width/height
-// Let's have a rectangle render first
-
 export default class Player {
   constructor(ctx) {
     this.ctx = ctx;
@@ -18,7 +15,7 @@ export default class Player {
     this.frameX = 0;
     this.frameY = 0;
 
-    // movement
+    // * movement physics
     this.xVel = 0;
     this.yVel = 0;
     this.friction = 0.9;
@@ -26,15 +23,17 @@ export default class Player {
     this.maxVel = 20;
     this.maxJumpPower = 40;
     this.baseline = 480; // floor or ground that anchors player
+    this.keys = []; // using to keep track of number of keypresses and allow for two directions to be recognized at the same time
 
-    // needed for friction and gravity implementation
+    // * needed for friction and gravity implementation
     this.moving = false;
     this.jumping = false; // change this later in order to double jump
     // this.numTimesJumped = 0;
     // this.numMaxJumps = 2;
-    this.keys = []; // using to keep track of number of keypresses and allow for two directions to be recognized at the same time
+    this.facingRight = true;
+    this.currentFrame = 1;
 
-    this.frameCounter = 0;
+    // ! character hitboxes - comment out methods later
     this.hbx = this.x + this.width / 2;
     this.hby = this.y + this.height / 2;
     this.hbWidth = 80 / 2; // change this to this.width
@@ -48,15 +47,14 @@ export default class Player {
 
     // not totally necessary
     // this.eventListener = this.eventListener.bind(this);
-
-    this.currentFrame = 1;
   }
 
   // draw and render methods
-
-  update(deltaTime) {
+  update() {
     // need to figure out the order of operations for this thing
-    // place this.frameX or this.frameY++ in here later to control animations
+
+    this.touchingGround();
+
     this.movePlayer(this.keys);
     this.yVel += this.gravity;
     // maybe move this outside or within animation loop
@@ -70,11 +68,13 @@ export default class Player {
     this.outOfBounds();
 
     if (this.currentFrame === 8) {
-      this.handlePlayerFrame(deltaTime);
+      this.handlePlayerFrame();
       this.currentFrame = 0;
     } else {
       this.currentFrame++;
     }
+
+    this.checkIfNotMoving();
   }
 
   draw() {
@@ -90,23 +90,19 @@ export default class Player {
       this.height
     );
 
-    // this.drawHitbox(); // comment this out to hide HB
+    // this.drawHitbox(); // ! comment this out to hide HB
   }
 
   drawSprite(img, sX, sY, sW, sH, dX, dY, dW, dH) {
     this.ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH);
   }
 
-  // mess with later in order to get the framecount just right
-  handlePlayerFrame(deltaTime) {
-    // console.log(deltaTime);
-
+  // * mess with later in order to get the framecount just right
+  handlePlayerFrame() {
     if (this.frameX < 3 && this.moving) {
       this.frameX++;
-      // this.frameX = deltaTime
     } else {
       this.frameX = 0;
-      // this.frameY = 1;
     }
   }
 
@@ -165,13 +161,14 @@ export default class Player {
       this.jumping = true; // need to be true for no double jump
       this.moving = true;
 
-      this.frameY = 2;
+      this.facingRight ? (this.frameY = 2) : (this.frameY = 5);
     }
   }
 
   moveLeft() {
     if (this.xVel > -this.maxVel) this.xVel -= 0.4;
     this.moving = true;
+    this.facingRight = false;
 
     this.frameY = 3;
   }
@@ -179,6 +176,7 @@ export default class Player {
   moveRight() {
     if (this.xVel < this.maxVel) this.xVel += 0.4;
     this.moving = true;
+    this.facingRight = true;
 
     this.frameY = 0;
   }
@@ -203,12 +201,24 @@ export default class Player {
   }
 
   // we might want this function later to handle sprite frame counts for idle animation
-  notMoving() {
-    if (xVel === 0 && yVel === 0) {
+  checkIfNotMoving() {
+    if (this.xVel === 0 && this.yVel === 0) {
       this.moving = false;
       this.jumping = false;
-      // idle sprite animation
+      // * idle sprite animation
+      this.idleDirection();
+
+      // console.log("I'm a piece of poo");
     }
+    // console.log("I'm a piece of pee!");
+  }
+
+  idleDirection() {
+    this.facingRight ? (this.frameY = 1) : (this.frameY = 4);
+  }
+
+  touchingGround() {
+    this.y === 520 ? console.log('touching ground') : console.log('no touchie');
   }
 
   // dummy hitbox method
