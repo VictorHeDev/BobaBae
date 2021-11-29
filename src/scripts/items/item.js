@@ -28,7 +28,7 @@ export default class Item {
       this.height
     );
 
-    // this.drawHitbox(ctx); // ! comment out when deploying
+    this.drawHitbox(ctx); // ! comment out when deploying
   }
 
   // dummy hitbhox method

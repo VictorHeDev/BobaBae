@@ -10,8 +10,6 @@ export default class Game {
     this.canvas = new Canvas();
     this.stage = new Stage(this.canvas.ctx);
 
-    // should i make a music class?
-    // perhaps move this into playMusic method
     this.bgMusic = new Audio();
     this.bgMusic.src = 'src/sounds/champloo2.wav';
     this.bgMusic.volume = 0.2;
@@ -25,6 +23,34 @@ export default class Game {
 
   // call for window.requestAnimationFrame which takes it a callback to itself for recursive loop
   // calculate deltaTime
+  // kickOff() {
+  //   this.canvas = new Canvas(); // grabs the "game-canvas" id
+  //   this.stage = new Stage(this.canvas.ctx);
+  //   this.stage.loadCurrentStage();
+
+  //   // use this.animation to calculate dt
+  //   this.animation = (timeStamp) => {
+  //     const deltaTime = timeStamp - this.lastTime;
+  //     // console.log(timeStamp);
+
+  //     this.lastTime = timeStamp;
+  //     let setFps = 1000 / 60; // hard coding fps
+
+  //     // console.log(deltaTime); // runs at about 16
+
+  //     if (this.animating && deltaTime > setFps) {
+  //       this.lastTime = timeStamp - (deltaTime % setFps);
+  //       this.gameOver(); // hacky but fix this
+  //       this.canvas.clearCanvas();
+  //       this.stage.updateEntities(deltaTime);
+
+  //       this.interval = window.requestAnimationFrame(this.animation);
+  //     }
+  //   };
+  //   // calls recursively and passes in timeStamp variable
+  //   window.requestAnimationFrame(this.animation);
+  // }
+
   kickOff() {
     this.canvas = new Canvas(); // grabs the "game-canvas" id
     this.stage = new Stage(this.canvas.ctx);
@@ -33,6 +59,7 @@ export default class Game {
     // use this.animation to calculate dt
     this.animation = (timeStamp) => {
       const deltaTime = timeStamp - this.lastTime;
+      // console.log(timeStamp);
 
       this.lastTime = timeStamp;
       let setFps = 1000 / 60; // hard coding fps
@@ -44,8 +71,7 @@ export default class Game {
         this.gameOver(); // hacky but fix this
         this.canvas.clearCanvas();
         this.stage.updateEntities(deltaTime);
-        // this.stage.drawEntities()
-        // this.handleMusicOptions(); // take out of animation loop
+
         this.interval = window.requestAnimationFrame(this.animation);
       }
     };
@@ -75,9 +101,12 @@ export default class Game {
       if (this.bgMusic.paused) {
         // console.log('play?');
         this.bgMusic.play();
+        this.stage.currentPlayer.jumpSound.muted = false;
         playPauseBtn.innerHTML = 'Pause';
       } else {
         this.bgMusic.pause();
+        this.stage.currentPlayer.jumpSound.muted = true;
+
         // console.log('paused?');
         playPauseBtn.innerHTML = 'Play';
       }
@@ -91,9 +120,13 @@ export default class Game {
       mute.preventDefault();
       if (this.bgMusic.muted) {
         this.bgMusic.muted = false;
+        this.stage.currentPlayer.jumpSound.muted = false;
+
         muteBtn.innerHTML = 'Mute';
       } else {
         this.bgMusic.muted = true;
+        this.stage.currentPlayer.jumpSound.muted = true;
+
         muteBtn.innerHTML = 'Unmute';
       }
     });
