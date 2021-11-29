@@ -49,11 +49,8 @@ export default class Player {
     // this.eventListener = this.eventListener.bind(this);
   }
 
-  // draw and render methods
+  // * draw and render methods
   update() {
-    // need to figure out the order of operations for this thing
-    this.touchingGround();
-
     this.movePlayer(this.keys);
     this.yVel += this.gravity;
     // maybe move this outside or within animation loop
@@ -66,7 +63,7 @@ export default class Player {
 
     this.outOfBounds();
 
-    if (this.currentFrame === 8) {
+    if (this.currentFrame === 10) {
       this.handlePlayerFrame();
       this.currentFrame = 0;
     } else {
@@ -74,6 +71,7 @@ export default class Player {
     }
 
     this.checkIfNotMoving();
+    // this.touchingGround();
   }
 
   draw() {
@@ -181,17 +179,36 @@ export default class Player {
   }
 
   // Low level movement and position methods
+  // outOfBounds() {
+  //   if (this.x < 0) {
+  //     // check for left offscreen
+  //     this.x = 0;
+  //     this.xVel = 0;
+  //     this.y = this.baseline; // TODO yea that's a tmr problem
+  //   } else if (this.x > 800 - this.width) {
+  //     // check for right offscreen
+  //     this.x = 800 - this.width;
+  //     this.y = this.baseline; // TODO char goes straight down at edge :(
+  //     this.xVel = 0;
+  //   } else if (this.y > this.baseline) {
+  //     // check if on ground
+  //     this.y = this.baseline;
+  //     this.jumping = false;
+  //   }
+  // }
+
+  // *  implement wrap
   outOfBounds() {
-    if (this.x < 0) {
+    if (this.spriteWidth / 2 + this.x < 0) {
       // check for left offscreen
-      this.x = 0;
-      this.xVel = 0;
+      this.x = 800;
+      // this.xVel = 0;
       this.y = this.baseline; // TODO yea that's a tmr problem
-    } else if (this.x > 800 - this.width) {
+    } else if (this.x > 800) {
       // check for right offscreen
-      this.x = 800 - this.width;
-      this.y = this.baseline; // TODO char goes straight down at edge :(
-      this.xVel = 0;
+      this.x = 0;
+      // this.y = this.baseline; // TODO char goes straight down at edge :(
+      // this.xVel = 0;
     } else if (this.y > this.baseline) {
       // check if on ground
       this.y = this.baseline;
@@ -201,13 +218,8 @@ export default class Player {
 
   // we might want this function later to handle sprite frame counts for idle animation
   checkIfNotMoving() {
-    if (this.xVel === 0 && this.yVel === 0) {
-      this.moving = false;
-      this.jumping = false;
-      // * idle sprite animation
-
-      this.idleDirection();
-    }
+    // if (this.touchingGround() && !this.moving) this.idleDirection();
+    if (!this.moving) this.idleDirection();
   }
 
   idleDirection() {
@@ -215,9 +227,9 @@ export default class Player {
   }
 
   touchingGround() {
-    Math.floor(this.y) === 480
-      ? console.log('touching ground')
-      : console.log('no touchie');
+    Math.floor(this.y) > 478;
+    // ? console.log('touching ground')
+    // : console.log('no touchie');
   }
 
   // dummy hitbox method
