@@ -5,7 +5,7 @@ export default class Game {
   constructor() {
     this.kickOff = this.kickOff.bind(this);
     this.animating = true;
-    // this.lastTime = 1;
+    this.lastTime = 1;
 
     this.canvas = new Canvas();
     this.stage = new Stage(this.canvas.ctx);
@@ -60,7 +60,6 @@ export default class Game {
     this.stage = new Stage(this.canvas.ctx);
     this.stage.loadCurrentStage();
 
-    // use this.animation to calculate dt
     this.animate();
   }
 
@@ -71,11 +70,9 @@ export default class Game {
 
     if (this.animating && deltaTime > this.fpsInterval) {
       this.then = now - (deltaTime % this.fpsInterval);
-      this.gameOver(); // hacky but fix this
+      this.checkGameOver(); // hacky but fix this
       this.canvas.clearCanvas();
       this.stage.updateEntities(deltaTime);
-
-      this.interval = window.requestAnimationFrame(this.animation);
     }
   }
 
@@ -84,8 +81,8 @@ export default class Game {
     this.animating = false;
   }
 
-  gameOver() {
-    if (this.stage.score > 80) {
+  checkGameOver() {
+    if (this.stage.currentCountDown() <= 0) {
       this.animating = false;
       let gameOverMessages = document.getElementById('game-end');
       gameOverMessages.classList.remove('hidden');
@@ -137,5 +134,3 @@ export default class Game {
     this.muteMusic();
   }
 }
-
-// let lastTime = 1;

@@ -15,7 +15,7 @@ export default class Stage {
     this.width = this.ctx.canvas.width;
     this.height = this.ctx.canvas.height;
     this.score = 0;
-    this.currentCountDown = this.createCountDown(10);
+    this.currentCountDown = this.createCountDown(30);
     // this.currentCountDown = this.createCountDown(60000);
 
     this.items = [];
@@ -98,7 +98,7 @@ export default class Stage {
     this.ctx.fillStyle = 'white';
     this.ctx.fillText(`Timer: ${this.currentCountDown()}`, 327, 52);
 
-    if (parseInt(this.currentCountDown()) <= 0) console.log('banana!');
+    // if (parseInt(this.currentCountDown()) <= 0) console.log('banana!');
   }
 
   updateItems(deltaTime) {

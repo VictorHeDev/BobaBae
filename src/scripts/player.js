@@ -83,7 +83,7 @@ export default class Player {
       this.height
     );
 
-    this.drawHitbox(); // ! comment this out to hide HB
+    // this.drawHitbox(); // ! comment this out to hide HB
   }
 
   drawSprite(img, sX, sY, sW, sH, dX, dY, dW, dH) {
