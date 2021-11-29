@@ -15,6 +15,9 @@ export default class Stage {
     this.width = this.ctx.canvas.width;
     this.height = this.ctx.canvas.height;
     this.score = 0;
+    this.currentCountDown = this.createCountDown(10000);
+    // this.currentCountDown = this.createCountDown(60000);
+
     this.items = [];
     this.createItemTimer = 1500; // delays the items falling from the sky ... maybe create a ready set go
     this.itemTimerReset = 0;
@@ -66,6 +69,7 @@ export default class Stage {
   renderEntities() {
     this.renderBackground();
     this.renderScore();
+    this.renderTimer();
   }
 
   renderBackground() {
@@ -84,6 +88,18 @@ export default class Stage {
     this.ctx.fillText(`Score: ${this.score}`, 25, 50);
     this.ctx.fillStyle = 'white';
     this.ctx.fillText(`Score: ${this.score}`, 27, 52);
+  }
+
+  renderTimer() {
+    let currTimerValue = this.currentCountDown().toString().slice(0, 2);
+
+    this.ctx.font = '30px Arial';
+    this.ctx.fillStyle = 'red';
+    this.ctx.fillText(`Timer: ${currTimerValue}`, 205, 50);
+    this.ctx.fillStyle = 'white';
+    this.ctx.fillText(`Timer: ${currTimerValue}`, 207, 52);
+
+    if (parseInt(this.currentCountDown()) <= 0) console.log('banana!');
   }
 
   updateItems(deltaTime) {
@@ -105,7 +121,6 @@ export default class Stage {
   }
 
   drawItems() {
-    // ctx.drawImage(backgroundImg, 0, 0);
     this.items.forEach((item) => {
       item.draw(this.ctx);
     });
@@ -147,7 +162,6 @@ export default class Stage {
   }
 
   playerItemCollisionDetection() {
-    // iterate through the items array
     this.items.forEach((item) => {
       // for each obj, check their x and y coordinates
       // compare them to the player's x and y coordinates
@@ -173,27 +187,19 @@ export default class Stage {
       } else {
         // collision detected
         this.incrementScore(item);
-
         // console.log('collision!')
       }
-
-      // if (this.currentPlayer.x > item.x + item.width ||
-      //     this.currentPlayer.x + this.currentPlayer.width < item.x ||
-      //     this.currentPlayer.y > item.y + item.height ||
-      //     this.currentPlayer.y + this.currentPlayer.height < item.y) {
-      //         // no collision
-      //         // do nothing
-      //     } else {
-      //         // collision detected
-      //         console.log("Collision detected");
-      //         item.playerCollision = true;
-      //         this.incrementScore(item);
-      //     }
     });
   }
 
   incrementScore(item) {
     this.score += item.value;
     item.playerCollision = true;
+  }
+
+  createCountDown(timeRemaining) {
+    let startTime = Date.now();
+
+    return () => timeRemaining - (Date.now() - startTime);
   }
 }
