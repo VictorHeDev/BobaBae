@@ -44,17 +44,13 @@ export default class Player {
 
     this.jumpSound = new Audio();
     this.jumpSound.src = 'src/sounds/jump.flac';
-
-    // not totally necessary
-    // this.eventListener = this.eventListener.bind(this);
   }
 
   // * draw and render methods
   update() {
     this.movePlayer(this.keys);
     this.yVel += this.gravity;
-    // maybe move this outside or within animation loop
-    // or throw within player update function
+
     this.x += this.xVel;
     this.y += this.yVel;
 
@@ -71,7 +67,6 @@ export default class Player {
     }
 
     this.checkIfNotMoving();
-    // this.touchingGround();
   }
 
   draw() {
@@ -106,18 +101,14 @@ export default class Player {
   movePlayer(keys) {
     if (keys['KeyW'] || keys['ArrowUp']) {
       this.jump();
-      // console.log("up");
-      // changed from measuring jumping as a boolean to double jumping based on falling frames
     }
 
     if (keys['KeyA'] || keys['ArrowLeft']) {
       this.moveLeft();
-      // console.log("left");
     }
 
     if (keys['KeyD'] || keys['ArrowRight']) {
       this.moveRight();
-      // console.log("right");
     }
   }
 
@@ -141,11 +132,11 @@ export default class Player {
       'keyup',
       function (event) {
         // check to see if wad or arrow keys are up
-        // then add friction and gravity
+
         event.preventDefault();
         // console.log('keyup')
         delete this.keys[event.code];
-        this.moving = false; // hmm. ...
+        this.moving = false;
       }.bind(this),
       true
     );
@@ -156,7 +147,7 @@ export default class Player {
       this.yVel -= this.maxJumpPower;
       this.jumpSound.play();
       this.jumping = true; // need to be true for no double jump
-      this.moving = true;
+      // this.moving = true;
 
       this.facingRight ? (this.frameY = 2) : (this.frameY = 5);
     }
@@ -178,36 +169,16 @@ export default class Player {
     this.frameY = 0;
   }
 
-  // Low level movement and position methods
-  // outOfBounds() {
-  //   if (this.x < 0) {
-  //     // check for left offscreen
-  //     this.x = 0;
-  //     this.xVel = 0;
-  //     this.y = this.baseline; // TODO yea that's a tmr problem
-  //   } else if (this.x > 800 - this.width) {
-  //     // check for right offscreen
-  //     this.x = 800 - this.width;
-  //     this.y = this.baseline; // TODO char goes straight down at edge :(
-  //     this.xVel = 0;
-  //   } else if (this.y > this.baseline) {
-  //     // check if on ground
-  //     this.y = this.baseline;
-  //     this.jumping = false;
-  //   }
-  // }
-
   // *  implement wrap
   outOfBounds() {
     if (this.spriteWidth / 2 + this.x < 0) {
       // check for left offscreen
       this.x = 800;
-      // this.xVel = 0;
-      this.y = this.baseline; // TODO yea that's a tmr problem
+      this.y = this.baseline;
     } else if (this.x > 800) {
       // check for right offscreen
       this.x = 0;
-      // this.y = this.baseline; // TODO char goes straight down at edge :(
+      this.y = this.baseline;
       // this.xVel = 0;
     } else if (this.y > this.baseline) {
       // check if on ground
@@ -226,14 +197,7 @@ export default class Player {
     this.facingRight ? (this.frameY = 1) : (this.frameY = 4);
   }
 
-  touchingGround() {
-    Math.floor(this.y) > 478;
-    // ? console.log('touching ground')
-    // : console.log('no touchie');
-  }
-
   // dummy hitbox method
-  //   tester rectangle
   // okay hitbox example that I'm semi happy with
   drawHitbox() {
     this.ctx.beginPath();
