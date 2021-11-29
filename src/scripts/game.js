@@ -31,14 +31,17 @@ export default class Game {
 
     // use this.animation to calculate dt
     this.animation = (timeStamp) => {
-      this.canvas.clearCanvas();
       const deltaTime = timeStamp - lastTime;
+
       lastTime = timeStamp;
+      let setFps = 1000 / 60; // hard coding fps
 
       // console.log(deltaTime); // runs at about 16
 
-      if (this.animating) {
+      if (this.animating && deltaTime > setFps) {
+        lastTime = timeStamp - (deltaTime % setFps);
         this.gameOver(); // hacky but fix this
+        this.canvas.clearCanvas();
         this.stage.updateEntities(deltaTime);
         // this.stage.drawEntities()
         // this.handleMusicOptions(); // take out of animation loop

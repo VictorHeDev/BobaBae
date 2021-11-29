@@ -51,7 +51,7 @@ export default class Player {
 
   // draw and render methods
 
-  update() {
+  update(deltaTime) {
     // need to figure out the order of operations for this thing
     // place this.frameX or this.frameY++ in here later to control animations
     this.movePlayer(this.keys);
@@ -65,7 +65,7 @@ export default class Player {
     this.yVel *= this.friction;
 
     this.outOfBounds();
-    this.handlePlayerFrame();
+    this.handlePlayerFrame(deltaTime);
   }
 
   draw() {
@@ -89,11 +89,15 @@ export default class Player {
   }
 
   // mess with later in order to get the framecount just right
-  handlePlayerFrame() {
+  handlePlayerFrame(deltaTime) {
+    console.log(deltaTime);
     if (this.frameX < 3 && this.moving) {
       this.frameX++;
+
+      // this.frameX = deltaTime
     } else {
-      this.frameX = 2;
+      this.frameX = 0;
+      // this.frameY = 1;
     }
   }
 
@@ -150,7 +154,7 @@ export default class Player {
       this.yVel -= this.maxJumpPower;
       this.jumpSound.play();
       this.jumping = true; // need to be true for no double jump
-      // this.moving = true;
+      this.moving = true;
 
       this.frameY = 2;
     }
@@ -158,14 +162,14 @@ export default class Player {
 
   moveLeft() {
     if (this.xVel > -this.maxVel) this.xVel -= 0.4;
-    // this.moving = true;
+    this.moving = true;
 
     this.frameY = 3;
   }
 
   moveRight() {
     if (this.xVel < this.maxVel) this.xVel += 0.4;
-    // this.moving = true;
+    this.moving = true;
 
     this.frameY = 0;
   }

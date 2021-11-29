@@ -13,7 +13,7 @@ export default class Item {
     this.y += this.velY * deltaTime;
     if (this.y - this.height > this.stage.height) {
       this.offScreen = true;
-      console.log(deltaTime);
+      // console.log(deltaTime);
     }
   }
 
