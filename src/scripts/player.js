@@ -4,15 +4,15 @@
 export default class Player {
   constructor(ctx) {
     this.ctx = ctx;
-    // player variables
-    // position player to the middle of the street
+    // * player variables - position player to the middle of the street
     this.x = 400;
     this.y = 300; // regular is 520 but I might keep this because I want the player to start with falling from the sky because it's funny
 
-    // change the width and height to scale player sprite
-    this.width = 52;
-    this.height = 70;
+    // *  change the width and height to scale player sprite
+    this.width = 52 * 1.2;
+    this.height = 70 * 1.2;
 
+    // * Having to do with the actual spritesheet
     this.spriteWidth = 52;
     this.spriteHeight = 70;
     this.frameX = 0;
@@ -34,6 +34,7 @@ export default class Player {
     // this.numMaxJumps = 2;
     this.keys = []; // using to keep track of number of keypresses and allow for two directions to be recognized at the same time
 
+    this.frameCounter = 0;
     this.hbx = this.x + this.width / 2;
     this.hby = this.y + this.height / 2;
     this.hbWidth = 80 / 2; // change this to this.width
@@ -47,6 +48,8 @@ export default class Player {
 
     // not totally necessary
     // this.eventListener = this.eventListener.bind(this);
+
+    this.currentFrame = 1;
   }
 
   // draw and render methods
@@ -65,7 +68,13 @@ export default class Player {
     this.yVel *= this.friction;
 
     this.outOfBounds();
-    this.handlePlayerFrame(deltaTime);
+
+    if (this.currentFrame === 8) {
+      this.handlePlayerFrame(deltaTime);
+      this.currentFrame = 0;
+    } else {
+      this.currentFrame++;
+    }
   }
 
   draw() {
@@ -90,10 +99,10 @@ export default class Player {
 
   // mess with later in order to get the framecount just right
   handlePlayerFrame(deltaTime) {
-    console.log(deltaTime);
+    // console.log(deltaTime);
+
     if (this.frameX < 3 && this.moving) {
       this.frameX++;
-
       // this.frameX = deltaTime
     } else {
       this.frameX = 0;
