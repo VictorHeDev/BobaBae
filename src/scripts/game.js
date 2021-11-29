@@ -5,7 +5,7 @@ export default class Game {
   constructor() {
     this.kickOff = this.kickOff.bind(this);
     this.animating = true;
-    this.lastTime = 1;
+    // this.lastTime = 1;
 
     this.canvas = new Canvas();
     this.stage = new Stage(this.canvas.ctx);
@@ -19,6 +19,10 @@ export default class Game {
 
     this.handleMusicOptions = this.handleMusicOptions.bind(this);
     this.bgMusic.play();
+
+    this.animate = this.animate.bind(this);
+    this.fpsInterval = 1000 / 60;
+    this.then = performance.now();
   }
 
   // call for window.requestAnimationFrame which takes it a callback to itself for recursive loop
@@ -57,26 +61,22 @@ export default class Game {
     this.stage.loadCurrentStage();
 
     // use this.animation to calculate dt
-    this.animation = (timeStamp) => {
-      const deltaTime = timeStamp - this.lastTime;
-      // console.log(timeStamp);
+    this.animate();
+  }
 
-      this.lastTime = timeStamp;
-      let setFps = 1000 / 60; // hard coding fps
+  animate() {
+    requestAnimationFrame(this.animate);
+    let now = performance.now();
+    const deltaTime = now - this.then;
 
-      // console.log(deltaTime); // runs at about 16
+    if (this.animating && deltaTime > this.fpsInterval) {
+      this.then = now - (deltaTime % this.fpsInterval);
+      this.gameOver(); // hacky but fix this
+      this.canvas.clearCanvas();
+      this.stage.updateEntities(deltaTime);
 
-      if (this.animating && deltaTime > setFps) {
-        this.lastTime = timeStamp - (deltaTime % setFps);
-        this.gameOver(); // hacky but fix this
-        this.canvas.clearCanvas();
-        this.stage.updateEntities(deltaTime);
-
-        this.interval = window.requestAnimationFrame(this.animation);
-      }
-    };
-    // calls recursively and passes in timeStamp variable
-    window.requestAnimationFrame(this.animation);
+      this.interval = window.requestAnimationFrame(this.animation);
+    }
   }
 
   pause() {
