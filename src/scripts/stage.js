@@ -15,7 +15,7 @@ export default class Stage {
     this.width = this.ctx.canvas.width;
     this.height = this.ctx.canvas.height;
     this.score = 0;
-    this.currentCountDown = this.createCountDown(10000);
+    this.currentCountDown = this.createCountDown(30);
     // this.currentCountDown = this.createCountDown(60000);
 
     this.items = [];
@@ -91,15 +91,16 @@ export default class Stage {
   }
 
   renderTimer() {
-    let currTimerValue = this.currentCountDown().toString().slice(0, 2);
+    // let currTimerValue = this.currentCountDown().toString().slice(0, 2);
 
+    let currTimerValue = this.currentCountDown();
     this.ctx.font = '30px Arial';
     this.ctx.fillStyle = 'red';
     this.ctx.fillText(`Timer: ${currTimerValue}`, 205, 50);
     this.ctx.fillStyle = 'white';
     this.ctx.fillText(`Timer: ${currTimerValue}`, 207, 52);
 
-    if (parseInt(this.currentCountDown()) <= 0) console.log('banana!');
+    // if (parseInt(this.currentCountDown()) <= 0) console.log('banana!');
   }
 
   updateItems(deltaTime) {
@@ -198,8 +199,11 @@ export default class Stage {
   }
 
   createCountDown(timeRemaining) {
-    let startTime = Date.now();
+    // Math.floor(Date.now() / 1000)
 
-    return () => timeRemaining - (Date.now() - startTime);
+    let startTime = Math.floor(Date.now() / 1000);
+
+    // return () => timeRemaining - (Date.now() - startTime);
+    return () => timeRemaining - (Math.floor(Date.now() / 1000) - startTime);
   }
 }
