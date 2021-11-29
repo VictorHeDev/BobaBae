@@ -1,10 +1,10 @@
 import Item from './item.js';
 
-export default class Boba extends Item {
+export default class Jordan extends Item {
   constructor(stage) {
     super(stage);
-    this.spriteWidth = 769;
-    this.spriteHeight = 770;
+    this.spriteWidth = 810;
+    this.spriteHeight = 810;
     // modifier must be the same
     this.width = 60;
     this.height = 60;
@@ -12,7 +12,7 @@ export default class Boba extends Item {
     this.y = 10;
     // can also do this with id or query selector
     this.image = new Image();
-    this.image.src = 'src/images/boba.png';
+    this.image.src = 'src/images/off-white.png';
     this.velY = Math.random() * 0.1 + 0.1;
     this.value = 20;
   }

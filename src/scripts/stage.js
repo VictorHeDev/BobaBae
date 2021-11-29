@@ -16,7 +16,15 @@ export default class Stage {
     this.items = [];
     this.createItemTimer = 1500; // delays the items falling from the sky ... maybe create a ready set go
     this.itemTimerReset = 0;
-    this.itemTypes = ['boba', 'bee', 'redEnvelope', 'tesla', 'ring', 'jersey'];
+    this.itemTypes = [
+      'boba',
+      'bee',
+      'redEnvelope',
+      'tesla',
+      'ring',
+      'jersey',
+      'jordan',
+    ];
     this.background = new Image();
     this.background.src = 'src/images/cyberpunk-bg.png';
   }
@@ -122,6 +130,9 @@ export default class Stage {
         break;
       case 'jersey':
         this.items.push(new Jersey(this));
+        break;
+      case 'jordan':
+        this.items.push(new Jordan(this));
         break;
       default:
         break;
