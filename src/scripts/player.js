@@ -149,17 +149,23 @@ export default class Player {
       this.jumpSound.play();
       this.jumping = true; // need to be true for no double jump
       this.moving = true;
+
+      this.frameY = 2;
     }
   }
 
   moveLeft() {
     if (this.xVel > -this.maxVel) this.xVel -= 0.4;
     this.moving = true;
+
+    this.frameY = 3;
   }
 
   moveRight() {
     if (this.xVel < this.maxVel) this.xVel += 0.4;
     this.moving = true;
+
+    this.frameY = 0;
   }
 
   // Low level movement and position methods
