@@ -7,13 +7,11 @@
 }
 * {
   font-family: pixel, cursive;
-  color: white;
+  color: #f1f1e6;
 }
 
 body {
-  background-image: url("../src/images/tea-leaves.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-image: url("../src/images/boba-bg-2.jpg");
   /* background-position: center center; */
   display: flex;
   flex-direction: column;
@@ -24,28 +22,27 @@ body {
 
 h1 {
   color: white;
-  font-size: 64px;
+  font-size: 3.5rem;
   font-family: pixel, cursive;
-  font-weight: 800;
-  padding: 15px;
-  /* background-color: #FE5F5E; */
+  font-weight: bold;
+  padding: 1rem;
 }
 
 a {
   text-decoration: none;
-  color: white;
+  color: #f1f1e6;
 }
 
 h1,
 li {
-  color: white;
+  color: #f1f1e6;
 }
 
 /* HEADER  */
 header {
   display: flex;
   justify-content: space-between;
-  background-color: #fe5f5e;
+  background-color: #022844;
 }
 
 .personal-links {
@@ -56,8 +53,9 @@ header {
 
 .personal-links > li {
   text-transform: uppercase;
-  font-weight: 800;
-  padding: 30px;
+  font-weight: bold;
+  padding: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* NAVIGATION  */
@@ -66,14 +64,13 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 0.5rem 2rem;
 }
 
 .game-info {
   display: flex;
 }
-
-.game-info > li {
+.game-info li {
   padding: 10px;
 }
 
@@ -94,10 +91,6 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* might want to throw the background img into the game container instead */
-  /* background-image: url("../src/images/tea-leaves.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover; */
 }
 
 #game-canvas {
@@ -112,7 +105,7 @@ nav {
   position: fixed;
   /* background-color: #FEA99A; */
   border-radius: 10px;
-  border: 20px solid #fe5f5e;
+  border: 20px solid #022844;
   /* display: flex; */
   /* flex-direction: column; */
   /* justify-content: center; */
@@ -126,23 +119,23 @@ nav {
 button {
   padding: 15px;
   margin: 10px;
-  background-color: lightblue;
+  background-color: #022844;
   border-radius: 10px;
   font-size: 16px;
 }
 
 h2 {
   font-size: 48px;
-  background-color: #fe5f5e;
+  background-color: #022844;
   padding: 40px;
   text-align: center;
 }
 
 .menu-instructions {
   font-size: 18px;
-  border: 14px solid #fea99a;
+  border: 14px solid #abc5ea;
   /* border-radius: 10px; */
-  background-color: #fea99a;
+  background-color: #abc5ea;
   text-align: center;
 }
 
@@ -151,20 +144,21 @@ h2 {
 }
 
 .menu-instructions > li:last-child {
-  background-color: #fe5f5e;
+  background-color: #022844;
   border-radius: 10px;
 }
 
 #game-end {
+  width: 50%;
   position: fixed;
   border-radius: 10px;
-  border: 20px solid #fe5f5e;
+  border: 20px solid #abc5ea;
 }
 
 .game-over-messages {
   font-size: 30px;
-  border: 14 px solid #fea99a;
-  background-color: #fea99a;
+  border: 14 px solid #abc5ea;
+  background-color: #abc5ea;
   text-align: center;
 }
 
@@ -179,7 +173,7 @@ h2 {
 }
 
 .music-control {
-  background-color: #fe5f5e;
+  background-color: #022844;
   padding: 10px 20px;
   margin: 10px;
   border-radius: 10px;
@@ -190,7 +184,7 @@ h2 {
 footer {
   margin-top: auto;
   padding: 10px;
-  background-color: #fe5f5e;
+  background-color: #022844;
 }
 
 .footer-contents {
@@ -200,7 +194,8 @@ footer {
 }
 
 .footer-contents > li {
-  /* padding: 5px; */
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 5px;
 }
 
 /* FUNCTIONAL */

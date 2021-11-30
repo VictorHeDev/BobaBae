@@ -6,19 +6,29 @@
 }
 
 $game-font: pixel, cursive;
-// $primary-color:
-// $secondary-color:
-// $tertiary-color:
+// $primary-color: #534439;
+// $secondary-color: #bb6923;
+// $tertiary-color: #baa89b;
+// $quad-color: #dfe0df;
+// $primary-color: #fe5f5e;
+
+$primary-color: #022844;
+$secondary-color: #abc5ea;
+$tertiary-color: #dfa01f;
+$quad-color: #f1f1e6;
 
 * {
   font-family: $game-font;
-  color: white;
+  color: $quad-color;
 }
 
 body {
-  background-image: url('../src/images/tea-leaves.jpeg');
-  background-repeat: no-repeat;
-  background-size: cover;
+  // background-image: url('../src/images/boba-dog-bg.jpg');
+  // background-image: url('../src/images/boba-bg-3.jpg');
+  background-image: url('../src/images/boba-bg-2.jpg');
+
+  // background-repeat: no-repeat;
+  // background-size: cover;
   /* background-position: center center; */
   display: flex;
   flex-direction: column;
@@ -29,28 +39,27 @@ body {
 
 h1 {
   color: white;
-  font-size: 64px;
+  font-size: 3.5rem;
   font-family: $game-font;
-  font-weight: 800;
-  padding: 15px;
-  /* background-color: #FE5F5E; */
+  font-weight: bold;
+  padding: 1rem;
 }
 
 a {
   text-decoration: none;
-  color: white;
+  color: $quad-color;
 }
 
 h1,
 li {
-  color: white;
+  color: $quad-color;
 }
 
 /* HEADER  */
 header {
   display: flex;
   justify-content: space-between;
-  background-color: #fe5f5e;
+  background-color: $primary-color;
 }
 
 .personal-links {
@@ -61,9 +70,9 @@ header {
 
 .personal-links > li {
   text-transform: uppercase;
-  // font-family: Arial, Helvetica, sans-serif;
-  font-weight: 800;
-  padding: 30px;
+  font-weight: bold;
+  padding: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* NAVIGATION  */
@@ -72,16 +81,16 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 0.5rem 2rem;
 }
 
 .game-info {
   display: flex;
-}
 
-.game-info > li {
-  padding: 10px;
-  // font-family: Arial, Helvetica, sans-serif;
+  li {
+    padding: 10px;
+    // font-family: Arial, Helvetica, sans-serif;
+  }
 }
 
 .purpose {
@@ -103,10 +112,6 @@ nav {
   justify-content: center;
   align-items: center;
 
-  /* might want to throw the background img into the game container instead */
-  /* background-image: url("../src/images/tea-leaves.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover; */
 }
 
 #game-canvas {
@@ -121,7 +126,7 @@ nav {
   position: fixed;
   /* background-color: #FEA99A; */
   border-radius: 10px;
-  border: 20px solid #fe5f5e;
+  border: 20px solid $primary-color;
   /* display: flex; */
   /* flex-direction: column; */
   /* justify-content: center; */
@@ -136,7 +141,7 @@ nav {
 button {
   padding: 15px;
   margin: 10px;
-  background-color: lightblue;
+  background-color: $primary-color;
   border-radius: 10px;
   // font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
@@ -145,7 +150,7 @@ button {
 h2 {
   font-size: 48px;
   // font-family: Arial, Helvetica, sans-serif;
-  background-color: #fe5f5e;
+  background-color: $primary-color;
   padding: 40px;
   text-align: center;
 }
@@ -153,9 +158,9 @@ h2 {
 .menu-instructions {
   font-size: 18px;
   // font-family: Arial, Helvetica, sans-serif;
-  border: 14px solid #fea99a;
+  border: 14px solid $secondary-color;
   /* border-radius: 10px; */
-  background-color: #fea99a;
+  background-color: $secondary-color;
   text-align: center;
 }
 
@@ -164,21 +169,23 @@ h2 {
 }
 
 .menu-instructions > li:last-child {
-  background-color: #fe5f5e;
+  // background-color: #fe5f5e;
+  background-color: $primary-color;
   border-radius: 10px;
 }
 
 #game-end {
+  width: 50%;
   position: fixed;
   border-radius: 10px;
-  border: 20px solid #fe5f5e;
+  border: 20px solid $secondary-color;
 }
 
 .game-over-messages {
   font-size: 30px;
   // font-family: Arial, Helvetica, sans-serif;
-  border: 14 px solid #fea99a;
-  background-color: #fea99a;
+  border: 14 px solid $secondary-color;
+  background-color: $secondary-color;
   text-align: center;
 }
 
@@ -193,7 +200,8 @@ h2 {
 }
 
 .music-control {
-  background-color: #fe5f5e;
+  // background-color: #fe5f5e;
+  background-color: $primary-color;
   padding: 10px 20px;
   margin: 10px;
   border-radius: 10px;
@@ -204,7 +212,8 @@ h2 {
 footer {
   margin-top: auto;
   padding: 10px;
-  background-color: #fe5f5e;
+  background-color: $primary-color;
+  // background-color: #fe5f5e;
 }
 
 .footer-contents {
@@ -214,8 +223,8 @@ footer {
 }
 
 .footer-contents > li {
-  // font-family: Arial, Helvetica, sans-serif;
-  /* padding: 5px; */
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 5px;
 }
 
 /* FUNCTIONAL */
