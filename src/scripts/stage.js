@@ -83,7 +83,7 @@ export default class Stage {
   }
 
   renderScore() {
-    this.ctx.font = '30px Arial';
+    this.ctx.font = '1em pixel';
     this.ctx.fillStyle = 'red';
     this.ctx.fillText(`Score: ${this.score}`, 25, 50);
     this.ctx.fillStyle = 'white';
@@ -92,7 +92,7 @@ export default class Stage {
 
   renderTimer() {
     // let currTimerValue = this.currentCountDown().toString().slice(0, 2);
-    this.ctx.font = '30px Arial';
+    this.ctx.font = '1em pixel';
     this.ctx.fillStyle = 'red';
     this.ctx.fillText(`Timer: ${this.currentCountDown()}`, 325, 50);
     this.ctx.fillStyle = 'white';

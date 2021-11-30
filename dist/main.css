@@ -1,8 +1,12 @@
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
+@font-face {
+  font-family: pixel;
+  src: url(../src/fonts/PressStart2P-Regular.ttf);
+}
 * {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: pixel, cursive;
   color: white;
 }
 
@@ -15,12 +19,13 @@ body {
   flex-direction: column;
   min-height: 100vh;
   /* align-items: center; */
+  font-family: pixel, cursive;
 }
 
 h1 {
   color: white;
-  font-size: 68px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-size: 64px;
+  font-family: pixel, cursive;
   font-weight: 800;
   padding: 15px;
   /* background-color: #FE5F5E; */
@@ -31,7 +36,8 @@ a {
   color: white;
 }
 
-h1, li {
+h1,
+li {
   color: white;
 }
 
@@ -39,7 +45,7 @@ h1, li {
 header {
   display: flex;
   justify-content: space-between;
-  background-color: #FE5F5E;
+  background-color: #fe5f5e;
 }
 
 .personal-links {
@@ -50,7 +56,6 @@ header {
 
 .personal-links > li {
   text-transform: uppercase;
-  font-family: Arial, Helvetica, sans-serif;
   font-weight: 800;
   padding: 30px;
 }
@@ -70,12 +75,10 @@ nav {
 
 .game-info > li {
   padding: 10px;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .purpose {
   padding: 10px;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* MAIN CONTENT  */
@@ -99,8 +102,9 @@ nav {
 
 #game-canvas {
   border: 7px solid lightgrey;
-  background-color: #EEEEEF;
+  background-color: #eeeeef;
   z-index: 0;
+  font-family: pixel, cursive;
 }
 
 #start-menu {
@@ -108,7 +112,7 @@ nav {
   position: fixed;
   /* background-color: #FEA99A; */
   border-radius: 10px;
-  border: 20px solid #FE5F5E;
+  border: 20px solid #fe5f5e;
   /* display: flex; */
   /* flex-direction: column; */
   /* justify-content: center; */
@@ -124,24 +128,21 @@ button {
   margin: 10px;
   background-color: lightblue;
   border-radius: 10px;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
 }
 
 h2 {
   font-size: 48px;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #FE5F5E;
+  background-color: #fe5f5e;
   padding: 40px;
   text-align: center;
 }
 
 .menu-instructions {
-  font-size: 30px;
-  font-family: Arial, Helvetica, sans-serif;
-  border: 14px solid #FEA99A;
+  font-size: 18px;
+  border: 14px solid #fea99a;
   /* border-radius: 10px; */
-  background-color: #FEA99A;
+  background-color: #fea99a;
   text-align: center;
 }
 
@@ -150,21 +151,20 @@ h2 {
 }
 
 .menu-instructions > li:last-child {
-  background-color: #FE5F5E;
+  background-color: #fe5f5e;
   border-radius: 10px;
 }
 
 #game-end {
   position: fixed;
   border-radius: 10px;
-  border: 20px solid #FE5F5E;
+  border: 20px solid #fe5f5e;
 }
 
 .game-over-messages {
   font-size: 30px;
-  font-family: Arial, Helvetica, sans-serif;
-  border: 14 px solid #FEA99A;
-  background-color: #FEA99A;
+  border: 14 px solid #fea99a;
+  background-color: #fea99a;
   text-align: center;
 }
 
@@ -179,7 +179,7 @@ h2 {
 }
 
 .music-control {
-  background-color: #FE5F5E;
+  background-color: #fe5f5e;
   padding: 10px 20px;
   margin: 10px;
   border-radius: 10px;
@@ -190,7 +190,7 @@ h2 {
 footer {
   margin-top: auto;
   padding: 10px;
-  background-color: #FE5F5E;
+  background-color: #fe5f5e;
 }
 
 .footer-contents {
@@ -200,7 +200,6 @@ footer {
 }
 
 .footer-contents > li {
-  font-family: Arial, Helvetica, sans-serif;
   /* padding: 5px; */
 }
 
