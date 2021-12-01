@@ -134,13 +134,13 @@ h2 {
 
 .menu-instructions {
   font-size: 1.2rem;
-  line-height: 1.5rem;
+  line-height: 1.6rem;
   border: 14px solid #abc5ea;
   background-color: #abc5ea;
   text-align: center;
 }
 .menu-instructions li {
-  padding: 28px;
+  padding: 1rem;
   color: black;
 }
 

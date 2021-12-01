@@ -160,14 +160,13 @@ h2 {
 
 .menu-instructions {
   font-size: 1.2rem;
-  line-height: 1.5rem;
-  // font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6rem;
   border: 14px solid $secondary-color;
   background-color: $secondary-color;
   text-align: center;
 
   li {
-    padding: 28px;
+    padding: 1rem;
     color: black;
   }
 }
