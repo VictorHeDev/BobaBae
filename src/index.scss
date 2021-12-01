@@ -135,7 +135,7 @@ nav {
   background-color: $primary-color;
   top: 10px;
   left: 60px;
-  padding: 1rem;
+  // padding: 1rem;
   border: 8px solid $primary-color;
   border-radius: 8px;
 }
@@ -144,14 +144,28 @@ nav {
   padding: 1rem;
 
   ul {
-    padding: 2rem;
+    padding: 1rem;
     margin: auto;
     background-color: $secondary-color;
 
     li {
       line-height: 1.5rem;
       color: black;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem;
     }
+  }
+}
+
+.item-pic-container {
+  width: 3rem;
+  height: 3rem;
+
+  img {
+    width: 100%;
+    height: 100%;
   }
 }
 
