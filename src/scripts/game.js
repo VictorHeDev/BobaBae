@@ -11,7 +11,8 @@ export default class Game {
     this.stage = new Stage(this.canvas.ctx);
 
     this.bgMusic = new Audio();
-    this.bgMusic.src = 'src/sounds/champloo2.wav';
+    // this.bgMusic.src = 'src/sounds/champloo2.wav';
+    this.bgMusic.src = 'src/sounds/lostfi-galactic-strings.mp3';
     this.bgMusic.volume = 0.2;
     this.bgMusic.loop = true;
 
