@@ -32,7 +32,7 @@ h1 {
   font-size: 3.5rem;
   font-family: pixel, cursive;
   font-weight: bold;
-  padding: 1rem;
+  padding: 1rem 2rem 0.5rem 2rem;
 }
 
 /* HEADER  */
@@ -50,7 +50,7 @@ header {
 .personal-links li {
   text-transform: uppercase;
   font-weight: bold;
-  padding: 1.5rem;
+  padding: 1.2rem;
   display: flex;
   justify-content: center;
   align-items: center;

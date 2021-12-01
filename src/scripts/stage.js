@@ -83,22 +83,20 @@ export default class Stage {
   }
 
   renderScore() {
-    this.ctx.font = '1em pixel';
-    this.ctx.fillStyle = 'red';
-    this.ctx.fillText(`Score: ${this.score}`, 25, 50);
+    this.ctx.font = '1.5em pixel';
+    this.ctx.fillStyle = '#dfa01f';
+    this.ctx.fillText(`Score ${this.score}`, 25, 50);
     this.ctx.fillStyle = 'white';
-    this.ctx.fillText(`Score: ${this.score}`, 27, 52);
+    this.ctx.fillText(`Score ${this.score}`, 27, 52);
   }
 
   renderTimer() {
     // let currTimerValue = this.currentCountDown().toString().slice(0, 2);
-    this.ctx.font = '1em pixel';
-    this.ctx.fillStyle = 'red';
-    this.ctx.fillText(`Timer: ${this.currentCountDown()}`, 325, 50);
+    this.ctx.font = '1.5em pixel';
+    this.ctx.fillStyle = '#dfa01f';
+    this.ctx.fillText(`${this.currentCountDown()}`, 375, 50);
     this.ctx.fillStyle = 'white';
-    this.ctx.fillText(`Timer: ${this.currentCountDown()}`, 327, 52);
-
-    // if (parseInt(this.currentCountDown()) <= 0) console.log('banana!');
+    this.ctx.fillText(`${this.currentCountDown()}`, 377, 52);
   }
 
   updateItems(deltaTime) {
