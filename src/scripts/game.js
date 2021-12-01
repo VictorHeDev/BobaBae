@@ -86,6 +86,7 @@ export default class Game {
       this.animating = false;
       let gameOverMessages = document.getElementById('game-end');
       gameOverMessages.classList.remove('hidden');
+      this.bgMusic.muted = true;
     }
   }
 
@@ -104,33 +105,12 @@ export default class Game {
         this.bgMusic.pause();
         this.stage.currentPlayer.jumpSound.muted = true;
 
-        // console.log('paused?');
         playPauseBtn.innerHTML = 'Play';
-      }
-    });
-  }
-
-  // needs fixing
-  muteMusic() {
-    let muteBtn = document.getElementById('mute-unmute');
-    muteBtn.addEventListener('click', (mute) => {
-      mute.preventDefault();
-      if (this.bgMusic.muted) {
-        this.bgMusic.muted = false;
-        this.stage.currentPlayer.jumpSound.muted = false;
-
-        muteBtn.innerHTML = 'Mute';
-      } else {
-        this.bgMusic.muted = true;
-        this.stage.currentPlayer.jumpSound.muted = true;
-
-        muteBtn.innerHTML = 'Unmute';
       }
     });
   }
 
   handleMusicOptions() {
     this.playPauseMusic();
-    this.muteMusic();
   }
 }

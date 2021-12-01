@@ -27,13 +27,11 @@ body {
   // background-image: url('../src/images/boba-bg-3.jpg');
   background-image: url('../src/images/boba-bg-2.jpg');
 
-  // background-repeat: no-repeat;
-  // background-size: cover;
-  /* background-position: center center; */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   /* align-items: center; */
+  // justify-content: space-evenly;
   font-family: $game-font;
 }
 
@@ -54,11 +52,13 @@ h1 {
 
 /* HEADER  */
 header {
+}
+
+.header-top {
   display: flex;
   justify-content: space-between;
   background-color: $primary-color;
 }
-
 .personal-links {
   display: flex;
   justify-content: space-between;
@@ -225,9 +225,11 @@ h2 {
 /* FOOTER  */
 footer {
   margin-top: auto;
+  width: 100%;
   padding: 10px;
   background-color: $primary-color;
   // background-color: #fe5f5e;
+  // border: 1px solid red;
 }
 
 .footer-contents {
