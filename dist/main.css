@@ -87,10 +87,21 @@ nav {
 }
 
 .game-container {
+  position: relative;
   padding: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#play-pause {
+  position: absolute;
+  z-index: 2;
+  top: 45px;
+  right: 50px;
+  background-color: #abc5ea;
+  color: #022844;
+  border: 1px solid #f1f1e6;
 }
 
 #game-canvas {

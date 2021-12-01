@@ -15,8 +15,9 @@ export default class Stage {
     this.width = this.ctx.canvas.width;
     this.height = this.ctx.canvas.height;
     this.score = 0;
+
+    // ! change this later to be 60 seconds
     this.currentCountDown = this.createCountDown(30);
-    // this.currentCountDown = this.createCountDown(60000);
 
     this.items = [];
     this.createItemTimer = 1500; // delays the items falling from the sky ... maybe create a ready set go
@@ -44,12 +45,11 @@ export default class Stage {
   }
 
   loadPlayer() {
-    // throw in the constructor
+    // * throw in the constructor
     this.currentPlayer = new Player(this.ctx);
     this.currentPlayer.draw();
   }
 
-  // for new keypress version
   loadEventListeners() {
     this.currentPlayer.eventListener();
   }
@@ -61,7 +61,7 @@ export default class Stage {
     this.updateItems(deltaTime);
     this.drawItems();
 
-    // pass in deltaTime to currentPlayer.update
+    // * pass in deltaTime to currentPlayer.update
     this.currentPlayer.update(deltaTime);
     this.currentPlayer.draw();
   }
@@ -100,7 +100,6 @@ export default class Stage {
   }
 
   updateItems(deltaTime) {
-    // Remove item from the array if it is off screen
     this.items = this.items.filter(
       (item) => !item.offScreen && !item.playerCollision
     );
