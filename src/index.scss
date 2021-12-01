@@ -5,6 +5,8 @@
   src: url(../src/fonts/PressStart2P-Regular.ttf);
 }
 
+// SCSS VARIABLES
+
 $game-font: pixel, cursive;
 // $primary-color: #534439;
 // $secondary-color: #bb6923;
@@ -17,6 +19,7 @@ $secondary-color: #abc5ea;
 $tertiary-color: #dfa01f;
 $quad-color: #f1f1e6;
 
+/* GLOBAL ELEMENT TAGS */
 * {
   font-family: $game-font;
   color: $quad-color;
@@ -57,9 +60,7 @@ h5 {
   padding: 1rem;
 }
 
-// p {
-//   color: black;
-// }
+/* UTIL CLASSES */
 
 /* HEADER  */
 header {
@@ -79,8 +80,6 @@ header {
     text-transform: uppercase;
     font-weight: bold;
     padding: 1.2rem;
-    // font-size: 0.75rem;
-    // font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -114,7 +113,7 @@ nav {
   top: 10px;
   left: 10px;
   padding: 1rem;
-  border: 8px solid $primary-color;
+  border: 8px solid $tertiary-color;
   border-radius: 8px;
 }
 
@@ -136,7 +135,7 @@ nav {
   top: 10px;
   left: 60px;
   // padding: 1rem;
-  border: 8px solid $primary-color;
+  border: 8px solid $tertiary-color;
   border-radius: 8px;
 }
 
@@ -172,6 +171,7 @@ nav {
 .purpose {
   padding: 10px;
   font-size: 0.75rem;
+  cursor: default;
   // font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -183,7 +183,7 @@ nav {
   top: 10px;
   right: 10px;
   // padding: 1rem;
-  border: 8px solid $primary-color;
+  border: 8px solid $tertiary-color;
   border-radius: 8px;
 }
 
@@ -227,7 +227,8 @@ nav {
 }
 
 #game-canvas {
-  border: 7px solid lightgrey;
+  border: 7px solid $tertiary-color;
+  border-radius: 8px;
   background-color: #eeeeef;
   z-index: 0;
   font-family: $game-font;
