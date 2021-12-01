@@ -94,9 +94,9 @@ export default class Stage {
     // let currTimerValue = this.currentCountDown().toString().slice(0, 2);
     this.ctx.font = '1.5em pixel';
     this.ctx.fillStyle = '#dfa01f';
-    this.ctx.fillText(`${this.currentCountDown()}`, 375, 50);
+    this.ctx.fillText(`${this.currentCountDown()}`, 385, 50);
     this.ctx.fillStyle = 'white';
-    this.ctx.fillText(`${this.currentCountDown()}`, 377, 52);
+    this.ctx.fillText(`${this.currentCountDown()}`, 387, 52);
   }
 
   updateItems(deltaTime) {
