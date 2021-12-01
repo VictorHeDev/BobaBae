@@ -6,8 +6,8 @@ export default class Jordan extends Item {
     this.spriteWidth = 810;
     this.spriteHeight = 810;
     // modifier must be the same
-    this.width = 60;
-    this.height = 60;
+    this.width = 65;
+    this.height = 65;
     this.x = Math.random() * this.stage.width; // canvas width is 800
     this.y = 10;
     // can also do this with id or query selector

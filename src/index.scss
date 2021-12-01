@@ -54,13 +54,20 @@ h1 {
 }
 
 h5 {
-  // color: $primary-color;
   text-align: center;
   font-size: 1.5rem;
   padding: 1rem;
 }
 
+p {
+  line-height: 1.5rem;
+  color: black;
+}
+
 /* UTIL CLASSES */
+.default-cursor {
+  cursor: default;
+}
 
 /* HEADER  */
 header {
@@ -84,6 +91,10 @@ header {
     justify-content: center;
     align-items: center;
   }
+
+  li:last-child {
+    margin-right: 1rem;
+  }
 }
 
 /* NAVIGATION  */
@@ -105,6 +116,14 @@ nav {
   }
 }
 
+.instructions,
+.items,
+.purpose {
+  &:hover {
+    color: $tertiary-color;
+  }
+}
+
 #instructions-container {
   position: absolute;
   width: 30rem;
@@ -120,11 +139,6 @@ nav {
 .instructions-content {
   padding: 1rem;
   background-color: $secondary-color;
-
-  p {
-    line-height: 1.5rem;
-    color: black;
-  }
 }
 
 #items-container {
@@ -134,7 +148,6 @@ nav {
   background-color: $primary-color;
   top: 10px;
   left: 60px;
-  // padding: 1rem;
   border: 8px solid $tertiary-color;
   border-radius: 8px;
 }
@@ -172,7 +185,6 @@ nav {
   padding: 10px;
   font-size: 0.75rem;
   cursor: default;
-  // font-family: Arial, Helvetica, sans-serif;
 }
 
 #purpose-container {
@@ -190,11 +202,6 @@ nav {
 .purpose-content {
   padding: 1rem;
   background-color: $secondary-color;
-
-  p {
-    line-height: 1.5rem;
-    color: black;
-  }
 }
 
 /* MAIN CONTENT  */
@@ -224,6 +231,10 @@ nav {
   background-color: $secondary-color;
   color: $primary-color;
   border: 1px solid $quad-color;
+
+  &:hover {
+    background-color: $tertiary-color;
+  }
 }
 
 #game-canvas {
@@ -235,17 +246,9 @@ nav {
 }
 
 #start-menu {
-  /* background-color: black; */
   position: fixed;
-  /* background-color: #FEA99A; */
   border-radius: 10px;
   border: 20px solid $primary-color;
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* justify-content: center; */
-  /* align-items: center; */
-  /* border: 2px solid red; */
-
   z-index: 2;
   height: 600px;
   width: 800px;
@@ -256,10 +259,13 @@ button {
   margin: 10px;
   background-color: $primary-color;
   border-radius: 10px;
-  // font-family: Arial, Helvetica, sans-serif;
+  border: 2px solid $quad-color;
   font-size: 16px;
-  // color: $tertiary-color;
   cursor: pointer;
+
+  &:hover {
+    background-color: $tertiary-color;
+  }
 }
 
 h2 {

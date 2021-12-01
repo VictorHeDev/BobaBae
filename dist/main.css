@@ -41,7 +41,16 @@ h5 {
   padding: 1rem;
 }
 
+p {
+  line-height: 1.5rem;
+  color: black;
+}
+
 /* UTIL CLASSES */
+.default-cursor {
+  cursor: default;
+}
+
 /* HEADER  */
 .header-top {
   display: flex;
@@ -62,6 +71,9 @@ h5 {
   justify-content: center;
   align-items: center;
 }
+.personal-links li:last-child {
+  margin-right: 1rem;
+}
 
 /* NAVIGATION  */
 nav {
@@ -80,6 +92,12 @@ nav {
   font-size: 0.75rem;
 }
 
+.instructions:hover,
+.items:hover,
+.purpose:hover {
+  color: #dfa01f;
+}
+
 #instructions-container {
   position: absolute;
   width: 30rem;
@@ -95,10 +113,6 @@ nav {
 .instructions-content {
   padding: 1rem;
   background-color: #abc5ea;
-}
-.instructions-content p {
-  line-height: 1.5rem;
-  color: black;
 }
 
 #items-container {
@@ -159,10 +173,6 @@ nav {
   padding: 1rem;
   background-color: #abc5ea;
 }
-.purpose-content p {
-  line-height: 1.5rem;
-  color: black;
-}
 
 /* MAIN CONTENT  */
 .main-content {
@@ -192,6 +202,9 @@ nav {
   color: #022844;
   border: 1px solid #f1f1e6;
 }
+#play-pause:hover {
+  background-color: #dfa01f;
+}
 
 #game-canvas {
   border: 7px solid #dfa01f;
@@ -202,16 +215,9 @@ nav {
 }
 
 #start-menu {
-  /* background-color: black; */
   position: fixed;
-  /* background-color: #FEA99A; */
   border-radius: 10px;
   border: 20px solid #022844;
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* justify-content: center; */
-  /* align-items: center; */
-  /* border: 2px solid red; */
   z-index: 2;
   height: 600px;
   width: 800px;
@@ -222,8 +228,12 @@ button {
   margin: 10px;
   background-color: #022844;
   border-radius: 10px;
+  border: 2px solid #f1f1e6;
   font-size: 16px;
   cursor: pointer;
+}
+button:hover {
+  background-color: #dfa01f;
 }
 
 h2 {

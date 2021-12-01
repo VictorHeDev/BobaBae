@@ -6,8 +6,8 @@ export default class Dj extends Item {
     this.spriteWidth = 897;
     this.spriteHeight = 896;
     // modifier must be the same
-    this.width = 60;
-    this.height = 60;
+    this.width = 70;
+    this.height = 70;
     this.x = Math.random() * this.stage.width; // canvas width is 800
     this.y = 10;
     // can also do this with id or query selector

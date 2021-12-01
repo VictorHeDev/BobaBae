@@ -17,7 +17,7 @@ export default class Stage {
     this.score = 0;
 
     // ! change this later to be 60 seconds
-    this.currentCountDown = this.createCountDown(10);
+    this.currentCountDown = this.createCountDown(60);
 
     this.items = [];
     this.createItemTimer = 1500; // delays the items falling from the sky ... maybe create a ready set go
