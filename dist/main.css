@@ -100,10 +100,10 @@ nav {
 
 #instructions-container {
   position: absolute;
-  width: 30rem;
+  width: 25rem;
   z-index: 5;
   background-color: #022844;
-  top: 10px;
+  top: 5px;
   left: 10px;
   padding: 1rem;
   border: 8px solid #dfa01f;
@@ -120,7 +120,7 @@ nav {
   width: 25rem;
   z-index: 5;
   background-color: #022844;
-  top: 10px;
+  top: 5px;
   left: 60px;
   border: 8px solid #dfa01f;
   border-radius: 8px;
@@ -160,11 +160,12 @@ nav {
 
 #purpose-container {
   position: absolute;
-  width: 25rem;
+  width: 20rem;
   z-index: 5;
   background-color: #022844;
-  top: 10px;
+  top: 5px;
   right: 10px;
+  padding: 1rem;
   border: 8px solid #dfa01f;
   border-radius: 8px;
 }

@@ -126,10 +126,10 @@ nav {
 
 #instructions-container {
   position: absolute;
-  width: 30rem;
+  width: 25rem;
   z-index: 5;
   background-color: $primary-color;
-  top: 10px;
+  top: 5px;
   left: 10px;
   padding: 1rem;
   border: 8px solid $tertiary-color;
@@ -146,7 +146,7 @@ nav {
   width: 25rem;
   z-index: 5;
   background-color: $primary-color;
-  top: 10px;
+  top: 5px;
   left: 60px;
   border: 8px solid $tertiary-color;
   border-radius: 8px;
@@ -189,12 +189,12 @@ nav {
 
 #purpose-container {
   position: absolute;
-  width: 25rem;
+  width: 20rem;
   z-index: 5;
   background-color: $primary-color;
-  top: 10px;
+  top: 5px;
   right: 10px;
-  // padding: 1rem;
+  padding: 1rem;
   border: 8px solid $tertiary-color;
   border-radius: 8px;
 }
