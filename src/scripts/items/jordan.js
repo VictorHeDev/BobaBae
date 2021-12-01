@@ -14,6 +14,6 @@ export default class Jordan extends Item {
     this.image = new Image();
     this.image.src = 'src/images/off-white.png';
     this.velY = Math.random() * 0.05 + 0.1;
-    this.value = 25;
+    this.value = 30;
   }
 }

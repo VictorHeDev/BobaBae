@@ -39,6 +39,14 @@ window.addEventListener('DOMContentLoaded', () => {
   items.addEventListener('mouseleave', (e) => {
     hideItems();
   });
+
+  const purpose = document.querySelector('.purpose');
+  purpose.addEventListener('mouseenter', (e) => {
+    revealPurpose();
+  });
+  purpose.addEventListener('mouseleave', (e) => {
+    hidePurpose();
+  });
 });
 
 function removeMenu() {
@@ -69,4 +77,14 @@ function revealItems() {
 function hideItems() {
   let itemsLegend = document.getElementById('items-container');
   itemsLegend.classList.add('hidden');
+}
+
+function revealPurpose() {
+  let purposeLegend = document.getElementById('purpose-container');
+  purposeLegend.classList.remove('hidden');
+}
+
+function hidePurpose() {
+  let purposeLegend = document.getElementById('purpose-container');
+  purposeLegend.classList.add('hidden');
 }

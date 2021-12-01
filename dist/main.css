@@ -141,6 +141,26 @@ nav {
   font-size: 0.75rem;
 }
 
+#purpose-container {
+  position: absolute;
+  width: 25rem;
+  z-index: 5;
+  background-color: #022844;
+  top: 10px;
+  right: 10px;
+  border: 8px solid #022844;
+  border-radius: 8px;
+}
+
+.purpose-content {
+  padding: 1rem;
+  background-color: #abc5ea;
+}
+.purpose-content p {
+  line-height: 1.5rem;
+  color: black;
+}
+
 /* MAIN CONTENT  */
 .main-content {
   position: relative;

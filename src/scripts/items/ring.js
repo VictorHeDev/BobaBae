@@ -14,7 +14,7 @@ export default class Ring extends Item {
     this.image = new Image();
     this.image.src = 'src/images/ring.png';
     this.velY = Math.random() * 0.1 + 0.05;
-    this.value = -100;
+    this.value = -25;
 
     // decrement life :(
   }
