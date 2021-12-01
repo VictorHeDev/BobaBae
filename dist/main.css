@@ -20,22 +20,19 @@ body {
   font-family: pixel, cursive;
 }
 
+h1,
+li,
+a {
+  color: #f1f1e6;
+  text-decoration: none;
+}
+
 h1 {
   color: white;
   font-size: 3.5rem;
   font-family: pixel, cursive;
   font-weight: bold;
   padding: 1rem;
-}
-
-a {
-  text-decoration: none;
-  color: #f1f1e6;
-}
-
-h1,
-li {
-  color: #f1f1e6;
 }
 
 /* HEADER  */
@@ -50,12 +47,13 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-
-.personal-links > li {
+.personal-links li {
   text-transform: uppercase;
   font-weight: bold;
-  padding: 2rem;
-  font-family: Arial, Helvetica, sans-serif;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* NAVIGATION  */
@@ -72,10 +70,12 @@ nav {
 }
 .game-info li {
   padding: 10px;
+  font-size: 0.75rem;
 }
 
 .purpose {
   padding: 10px;
+  font-size: 0.75rem;
 }
 
 /* MAIN CONTENT  */
@@ -122,25 +122,26 @@ button {
   background-color: #022844;
   border-radius: 10px;
   font-size: 16px;
+  cursor: pointer;
 }
 
 h2 {
-  font-size: 48px;
+  font-size: 36px;
   background-color: #022844;
-  padding: 40px;
+  padding: 2rem;
   text-align: center;
 }
 
 .menu-instructions {
-  font-size: 18px;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
   border: 14px solid #abc5ea;
-  /* border-radius: 10px; */
   background-color: #abc5ea;
   text-align: center;
 }
-
-.menu-instructions > li {
+.menu-instructions li {
   padding: 28px;
+  color: black;
 }
 
 .menu-instructions > li:last-child {
@@ -200,5 +201,5 @@ footer {
 
 /* FUNCTIONAL */
 .hidden {
-  display: none;
+  visibility: hidden;
 }
