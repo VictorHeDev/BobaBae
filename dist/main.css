@@ -34,6 +34,12 @@ h1 {
   padding: 1rem 2rem 0.5rem 2rem;
 }
 
+h5 {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+
 /* HEADER  */
 .header-top {
   display: flex;
@@ -70,6 +76,52 @@ nav {
 .game-info li {
   padding: 10px;
   font-size: 0.75rem;
+}
+
+#instructions-container {
+  position: absolute;
+  width: 30rem;
+  z-index: 5;
+  background-color: #022844;
+  top: 10px;
+  left: 10px;
+  padding: 1rem;
+  border: 8px solid #022844;
+  border-radius: 8px;
+}
+
+.instructions-content {
+  padding: 1rem;
+  background-color: #abc5ea;
+}
+.instructions-content p {
+  line-height: 1.5rem;
+  color: black;
+}
+
+#items-container {
+  position: absolute;
+  width: 25rem;
+  z-index: 5;
+  background-color: #022844;
+  top: 10px;
+  left: 60px;
+  padding: 1rem;
+  border: 8px solid #022844;
+  border-radius: 8px;
+}
+
+.items-content {
+  padding: 1rem;
+}
+.items-content ul {
+  padding: 2rem;
+  margin: auto;
+  background-color: #abc5ea;
+}
+.items-content ul li {
+  line-height: 1.5rem;
+  color: black;
 }
 
 .purpose {

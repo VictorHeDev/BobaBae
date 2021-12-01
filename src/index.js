@@ -24,8 +24,21 @@ window.addEventListener('DOMContentLoaded', () => {
     game.kickOff();
   });
 
-  const instructions =
+  const instructions = document.querySelector('.instructions');
+  instructions.addEventListener('mouseenter', (e) => {
+    revealInstructions();
+  });
+  instructions.addEventListener('mouseleave', (e) => {
+    hideInstructions();
+  });
 
+  const items = document.querySelector('.items');
+  items.addEventListener('mouseenter', (e) => {
+    revealItems();
+  });
+  items.addEventListener('mouseleave', (e) => {
+    hideItems();
+  });
 });
 
 function removeMenu() {
@@ -39,21 +52,21 @@ function hideGameOverMessage() {
 }
 
 function revealInstructions() {
-  let instructionsLegend = document.getElementById("instructions-container");
+  let instructionsLegend = document.getElementById('instructions-container');
   instructionsLegend.classList.remove('hidden');
 }
 
 function hideInstructions() {
-  let instructionsLegend = document.getElementById("instructions-container");
+  let instructionsLegend = document.getElementById('instructions-container');
   instructionsLegend.classList.add('hidden');
 }
 
 function revealItems() {
-  let itemsLegend = document.getElementById("items-container");
+  let itemsLegend = document.getElementById('items-container');
   itemsLegend.classList.remove('hidden');
 }
 
 function hideItems() {
-  let itemsLegend = document.getElementById("items-container");
+  let itemsLegend = document.getElementById('items-container');
   itemsLegend.classList.add('hidden');
 }
