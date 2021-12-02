@@ -216,10 +216,10 @@ nav {
 }
 
 #start-menu {
-  position: fixed;
+  position: absolute;
   border-radius: 10px;
   border: 20px solid #022844;
-  z-index: 2;
+  z-index: 20;
   height: 600px;
   width: 800px;
 }

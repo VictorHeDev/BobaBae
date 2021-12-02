@@ -25,6 +25,11 @@ $quad-color: #f1f1e6;
   color: $quad-color;
 }
 
+html,
+body {
+  width: 100%;
+}
+
 body {
   // background-image: url('../src/images/boba-dog-bg.jpg');
   // background-image: url('../src/images/boba-bg-3.jpg');
@@ -71,6 +76,7 @@ p {
 
 /* HEADER  */
 header {
+  width: 100%;
 }
 
 .header-top {
@@ -246,10 +252,10 @@ nav {
 }
 
 #start-menu {
-  position: fixed;
+  position: absolute;
   border-radius: 10px;
   border: 20px solid $primary-color;
-  z-index: 2;
+  z-index: 10;
   height: 600px;
   width: 800px;
 }
@@ -334,8 +340,6 @@ footer {
   width: 100%;
   padding: 10px;
   background-color: $primary-color;
-  // background-color: #fe5f5e;
-  // border: 1px solid red;
 }
 
 .footer-contents {
