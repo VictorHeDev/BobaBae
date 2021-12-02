@@ -11,6 +11,11 @@
   color: #f1f1e6;
 }
 
+html,
+body {
+  width: 100%;
+}
+
 body {
   background-image: url("../src/images/boba-bg-2.jpg");
   display: flex;
@@ -52,6 +57,10 @@ p {
 }
 
 /* HEADER  */
+header {
+  width: 100%;
+}
+
 .header-top {
   display: flex;
   justify-content: space-between;
@@ -219,7 +228,7 @@ nav {
   position: absolute;
   border-radius: 10px;
   border: 20px solid #022844;
-  z-index: 20;
+  z-index: 10;
   height: 600px;
   width: 800px;
 }
@@ -263,7 +272,7 @@ h2 {
 
 #game-end {
   width: 45rem;
-  position: fixed;
+  position: absolute;
   border-radius: 10px;
   border: 20px solid #abc5ea;
 }
