@@ -133,7 +133,7 @@ nav {
 #instructions-container {
   position: absolute;
   width: 25rem;
-  z-index: 5;
+  z-index: 10;
   background-color: $primary-color;
   top: 5px;
   left: 10px;
@@ -150,7 +150,7 @@ nav {
 #items-container {
   position: absolute;
   width: 25rem;
-  z-index: 5;
+  z-index: 10;
   background-color: $primary-color;
   top: 5px;
   left: 60px;
@@ -196,7 +196,7 @@ nav {
 #purpose-container {
   position: absolute;
   width: 20rem;
-  z-index: 5;
+  z-index: 10;
   background-color: $primary-color;
   top: 5px;
   right: 10px;
@@ -255,7 +255,7 @@ nav {
   position: absolute;
   border-radius: 10px;
   border: 20px solid $primary-color;
-  z-index: 10;
+  z-index: 5;
   height: 600px;
   width: 800px;
 }
@@ -305,6 +305,7 @@ h2 {
   position: absolute;
   border-radius: 10px;
   border: 20px solid $secondary-color;
+  z-index: 5;
 }
 
 .game-over-messages {
