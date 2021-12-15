@@ -103,22 +103,6 @@ export default class Player {
     if (keys['KeyD'] || keys['ArrowRight']) this.moveRight();
   }
 
-  // eventListener() {
-  //   window.addEventListener(
-  //     'keydown',
-  //     function (event) {
-  //       this.keys[event.code] = true;
-  //       // console.log('keydown')
-  //       this.moving = true;
-  //       if (event.defaultPrevented) {
-  //         return; // Do nothing if event already handled
-  //       }
-
-  //       event.preventDefault();
-  //     }.bind(this),
-  //     true
-  //   );
-
   eventListener() {
     window.addEventListener('keydown', (event) => {
       this.keys[event.code] = true;
