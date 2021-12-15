@@ -20,7 +20,7 @@ export default class Stage {
     this.currentCountDown = this.createCountDown(60);
 
     this.items = [];
-    this.createItemTimer = 1500; // delays the items falling from the sky ... maybe create a ready set go
+    this.createItemTimer = 1500; // delays the items falling from the sky in milliseconds
     this.itemTimerReset = 0;
     this.itemTypes = [
       'boba',
@@ -182,8 +182,8 @@ export default class Stage {
         // no collision
       } else {
         // collision detected
-        this.incrementScore(item);
         // console.log('collision!')
+        this.incrementScore(item);
       }
     });
   }

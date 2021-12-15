@@ -177,7 +177,6 @@ export default class Player {
   }
 
   // dummy hitbox method
-  // okay hitbox example that I'm semi happy with
   drawHitbox() {
     this.ctx.beginPath();
     this.ctx.rect(this.x + this.width / 4, this.y, this.width / 2, this.height);
