@@ -20,7 +20,7 @@ export default class Player {
     this.yVel = 0;
     this.friction = 0.9;
     this.gravity = 1.1; // changed gravity from 0.9
-    this.maxVel = 20;
+    this.maxVel = 25;
     this.maxJumpPower = 40;
     this.baseline = 480; // floor or ground that anchors player
     this.keys = []; // using to keep track of number of keypresses and allow for two directions to be recognized at the same time
