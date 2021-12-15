@@ -251,4 +251,6 @@ This second code snippet details the recursive animation loop that is run when t
 
 Lastly, this code snippet details how the hitboxes are created and calculated between the player and the different items falling from the sky. This leverages the draw ability to draw shapes using the Canvas API and then calculates the positions of items and the player at a given time. Collisions will trigger the item to disappear and for the score to be changed.
 
+![Kevin](src/images/static-kevin.png 'Boba Bae Kevin')
+
 Special Thanks to [@currypanko](https://www.instagram.com/currypanko/) for helping me bring Kevin to life by creating the design and the spritesheet!
