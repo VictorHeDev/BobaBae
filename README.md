@@ -25,23 +25,22 @@ Basics:
 - [x] Main character who can move around using "WASD" or arrow keys
 - [x] Timer that counts down from 1 minute for a single round (using built in JS Datetime obj)
 - [x] Score that increments when Kevin collects an item
-- [ ] Life/Hearts/BobaBar
+- [ ] ~~Life/Hearts/BobaBar~~
 
 Extra Features:
 
-- [ ] Power-ups: such as freezing the timer, invincibility mode, super speed/super hops
-- [ ] Power-up item on the upper left side of the screen
-- [ ] A Boba-bar to unleash his untapped potential
 - [x] Sounds for jumping/being hurt/power-ups
 - [x] Button to toggle sounds on/off
 - [x] Background music
-  - [ ] User is able to choose the music that they want to play
+- [ ] ~~Power-ups: such as freezing the timer, invincibility mode, super speed/super hops~~
+- [ ] ~~Power-up item on the upper left side of the screen~~
+- [ ] ~~A Boba-bar to unleash his untapped potential~~
 
 Other features being considered:
 
 - [x] Enemies in the game or "bad items"
-- [ ] Hearts/Life vs. Boba-bar to end the game before the timer runs out
 - [x] Rendering and animations for Kevin and Vivian
+- [ ] ~~Hearts/Life vs. Boba-bar to end the game before the timer runs out~~
 
 ### Day 2 - Research
 
